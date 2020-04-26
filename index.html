@@ -1,0 +1,213 @@
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+
+
+        <style>
+            
+            .gif {
+                position: absolute;
+                animation-name: kelebek;
+                animation-duration: 40s;
+                top: 82%;
+                left: 7%;
+                transform:scale(0.5,0.5) rotate(20deg);
+		    }
+            body {
+                margin: 0px;
+                background-image: url(ataturk.png);
+                background-repeat: no-repeat;
+                background-size: cover;
+                overflow: hidden;
+                position: relative;
+                height: 615px;
+            }
+            .textGIF {
+                position: absolute;
+                transform: scale(0.4,0.4);
+                z-index: 2;
+            }
+            .textContainer {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                animation-duration: 200ms;
+            }
+            .back {
+                width: 250px;
+                height: 75px;
+                background-color: #ffffff;
+                border-radius: 30px;
+                z-index: -1;
+            }
+            @keyframes solma {
+                from {
+                    opacity: 100%;
+                }
+                to {
+                    opacity: 0%;
+                }   
+            }
+            @keyframes kelebek {
+			0% {
+				top: 82%;
+				left: 7%;
+			}
+			30% {
+				top: 30%;
+				right: 50%;
+            }
+			60% {
+				right: 70%;
+				top: 60%;
+			}
+			100% {
+				top: -6%;
+				left:82%;
+			}
+        }
+        @keyframes kelebek2 {
+            from {
+                top:-6%;
+                left: 82%;
+            }
+            to {
+                top: 9%;
+                left: 79%;
+            }
+        }
+        @keyframes git-gel {
+            0% {
+                top: -6%;
+                left: 82%;
+            }
+            40% {
+                top: -3%;
+                right: 40%;
+            }
+            70% {
+                top: 20%;
+                left: 60%;
+            }
+            100% {
+                top: -6%;
+                left: 82%;
+            }
+        }
+            .netkoza {
+                transform: scale(0.2,0.2);
+                position: absolute;
+                bottom: -520px;
+                left: -800px;  
+            }
+            .proaktif {
+                transform: scale(0.4,0.4);
+                position: absolute;
+                top: -220px;
+                right: -300px;
+            }
+            .div {
+                position: absolute;
+            }
+            .virus {
+                position: absolute;
+                transform: scale(0.3,0.3);
+                top: -400px;
+                right: -800px;
+                animation-duration: 5s;
+                animation-name:none;
+                opacity: 0;
+            }
+            .text {
+                position: absolute;
+                font-family: "Montserrat",sans-serif;
+                color:#e66de9;
+                top: 131px;
+                right: 20px;
+                animation-duration: 5s;
+                animation-name: none;
+                font-size: 25px;
+                opacity: 0;
+                user-select: none;
+            }
+            @keyframes sol {
+                from {
+                    opacity: 0;
+                }
+                20% {
+                    opacity: 1;
+                }
+                80%  {
+                    opacity: 1;
+                }
+                100%  {
+                    opacity: 0;
+                }
+            }
+            @keyframes sol-text {
+                from {
+                    opacity: 0;
+                }
+                20% {
+                    opacity: 1;
+                }
+                80%  {
+                    opacity: 1;
+                }
+                100%  {
+                    opacity: 1;
+                }
+            }
+            #gif2 {
+                z-index: 3;
+                animation-duration: 40s;
+                animation-name: kelebek;
+            }
+        </style>
+
+    </head>
+    <body>
+        <img class="netkoza" src="netkoza.png">
+        <img class="proaktif" id="proaktif" src="son.gif">
+        <img src="result.gif" id="gif" class="gif">
+        <img src="result.gif" id="gif2" class="gif">
+        <img src="virus.png" class="virus" id="virus">
+        <div id="text" class="text">DONTBECLOSER.COM</div>
+        
+
+        <script>
+
+        setTimeout(function(){
+            document.getElementById("gif").style.top = "-6%"
+            document.getElementById("gif").style.left = "82%"
+            document.getElementById("gif2").style.top = "-6%"
+            document.getElementById("gif2").style.left = "82%"
+         },5000)
+         setTimeout(function(){
+            document.getElementById("virus").style.animationName = "sol"
+            setTimeout(function(){
+                document.getElementById("text").style.animationName = "sol-text"
+                document.getElementById("text").style.opacity = "1"
+            },5000)
+         },41000)
+         setTimeout(function(){
+            setTimeout(function(){
+                document.getElementById("gif2").style.animationDuration = "5s"
+                document.getElementById("gif2").style.animationName = "kelebek2"
+                document.getElementById("gif2").style.top = "9%"
+                document.getElementById("gif2").style.left = "79%"
+            },6000)
+            setTimeout(function(){
+                document.getElementById("gif2").style.animationDuration = "5s"
+                document.getElementById("gif2").style.animationName = "git-gel"
+                document.getElementById("gif").style.animationDuration = "5s"
+                document.getElementById("gif").style.animationName = "git-gel"
+
+                
+            },1000)
+         },40000)
+        </script>
+    </body>
+</html>
