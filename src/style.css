@@ -1,0 +1,329 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+* {
+  outline: none;
+}
+*:not(.non-font) {
+  font-family: "Montserrat";
+  font-weight: 400;
+  color: rgb(39, 39, 39);
+}
+.margin {
+  margin: 10px;
+}
+.header {
+  width: 100%;
+  height: 75px;
+  background-color: rgb(47, 83, 192);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  transition: 200ms;
+  position: fixed;
+  top: 0px;
+  z-index: 1;
+}
+.buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+button.header-button {
+  border: 0px;
+  color: white;
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+}
+button.header-button::before {
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background-color: white;
+  content: "";
+  margin-top: -10px;
+  transition-duration: 200ms;
+  opacity: 0;
+}
+button.header-button:hover::before {
+  opacity: 1;
+}
+button.rounded-button {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  border-radius:20px ;
+  padding: 10px 20px 10px 20px;
+  transition-duration: 200ms;
+  cursor: pointer;
+}
+button.rounded-button:hover {
+  border-color: white;
+  background-color: white;
+  color: royalblue;
+}
+.ortala {
+  display: flex;
+  justify-content: center;
+  align-items:center;
+}
+.body {
+  margin-top: 75px;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#info1 {
+  width: 100%;
+  height: 100px;
+  background-color: royalblue;
+  color: white;
+}
+#info2 {
+  flex-direction: column;
+  margin-top: 30px;
+}
+.info-header {
+  font-size: 30px;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+.info-props {
+  flex-direction: column;
+  display: flex;
+}
+.info-prop {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+}
+.prop-element {
+  margin: 0px 50px 0px 50px;
+  font-size: 15px;
+  width: 230px;
+  height: 100px;
+  display: flex;
+  align-items: flex-start;
+  text-align: start;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+.prop-explanation {
+  font-size: 10px;
+}
+.info-prop-header {
+  margin-bottom: 10px;
+  color: royalblue;
+  font-weight: 700;
+}
+.bulten-cont {
+  height: 150px;
+  width: 100%;
+  background-color: #1D1D1D;
+  color: royalblue;
+  flex-direction: column;
+  display: flex;
+}
+button.main-button {
+  border-radius: 20px;
+  width: max-content;
+  height: 50px;
+  border: 2px solid royalblue;
+  background-color: transparent;
+  color: royalblue;
+  cursor: pointer;
+  padding:0px 20px 0px 20px;
+  transition-duration: 200ms;
+  font-weight: 600;
+}
+button.main-button:hover {
+  color: white;
+  background-color: royalblue;
+}
+input.main-input {
+  height: 50px;
+  outline: none;
+  border: 2px solid royalblue;
+  border-radius: 20px;
+  padding: 0px 20px 0px 20px;
+  color: royalblue;
+  background-color: transparent;
+  margin: 10px;
+  transition-duration: 200ms;
+}
+input.main-input:focus {
+  background-color: royalblue;
+  color: white;
+}
+input.main-input::placeholder {
+  color: royalblue;
+  opacity: .7;
+}
+input.main-input:focus::placeholder {
+  color: white;
+  opacity: .7;
+}
+.bulten-header {
+  color: royalblue;
+  display: flex;
+  justify-content: flex-start;
+}
+.bulten-teknik-destek {
+  color: royalblue;
+  font-weight: 700;
+}
+.iletişim-cont {
+  width: 100%;
+  height: 300px;
+  background-color: rgb(40, 67, 148);
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  padding: 50px 0px 10px 0px;
+}
+.iletişim {
+  display: flex;
+  flex-direction: row;
+}
+.InsideLink-cont {
+  margin: 0px 10px 0px 10px;
+}
+.inside-link-header {
+  color: white;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.text-link {
+  cursor: pointer;
+}
+.text-link:hover {
+  opacity: .8;
+}
+.iletisim-inputs-cont {
+  margin: 0px 10px 0px 10px;
+}
+.iletisim-inputs-header {
+  color: white;
+  font-weight: 700;
+}
+.iletisim-inputs-input-cont {
+  flex-direction: column;
+  display: flex;
+}
+input.footer-input {
+  height: 30px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 2px solid white;
+  background-color: white;
+  padding: 0px 10px 0px 10px;
+  color: royalblue;
+  font-weight: 700;
+  width: 250px;
+  transition-duration: 200ms;
+}
+input.footer-input::placeholder {
+  color: royalblue;
+  opacity: .7;
+}
+input.footer-input:focus {
+  background-color: rgb(39, 39, 39);
+  border-color: rgb(39, 39, 39);
+  color: royalblue;
+}
+button.footer-button {
+  width: 100px;
+  border: 10px;
+  border: 2px solid white;
+  background-color: transparent;
+  border-radius: 10px;
+  height: 30px;
+  margin-top: 10px;
+  align-self: flex-end;
+  color: white;
+  font-weight: 600;
+  transition-duration: 200ms;
+  cursor: pointer;
+}
+button.footer-button:hover {
+  background-color: white;
+  color: royalblue;
+}
+.about-cont {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  margin: 0px 10px 0px 10px;
+}
+.about-header {
+  font-weight: 700;
+  color: white;
+}
+.about-text {
+  color: rgb(39, 39, 39);
+  max-width: 250px;
+  width: max-content;
+  font-weight: 500;
+}
+.icon-link {
+  width: 50px;
+  height: 50px;
+  border: 2px solid rgb(39, 39, 39);
+  transform: rotate(45deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icon {
+  transform: rotate(-45deg);
+}
+.slider-cont {
+  display: flex;
+  align-items: center;
+  height:316.5px;
+}
+.arrow-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: rgba(39, 39, 39,.6);
+  position: absolute;
+  margin: 0px 10px 0px 10px;
+  color: white;
+  cursor: pointer;
+  visibility: hidden;
+  user-select: none;
+}
+.arrow-right {
+  right: 0px;
+}
+.arrow-left {
+  left: 0px;
+}
+.slider-cont:hover .arrow-button {
+  visibility: visible;
+}
+.flag {
+  color: white;
+  user-select: none;
+  cursor: pointer;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid transparent;
+  height: 30px;
+  border-radius: 5px;
+  transition-duration: 200ms;
+}
+.flag:hover {
+  border: 2px solid white;
+}
+.slider-img {
+  user-select: none;
+}
