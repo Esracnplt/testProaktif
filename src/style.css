@@ -92,6 +92,7 @@ button.rounded-button:hover {
   font-size: 30px;
   margin-bottom: 30px;
   font-weight: 700;
+  text-align: center;
 }
 .info-props {
   flex-direction: column;
@@ -285,7 +286,7 @@ button.footer-button:hover {
 .slider-cont {
   display: flex;
   align-items: center;
-  height:316.5px;
+  height:min-content;
 }
 .arrow-button {
   width: 50px;

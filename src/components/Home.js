@@ -95,7 +95,7 @@ class Home extends React.Component {
         <div className="body">
           <Sliders></Sliders>
           <Info1 slogan="Olası sorunlara, öncesinde çözümler üretiyoruz"></Info1>
-          <Info2 header="Proaktif Hizmetleriyle Yüksek Karlılık"></Info2>
+          <Info2 header="Nitelikli yazılım, yönetim ve bilişim çözümlerimiz ile üretken karlı ve sürekli bir gelişim için proaktif vizyon"></Info2>
           
           <Iletisim></Iletisim>
         </div>

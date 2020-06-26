@@ -52,7 +52,8 @@ class InsideLinks extends React.Component {
             {text:this.props.text2,key:1},
             {text:this.props.text3,key:2},
             {text:this.props.text4,key:3},
-            {text:this.props.text5,key:4}
+            {text:this.props.text5,key:4},
+            {text:this.props.text6,key:5}
         ]
         return(
             <div className="InsideLink-cont">
@@ -101,7 +102,7 @@ class Iletisim extends React.Component {
                     */}
                     <InsideLinks text1="Kurumsal" title="Yönlendirme"
                                 text2="Ürünlerimiz" text3="Projelerimiz"
-                                text4="İş Birliklerimiz" text5="Başarı Hikayemiz"
+                                text4="İş Birliklerimiz" text5="Başarı Hikayemiz" text6="Kocaeli Üniversitesi Teknopark"
                     ></InsideLinks>
                     <Inputs></Inputs>
                 </div>
