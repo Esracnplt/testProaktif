@@ -115,7 +115,7 @@ button.rounded-button:hover {
   margin-bottom: 10px;
 }
 .prop-explanation {
-  font-size: 10px;
+  font-size: 13px;
 }
 .info-prop-header {
   margin-bottom: 10px;
@@ -192,7 +192,7 @@ input.main-input:focus::placeholder {
   flex-direction: row;
 }
 .InsideLink-cont {
-  margin: 0px 10px 0px 10px;
+  margin: 0px 20px 0px 20px;
 }
 .inside-link-header {
   color: white;
@@ -327,4 +327,24 @@ button.footer-button:hover {
 }
 .slider-img {
   user-select: none;
+}
+.statistics {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(39, 39, 39);
+  height: 200px;
+}
+.statistic {
+  width: 250px;
+  text-align: center;
+}
+.statistic-count {
+  color: royalblue;
+  margin: 10px 0px 10px 0px;
+  font-size: 25px;
+}
+.statistic-text {
+  color: white;
+  margin: 10px 0px 10px 0px;
 }

@@ -1,8 +1,11 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import '../style.css';
 import Sliders from "./Sliders"
 import Iletisim from "./Iletisim"
 import Header from "./Header"
+
+import CountUp from "react-countup"
 
 class Info1 extends React.Component {
   render() {
@@ -87,6 +90,38 @@ class Bulten extends React.Component {
   }
 }
 
+class Statistic extends React.Component {
+  render() {
+    return(
+      <div className="statistic">
+        <CountUp className="statistic-count" start={0} end={this.props.count} duration={5} />
+        <div className="statistic-text">
+          {this.props.text}
+        </div>
+      </div>
+    )
+  }
+}
+
+class Istatistikler extends React.Component {
+  render() {
+    var Statistics = [
+      {text:"Yılı Aşan Deneyim",count:26},
+      {text:"Üstünde beyanname",count:17000000},
+      {text:"Üzeri Kullanıcı",count:1400},
+      {text:"Üzeri Öğrenciye Hizmet",count:16000}
+    ]
+    var MappedComponents = Statistics.map((object) => 
+      <Statistic key={object.text} text={object.text} count={object.count} />
+    )
+    return(
+      <div className="statistics">
+        {MappedComponents}
+      </div>
+    )
+  }
+}
+
 class Home extends React.Component {
   render() {
     return(
@@ -96,7 +131,7 @@ class Home extends React.Component {
           <Sliders></Sliders>
           <Info1 slogan="Olası sorunlara, öncesinde çözümler üretiyoruz."></Info1>
           <Info2 header="Nitelikli yazılım, yönetim ve bilişim çözümlerimiz ile üretken karlı ve sürekli bir gelişim için proaktif vizyon"></Info2>
-          
+          <Istatistikler />
           <Iletisim></Iletisim>
         </div>
       </React.Fragment>
