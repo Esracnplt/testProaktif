@@ -1,4 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+html {
+  overflow-x: hidden;
+}
+img {
+  user-select: none;
+}
 * {
   outline: none;
 }
@@ -37,6 +43,7 @@ button.header-button {
   display: flex;
   justify-content: center;
   margin: 5px;
+  user-select: none;
 }
 button.header-button::before {
   position: absolute;
@@ -347,4 +354,59 @@ button.footer-button:hover {
 .statistic-text {
   color: white;
   margin: 10px 0px 10px 0px;
+}
+.hover-menu {
+  position: absolute;
+  width: max-content;
+  max-width: 120%;
+  box-shadow:0px 20px 20px rgba(39, 39, 39,.1);
+  height: min-content;
+  background-color: rgb(47, 83, 192);
+  top: 55px;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  padding:10px;
+  flex-direction: column;
+  z-index: 1;
+}
+.header-button-cont:hover > .hover-menu {
+  opacity: 1;
+  visibility: visible;
+}
+.hover-menu:hover {
+  opacity: 1;
+  visibility: visible;
+}
+.header-button:hover + .hover-menu {
+  opacity: 1;
+  visibility: visible;
+}
+.header-button-cont {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  height: 60px;
+  align-items: center;
+}
+.header-button-cont:hover .header-button::before {
+  opacity: 1;
+}
+.hover-menu:hover + .header-button::before {
+  opacity: 1;
+}
+.hover-menu-child {
+  color: white;
+  font-weight: 500;
+  margin: 10px 0px 10px 0px;
+  cursor: pointer;
+  text-align: start;
+  transition-duration: 200ms;
+  user-select: none;
+}
+.hover-menu-child:hover {
+  color: rgb(224, 224, 224);
+  transition-duration: 200ms;
 }

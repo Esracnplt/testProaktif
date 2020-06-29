@@ -2,6 +2,30 @@ import React from "react"
 import "../style.css"
 import logo from "../img/logo.png"
 
+class HoverMenuChild extends React.Component {
+    render() {
+        return(
+            <div className="hover-menu-child">
+                {this.props.text}
+            </div>
+        )
+    }
+}
+
+class HoverMenu extends React.Component {
+    render() {
+        var list = this.props.texts || []
+        var mappedList = list.map((textOfChild) => 
+            <HoverMenuChild text={textOfChild} key={textOfChild} />
+        )
+        return(
+            <div className="hover-menu">
+                {mappedList}
+            </div>
+        )
+    }
+}
+
 class HeaderButtons extends React.Component {
     render() {
         return(
@@ -22,8 +46,10 @@ class ContactUs extends React.Component {
 class ChangeLanguage extends React.Component {
     constructor(props) {
         super(props)
+        var language = navigator.userLanguage || navigator.language
+        language = (language.length > 2)?language.splice(0,2):language
         this.state = {
-            language:(navigator.language || navigator.userLanguage)
+            language:language
         }
     }
     changeFlag(component) {
@@ -49,23 +75,43 @@ class ChangeLanguage extends React.Component {
     }
 }
 
-class Header extends React.Component {
-    componentDidMount() {
-        
+function HeaderMenu({ item }) {
+    if (item.inside) {
+        return(
+            <HoverMenu texts={item.inside} />
+        )
     }
+    else {
+        return false
+    }
+    
+}
+
+class Header extends React.Component {
     render() {
+        var headerButtons = [
+            {text:"Anasayfa"},
+            {text:"Kurumsal"},
+            {text:"Ürünlerimiz"},
+            {text:"Projelerimiz",inside:[
+                "Arge Projelerimiz","Sosyal Sorumluluk Projelerimiz"
+            ]},
+            {text:"İş Birliklerimiz"},
+            {text:"Başarı Hikayemiz"},
+        ]
+        var mappedButtons = headerButtons.map((object) => 
+        <div key={object.text} className="header-button-cont">
+            <HeaderButtons text={object.text} />
+            <HeaderMenu item={object} />
+        </div>
+        )
         return(
             <div className="header" id="header">
                 <div id="logo" className="logo ortala">
                     <img style={{height:"60px"}} src={logo} alt="Logo"></img>
                 </div>
                 <div className="buttons" >
-                    <HeaderButtons text="Anasayfa"></HeaderButtons>
-                    <HeaderButtons text="Kurumsal"></HeaderButtons>
-                    <HeaderButtons text="Ürünlerimiz"></HeaderButtons>
-                    <HeaderButtons text="Projelerimiz"></HeaderButtons>
-                    <HeaderButtons text="İş Birliklerimiz"></HeaderButtons>
-                    <HeaderButtons text="Başarı Hikayemiz"></HeaderButtons>
+                    {mappedButtons}
                     <div className="margin">
                         <ContactUs></ContactUs>
                     </div>
