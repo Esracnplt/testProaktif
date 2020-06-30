@@ -47,7 +47,6 @@ class ChangeLanguage extends React.Component {
     constructor(props) {
         super(props)
         var language = navigator.userLanguage || navigator.language
-        language = (language.length > 2)?language.splice(0,2):language
         this.state = {
             language:language
         }
