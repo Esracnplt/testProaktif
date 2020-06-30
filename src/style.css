@@ -207,6 +207,7 @@ input.main-input:focus::placeholder {
 }
 .text-link {
   cursor: pointer;
+  color:#292929;
 }
 .text-link:hover {
   opacity: .8;
@@ -404,6 +405,7 @@ button.footer-button:hover {
   text-align: start;
   transition-duration: 200ms;
   user-select: none;
+  font-size: 13px;
 }
 .hover-menu-child:hover {
   color: rgb(224, 224, 224);
