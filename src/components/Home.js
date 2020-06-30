@@ -94,7 +94,10 @@ class Statistic extends React.Component {
   render() {
     return(
       <div className="statistic">
-        <CountUp className="statistic-count" start={0} end={this.props.count} duration={5} />
+        <div className="statistic-count">
+          <CountUp start={0} end={this.props.count} duration={5} />
+          +
+        </div>
         <div className="statistic-text">
           {this.props.text}
         </div>
@@ -108,7 +111,7 @@ class Istatistikler extends React.Component {
     var Statistics = [
       {text:"Yılı Aşan Deneyim",count:26},
       {text:"Üstünde beyanname",count:17000000},
-      {text:"Üzeri Kullanıcı",count:1400},
+      {text:"Üzeri Kullanıcı",count:7800},
       {text:"Üzeri Öğrenciye Hizmet",count:16000}
     ]
     var MappedComponents = Statistics.map((object) => 

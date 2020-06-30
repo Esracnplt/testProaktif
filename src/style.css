@@ -113,7 +113,7 @@ button.rounded-button:hover {
   margin-top: 10px;
 }
 .prop-element {
-  margin: 0px 50px 0px 50px;
+  margin: 0px 50px 20px 50px;
   font-size: 15px;
   width: 230px;
   height: 100px;
@@ -121,7 +121,6 @@ button.rounded-button:hover {
   align-items: flex-start;
   text-align: start;
   flex-direction: column;
-  margin-bottom: 10px;
 }
 .prop-explanation {
   font-size: 13px;
@@ -331,6 +330,8 @@ button.footer-button:hover {
   height: 30px;
   border-radius: 5px;
   transition-duration: 200ms;
+  position: absolute;
+  right:10px;
 }
 .flag:hover {
   border: 2px solid white;
