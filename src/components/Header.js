@@ -61,17 +61,20 @@ class ChangeLanguage extends React.Component {
         }
     }
     changeFlag(component) {
+        var currentLanguage = (navigator.userLanguage || navigator.language).substring(0,2) 
         if (component.state.language === "tr") {
             component.setState({
                 language:"en"
             })
+            currentLanguage = "en"
         }
         else if (component.state.language === "en") {
             component.setState({
                 language:"tr"
             })
+            currentLanguage = "tr"
         }
-        MyEventBus.emit("language",null,component.state.language)
+        MyEventBus.emit("language",null,currentLanguage)
     }
     render() {
         return(
@@ -110,6 +113,7 @@ class Header extends React.Component {
         this.state = ({
             language:((navigator.language || navigator.userLanguage).substring(0,2))
         })
+        MyEventBus.emit("language",null,this.state.language)
     }
     render() {
         var languageObject = data[this.state.language]
