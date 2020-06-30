@@ -11,7 +11,6 @@ img {
 *:not(.non-font) {
   font-family: "Montserrat";
   font-weight: 400;
-  color: rgb(39, 39, 39);
 }
 .margin {
   margin: 10px;
