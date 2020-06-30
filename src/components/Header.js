@@ -93,7 +93,7 @@ class Header extends React.Component {
             {text:"Kurumsal"},
             {text:"Ürünlerimiz"},
             {text:"Projelerimiz",inside:[
-                "Arge Projelerimiz","Sosyal Sorumluluk Projelerimiz"
+                "Ar-Ge Projelerimiz","Sosyal Sorumluluk Projelerimiz"
             ]},
             {text:"İş Birliklerimiz"},
             {text:"Başarı Hikayemiz"},
