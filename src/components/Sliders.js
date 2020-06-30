@@ -9,7 +9,7 @@ import EventBus from "js-event-bus"
 const MyEventBus = new EventBus()
 
 var sliderCount = 3
-var intervalHizi = 5000
+var intervalHizi = 10000
 
 var index = 1
 function arttır(e) {

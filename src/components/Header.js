@@ -1,13 +1,16 @@
 import React from "react"
 import "../style.css"
 import logo from "../img/logo.png"
+import {Link} from "react-router-dom"
 
 class HoverMenuChild extends React.Component {
     render() {
         return(
-            <div className="hover-menu-child">
-                {this.props.text}
-            </div>
+            <Link to={this.props.to || "/"}>
+                <div className="hover-menu-child">
+                    {this.props.text}
+                </div>
+            </Link>
         )
     }
 }
@@ -15,8 +18,8 @@ class HoverMenuChild extends React.Component {
 class HoverMenu extends React.Component {
     render() {
         var list = this.props.texts || []
-        var mappedList = list.map((textOfChild) => 
-            <HoverMenuChild text={textOfChild} key={textOfChild} />
+        var mappedList = list.map((object) => 
+            <HoverMenuChild to={object.to} text={object.text} key={object.text} />
         )
         return(
             <div className="hover-menu">
@@ -90,13 +93,15 @@ class Header extends React.Component {
     render() {
         var headerButtons = [
             {text:"Anasayfa"},
-            {text:"Kurumsal"},
+            {text:"Kurumsal",inside:[
+                {text:"Başarı Hikayemiz"}
+            ]},
             {text:"Ürünlerimiz"},
             {text:"Projelerimiz",inside:[
-                "Ar-Ge Projelerimiz","Sosyal Sorumluluk Projelerimiz"
+                {text:"Ar-Ge Projelerimiz"},
+                {text:"Sosyal Sorumluluk Projelerimiz"}
             ]},
-            {text:"İş Birliklerimiz"},
-            {text:"Başarı Hikayemiz"},
+            {text:"İş Birliklerimiz"}
         ]
         var mappedButtons = headerButtons.map((object) => 
         <div key={object.text} className="header-button-cont">
