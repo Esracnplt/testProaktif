@@ -109,10 +109,10 @@ class Statistic extends React.Component {
 class Istatistikler extends React.Component {
   render() {
     var Statistics = [
-      {text:"Yılı Aşan Deneyim",count:26},
-      {text:"Üstünde beyanname",count:17000000},
-      {text:"Üzeri Kullanıcı",count:7800},
-      {text:"Üzeri Öğrenciye Hizmet",count:16000}
+      {text:"Yıllık Deneyim",count:26},
+      {text:"Beyanname",count:17000000},
+      {text:"Kullanıcı",count:7800},
+      {text:"Hizmet",count:16000}
     ]
     var MappedComponents = Statistics.map((object) => 
       <Statistic key={object.text} text={object.text} count={object.count} />

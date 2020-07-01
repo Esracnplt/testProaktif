@@ -116,7 +116,7 @@ class Header extends React.Component {
         MyEventBus.emit("language",null,this.state.language)
     }
     render() {
-        var languageObject = data[this.state.language]
+        var languageObject = data[this.state.language].header
         var headerButtons = [
             {text:languageObject.homeScreen},
             {text:languageObject.corporate,inside:[

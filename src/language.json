@@ -1,25 +1,29 @@
 {
     "en":{
-        "homeScreen":"Home Screen",
-        "corporate":"Corporate",
-        "successStory":"Our Success Story",
-        "products":"Our Products",
-        "projects":"Our Projects",
-        "argeProjects":"Our R&D Projects",
-        "socialProjects":"Our Social Responsibility Projects",
-        "collaborations":"Our Collaborations",
-        "contactUs":"Contact Us"
+        "header":{
+            "homeScreen":"Home Screen",
+            "corporate":"Corporate",
+            "successStory":"Our Success Story",
+            "products":"Our Products",
+            "projects":"Our Projects",
+            "argeProjects":"Our R&D Projects",
+            "socialProjects":"Our Social Responsibility Projects",
+            "collaborations":"Our Collaborations",
+            "contactUs":"Contact Us"
+        }
     },
     "tr":{
-        "homeScreen":"Anasayfa",
-        "corporate":"Kurumsal",
-        "successStory":"Başarı Hikayemiz",
-        "products":"Ürünlerimiz",
-        "projects":"Projelerimiz",
-        "argeProjects":"Ar-Ge Projelerimiz",
-        "socialProjects":"Sosyal Sorumluluk Projelerimiz",
-        "collaborations":"İş Birliklerimiz",
-        "contactUs":"İletişim"
+        "header":{
+            "homeScreen":"Anasayfa",
+            "corporate":"Kurumsal",
+            "successStory":"Başarı Hikayemiz",
+            "products":"Ürünlerimiz",
+            "projects":"Projelerimiz",
+            "argeProjects":"Ar-Ge Projelerimiz",
+            "socialProjects":"Sosyal Sorumluluk Projelerimiz",
+            "collaborations":"İş Birliklerimiz",
+            "contactUs":"İletişim"
+        }
     }
 
 }
