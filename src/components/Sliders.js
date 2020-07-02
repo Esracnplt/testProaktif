@@ -64,6 +64,9 @@ class Slider extends React.Component {
             }
         })
     }
+    componentWillUnmount() {
+        MyEventBus.detachAll()
+    }
     render() {
         if (this.state.render) {
             return(

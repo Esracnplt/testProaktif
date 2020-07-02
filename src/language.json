@@ -1,29 +1,45 @@
 {
-    "en":{
-        "header":{
-            "homeScreen":"Home Screen",
-            "corporate":"Corporate",
-            "successStory":"Our Success Story",
-            "products":"Our Products",
-            "projects":"Our Projects",
-            "argeProjects":"Our R&D Projects",
-            "socialProjects":"Our Social Responsibility Projects",
-            "collaborations":"Our Collaborations",
-            "contactUs":"Contact Us"
-        }
-    },
-    "tr":{
-        "header":{
-            "homeScreen":"Anasayfa",
-            "corporate":"Kurumsal",
-            "successStory":"Başarı Hikayemiz",
-            "products":"Ürünlerimiz",
-            "projects":"Projelerimiz",
-            "argeProjects":"Ar-Ge Projelerimiz",
-            "socialProjects":"Sosyal Sorumluluk Projelerimiz",
-            "collaborations":"İş Birliklerimiz",
-            "contactUs":"İletişim"
-        }
+  "en": {
+    "header": {
+      "homeScreen": "Home Screen",
+      "corporate": "Corporate",
+      "successStory": "Our Success Story",
+      "products": "Our Products",
+      "projects": "Our Projects",
+      "argeProjects": "Our R&D Projects",
+      "socialProjects": "Our Social Responsibility Projects",
+      "collaborations": "Our Collaborations",
+      "contactUs": "Contact Us"
     }
-
+  },
+  "tr": {
+    "header": {
+      "homeScreen": "Anasayfa",
+      "corporate": "Kurumsal",
+      "successStory": "Başarı Hikayemiz",
+      "products": "Ürünlerimiz",
+      "projects": "Projelerimiz",
+      "argeProjects": "Ar-Ge Projelerimiz",
+      "socialProjects": "Sosyal Sorumluluk Projelerimiz",
+      "collaborations": "İş Birliklerimiz",
+      "contactUs": "İletişim"
+    },
+    "projects": {
+      "argeProjects": [
+        {
+          "title": "Mikroservisler ve Yüksek Erişilebilirlikli Dağıtık Mimari Tabanlı Dış Ticaret Yönetim Sistemi ve Yazılımı Geliştirilmesi Projesi",
+          "desc": [
+            {
+              "p1": "Proje kapsamında mikroservisler mimarisi esaslı geliştirilecek sistem ve yazılımlar ile iş hayatındaki tüm sektörlerin ihtiyaç duyacağı Data Analitik, Müşteri Yönetimi, İnsan Kaynakları Yönetimi, İş Süreçleri Yönetimi, Muhasebe/Finans ve Pazarlama/Satış Yönetimi ve diğer eklenebilecek gerekli bileşenler ile esnek bir modüler yapı dâhilinde açık sistemli, bulut tabanlı genişleyebilir ve İnternet üzerinden erişilebilen çerçeve bir platform çözümü elde edilmesi ve ticarileştirilmesi amaçlanmaktadır. ",
+              "p2": "Yapılan ön çalışmalar neticesinde ilk hedef ürünün Dış Ticaret sektöründen birçok firmaya sunularak genişleyecek bir uyarlanabilir proje yaklaşımı örnek alınarak geliştirilecek sistem ve yazılımın tüm sektörlerin ihtiyaçlarına dinamik bir şekilde cevap verecek esnek ve modüler tasarımı yapılmaktır."
+            },
+            {
+              "p1": "Proje çıktısı web uygulamalar, farklı sektörlere uygun olarak özelleştirilebilir Dijital Yönetim Sistemleri ile firmalarda yetişmiş çok sayıda nitelikli personel ihtiyacını optimize edecek şekilde iş yapışa yönelik ve ürünü yeni kullanacaklara destek amacıyla çevrimiçi yardım bölümleri ile altyapı, materyal ve destek ortamı olarak da kullanılabilecektir.",
+              "p2": "Projenin Ar-Ge ve yenilik kapsamında açık sistemler ile özelleştirilebilir nitelikte tasarımlarla Dijital Yönetim Sistemi ile web/sunucu uygulama yazılımları geliştirilmektir. Mikroservisler ve yüksek erişilebilirlikli dağıtık mimari ile oluşturulacak altyapının lokal ve global ölçekte proje çıktısı ürünü kullanacak firmalara data analitik çalışmaları ve etkinlik açılarından önemli katkı sağlaması planlanmaktadır."
+            }
+          ]
+        }
+      ]
+    }
+  }
 }

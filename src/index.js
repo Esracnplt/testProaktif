@@ -2,13 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Home from './components/Home';
+import ArgeProjectComponent from "./components/Projects/ArgeProjects"
+import ContactComponent from "./components/Contact"
 import * as serviceWorker from './serviceWorker';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter , Route } from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Home /> 
+      <Route exact path="/">
+        <Home />
+      </Route>
+      <Route path="/contact">
+        <ContactComponent />
+      </Route>
+      <Route path="/argeprojects">
+        <ArgeProjectComponent />
+      </Route>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

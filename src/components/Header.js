@@ -7,47 +7,61 @@ import EventBus from "js-event-bus"
 
 var MyEventBus = EventBus()
 
-class HoverMenuChild extends React.Component {
-    render() {
+function HoverMenuChild( {item} ) {
+    var button = <div className="hover-menu-child">{item.text}</div>
+    if (item.to) {
         return(
-            <Link to={this.props.to || "/"}>
-                <div className="hover-menu-child">
-                    {this.props.text}
-                </div>
+            <Link to={item.to}>
+                {button}    
             </Link>
         )
     }
-}
-
-class HoverMenu extends React.Component {
-    render() {
-        var list = this.props.texts || []
-        var mappedList = list.map((object) => 
-            <HoverMenuChild to={object.to} text={object.text} key={object.text} />
-        )
+    else {
         return(
-            <div className="hover-menu">
-                {mappedList}
+            <div>
+                {button}
             </div>
         )
     }
 }
 
-class HeaderButtons extends React.Component {
-    render() {
+function HoverMenu({item}) {
+    var mappedList = item.map((object) => 
+        <HoverMenuChild key={object.text} item={object} />
+    )
+    return(
+        <div className="hover-menu">
+            {mappedList}
+        </div>
+    )
+}
+
+function HeaderButtons({ item }) {
+    var headerButton = <button className="header-button">{item.text}</button>
+    if (item.to) {
         return(
-            <button className="header-button">
-                {this.props.text}
-            </button>
+            <Link to={item.to}>
+                {headerButton}
+            </Link>
+        )
+    }
+    else {
+        return(
+            <div>
+                {headerButton}
+            </div>
         )
     }
 }
+
 class ContactUs extends React.Component {
     render() {
         return(
-            <button className="rounded-button">
-                {this.props.text}
-            </button>
+            <Link to="/contact">
+                <button className="rounded-button">
+                    {this.props.text}
+                </button>
+            </Link>
         )
     }
 }
@@ -90,7 +104,7 @@ class ChangeLanguage extends React.Component {
 function HeaderMenu({ item }) {
     if (item.inside) {
         return(
-            <HoverMenu texts={item.inside} />
+            <HoverMenu item={item.inside} />
         )
     }
     else {
@@ -100,6 +114,10 @@ function HeaderMenu({ item }) {
 }
 
 class Header extends React.Component {
+    componentWillUnmount() {
+        //link değişince header yine olsada aslında başka bir tane olacağı için eventları kapatıyor bu sayede ramden tasarruf ediyor.
+        MyEventBus.detachAll()
+    }
     componentDidMount() {
         var component = this
         MyEventBus.on("language",function(msg){
@@ -108,45 +126,73 @@ class Header extends React.Component {
             })
         })
     }
+    changeHamburger(component) {
+        if (component.state.hamburgerOpen) {
+            component.setState({
+                hamburgerOpen:false
+            })
+            document.getElementById("hamburger-part1").classList.remove("hamburger-open")
+            document.getElementById("hamburger-part2").classList.remove("hamburger-open")
+            document.getElementById("hamburger-part3").classList.remove("hamburger-open")
+        }
+        else {
+            component.setState({
+                hamburgerOpen:true
+            })
+            document.getElementById("hamburger-part1").classList.add("hamburger-open")
+            document.getElementById("hamburger-part2").classList.add("hamburger-open")
+            document.getElementById("hamburger-part3").classList.add("hamburger-open") 
+        }
+    }
     constructor(props) {
         super(props)
         this.state = ({
-            language:((navigator.language || navigator.userLanguage).substring(0,2))
+            language:((navigator.language || navigator.userLanguage).substring(0,2)),
+            hamburgerOpen:false
         })
         MyEventBus.emit("language",null,this.state.language)
     }
     render() {
         var languageObject = data[this.state.language].header
         var headerButtons = [
-            {text:languageObject.homeScreen},
+            {text:languageObject.homeScreen,to:"/"},
             {text:languageObject.corporate,inside:[
                 {text:languageObject.successStory}
             ]},
             {text:languageObject.products},
             {text:languageObject.projects,inside:[
-                {text:languageObject.argeProjects},
+                {text:languageObject.argeProjects,to:"/argeprojects"},
                 {text:languageObject.socialProjects}
             ]},
             {text:languageObject.collaborations}
         ]
         var mappedButtons = headerButtons.map((object) => 
         <div key={object.text} className="header-button-cont">
-            <HeaderButtons text={object.text} />
+            <HeaderButtons item={object} />
             <HeaderMenu item={object} />
         </div>
         )
         return(
             <div className="header" id="header">
-                <div id="logo" className="logo ortala">
-                    <img style={{height:"60px"}} src={logo} alt="Logo"></img>
+                <Link to="/" >
+                    <div id="logo" className="logo ortala">
+                        <img style={{height:"60px"}} src={logo} alt="Logo"></img>
+                    </div>
+                </Link>
+                <div className="hamburger" onMouseDown={()=>{this.changeHamburger(this)}}>
+                    <svg viewBox="0 0 100 80" width="40" height="40" xmlns="http://www.w3.org/2000/svg" fill="white">
+                        <rect id="hamburger-part1" width="100" height="10"></rect>
+                        <rect id="hamburger-part2" y="30" width="100" height="10" ></rect>
+                        <rect id="hamburger-part3" y="60" width="100" height="10"></rect>
+                    </svg>
                 </div>
                 <div className="buttons" >
                     {mappedButtons}
                     <div className="margin">
                         <ContactUs text={languageObject.contactUs} />
                     </div>
-                    <ChangeLanguage />
                 </div>
+                <ChangeLanguage />
             </div>
         )
     }

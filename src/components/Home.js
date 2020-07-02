@@ -109,13 +109,20 @@ class Statistic extends React.Component {
 class Istatistikler extends React.Component {
   render() {
     var Statistics = [
-      {text:"Yıllık Deneyim",count:26},
-      {text:"Beyanname",count:17000000},
-      {text:"Kullanıcı",count:7800},
-      {text:"Hizmet",count:16000}
+      [
+        {text:"Yıllık Deneyim",count:26},
+        {text:"Beyanname",count:17000000}
+      ],
+      [
+        {text:"Kullanıcı",count:7800},
+        {text:"Hizmet",count:16000}
+      ]
     ]
     var MappedComponents = Statistics.map((object) => 
-      <Statistic key={object.text} text={object.text} count={object.count} />
+      <div key={(object[0].text + ":" + object[1].text)} className="statistic-div">
+        <Statistic key={object[0].text} text={object[0].text} count={object[0].count} />
+        <Statistic key={object[1].text} text={object[1].text} count={object[1].count} />
+      </div>
     )
     return(
       <div className="statistics">
@@ -129,7 +136,7 @@ class Home extends React.Component {
   render() {
     return(
       <React.Fragment>
-        <Header></Header>
+        <Header />
         <div className="body">
           <Sliders></Sliders>
           <Info1 slogan="Olası sorunlara, öncesinde çözümler üretiyoruz."></Info1>

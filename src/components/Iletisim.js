@@ -5,7 +5,7 @@ dom.watch()
 class About extends React.Component {
     render() {
         return(
-            <div className="about-cont">
+            <div className="about-cont iletisim-child-cont">
                 <div className="about-header">
                     Proaktif
                 </div>
@@ -20,7 +20,7 @@ class About extends React.Component {
 class Inputs extends React.Component {
     render() {
         return(
-            <div className="iletisim-inputs-cont">
+            <div className="iletisim-inputs-cont iletisim-child-cont">
                 <div className="iletisim-inputs-header">
                     Bizimle Hemen Temasa geçin
                 </div>
@@ -56,7 +56,7 @@ class InsideLinks extends React.Component {
             {text:this.props.text6,key:5}
         ]
         return(
-            <div className="InsideLink-cont">
+            <div className="InsideLink-cont iletisim-child-cont">
                 <div className="inside-link-header">
                     {this.props.title}
                 </div>
