@@ -284,6 +284,10 @@ button.footer-button:hover {
   width: max-content;
   font-weight: 500;
 }
+.bağlantılar {
+  display: flex;
+  flex-direction: row;
+}
 .icon-link {
   width: 50px;
   height: 50px;
@@ -292,9 +296,13 @@ button.footer-button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 15px;
 }
 .icon {
   transform: rotate(-45deg);
+}
+.f-color {
+  color: #1d1d1d;
 }
 .slider-cont {
   display: flex;

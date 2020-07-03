@@ -8,6 +8,8 @@ import EventBus from "js-event-bus";
 
 const MyEventBus = new EventBus();
 
+var FontAwesome = require("react-fontawesome");
+
 var sliderCount = 4;
 var intervalHizi = 10000;
 
@@ -186,7 +188,11 @@ class ButtonArrow extends React.Component {
           " arrow-button center"
         }
       >
-        {this.props.side === "left" ? "<" : ">"}
+        {this.props.side === "left" ? (
+          <FontAwesome name="arrow-left" />
+        ) : (
+          <FontAwesome name="arrow-right" />
+        )}
       </div>
     );
   }

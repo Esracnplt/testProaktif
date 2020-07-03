@@ -1,11 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import Home from './components/Home';
-import ArgeProjectComponent from "./components/Projects/ArgeProjects"
-import ContactComponent from "./components/Contact"
-import * as serviceWorker from './serviceWorker';
-import { BrowserRouter , Route } from 'react-router-dom';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import Home from "./components/Home";
+import ArgeProjectComponent from "./components/Projects/ArgeProjects";
+import ContactComponent from "./components/Contact";
+import * as serviceWorker from "./serviceWorker";
+import { BrowserRouter, Route } from "react-router-dom";
+import "font-awesome/css/font-awesome.min.css";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -21,7 +22,7 @@ ReactDOM.render(
       </Route>
     </BrowserRouter>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change
