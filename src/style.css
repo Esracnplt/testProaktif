@@ -468,19 +468,22 @@ button.footer-button:hover {
   color: white;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   padding: 20px 0px 20px 0px;
 }
 .project-cont {
   flex-direction: column;
   display: flex;
-  align-items: center;
+  align-items: start;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding: 0px 0px 0px 20px;
 }
 .arge-project-title {
   color: royalblue;
   font-weight: 700;
   max-width: 500px;
-  text-align: center;
+  text-align: start;
 }
 .arge-project-desc-cont {
   display: flex;
@@ -489,8 +492,9 @@ button.footer-button:hover {
 }
 .arge-project-desc {
   max-width: 420px;
-  text-align: center;
-  margin: 10px;
+  text-align: start;
+  margin: 10px 10px 10px 0px;
+  font-size: 12px;
 }
 @media (max-width: 900px) {
   .buttons {
