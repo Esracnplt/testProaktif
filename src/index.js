@@ -6,7 +6,6 @@ import ArgeProjectComponent from "./components/Projects/ArgeProjects";
 import ContactComponent from "./components/Contact";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter, Route } from "react-router-dom";
-import "font-awesome/css/font-awesome.min.css";
 
 ReactDOM.render(
   <React.StrictMode>
