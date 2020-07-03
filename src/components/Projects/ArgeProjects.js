@@ -25,7 +25,7 @@ function Proje({ item, index }) {
   }
   return (
     <React.Fragment>
-      <div className="arge-project-title">{index + ".  " + item.title}</div>
+      <div className="arge-project-title">{index + 1 + ".  " + item.title}</div>
       {mappedDesc}
       {imgs}
     </React.Fragment>
