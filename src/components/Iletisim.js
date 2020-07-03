@@ -1,4 +1,5 @@
 import React from "react";
+import "font-awesome/css/font-awesome.min.css";
 var FontAwesome = require("react-fontawesome");
 
 class About extends React.Component {
