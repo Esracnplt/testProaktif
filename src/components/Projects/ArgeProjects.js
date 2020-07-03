@@ -9,10 +9,25 @@ function Proje({ item, index }) {
       <div className="arge-project-desc">{object.p2}</div>
     </div>
   ));
+  if (item.img) {
+    var imgs = item.img.map((src, index) => {
+      return (
+        <div key={index}>
+          <img
+            alt="How it works"
+            src={require("./../../img/mikroservisler.jpg")}
+          />
+        </div>
+      );
+    });
+  } else {
+    imgs = false;
+  }
   return (
     <React.Fragment>
-      <div className="arge-project-title">{index + 1 + ".  " + item.title}</div>
+      <div className="arge-project-title">{index + ".  " + item.title}</div>
       {mappedDesc}
+      {imgs}
     </React.Fragment>
   );
 }
@@ -21,7 +36,7 @@ class ArgeProjects extends React.Component {
   render() {
     var projects = data.tr.projects.argeProjects.map((object, index) => (
       <div key={index} className="project-cont">
-        <Proje index={index} item={object} />
+        <Proje key={index} index={index} item={object} />
       </div>
     ));
     return <div className="arge-projects">{projects}</div>;

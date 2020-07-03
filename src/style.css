@@ -474,7 +474,7 @@ button.footer-button:hover {
 .project-cont {
   flex-direction: column;
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   margin-top: 10px;
   margin-bottom: 20px;
   padding: 0px 0px 0px 20px;
@@ -487,7 +487,7 @@ button.footer-button:hover {
 }
 .arge-project-desc-cont {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin-top: 20px;
 }
 .arge-project-desc {
