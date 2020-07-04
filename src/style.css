@@ -287,16 +287,31 @@ button.footer-button:hover {
 .bağlantılar {
   display: flex;
   flex-direction: row;
+  margin-top: 10px;
+}
+.stat-title {
+  color: royalblue;
+  font-size: 20px;
+  font-weight: 700;
 }
 .icon-link {
   width: 50px;
   height: 50px;
-  border: 2px solid rgb(39, 39, 39);
+  border: 2px solid #1d1d1d;
   transform: rotate(45deg);
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 15px;
+  transition-duration: 200ms;
+  cursor: pointer;
+}
+.icon-link:hover {
+  background-color: #1d1d1d;
+  box-shadow: 10px 10px 20px #1d1d1d;
+}
+.icon-link:hover .f-color {
+  color: royalblue;
 }
 .icon {
   transform: rotate(-45deg);
@@ -350,6 +365,7 @@ button.footer-button:hover {
 }
 .statistics {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: rgb(39, 39, 39);

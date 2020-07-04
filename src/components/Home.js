@@ -113,24 +113,34 @@ class Istatistikler extends React.Component {
         { text: "Öğrenciye Hizmet", count: 16000 },
       ],
     ];
-    var MappedComponents = Statistics.map((object) => (
-      <div
-        key={object[0].text + ":" + object[1].text}
-        className="statistic-div"
-      >
-        <Statistic
-          key={object[0].text}
-          text={object[0].text}
-          count={object[0].count}
-        />
-        <Statistic
-          key={object[1].text}
-          text={object[1].text}
-          count={object[1].count}
-        />
+    var MappedComponents = Statistics.map((object, index) => (
+      <div key={index} className="statistic-div">
+        <Statistic text={object[0].text} count={object[0].count} />
+        <Statistic text={object[1].text} count={object[1].count} />
       </div>
     ));
-    return <div className="statistics">{MappedComponents}</div>;
+    return (
+      <div className="statistics">
+        <div className="stat-title">
+          Rakamlarla Şirketimiz
+          <div
+            style={{
+              fontSize: "12px",
+              textAlign: "center",
+              marginTop: "10px",
+              color: "white",
+            }}
+          >
+            Birkaç İstatistik
+          </div>
+        </div>
+        <div
+          style={{ display: "flex", flexDirection: "row", marginTop: "20px" }}
+        >
+          {MappedComponents}
+        </div>
+      </div>
+    );
   }
 }
 

@@ -1,6 +1,13 @@
 import React from "react";
-import "font-awesome/css/font-awesome.min.css";
-var FontAwesome = require("react-fontawesome");
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faFacebook,
+  faTwitter,
+  faLinkedin,
+  faInstagram,
+  faYoutube,
+  faPinterest,
+} from "@fortawesome/free-brands-svg-icons";
 
 class About extends React.Component {
   render() {
@@ -61,7 +68,11 @@ class IconLink extends React.Component {
     return (
       <div className="icon-link">
         <div className="icon">
-          <FontAwesome name={this.props.text} className="f-color" size="2x" />
+          <FontAwesomeIcon
+            className="f-color"
+            size="2x"
+            icon={this.props.icon}
+          />
         </div>
       </div>
     );
@@ -71,15 +82,19 @@ class IconLink extends React.Component {
 class Iletisim extends React.Component {
   render() {
     var listedFontAwesome = [
-      { text: "facebook" },
-      { text: "twitter" },
-      { text: "linkedin" },
-      { text: "instagram" },
-      { text: "youtube" },
-      { text: "pinterest" },
+      { icon: faFacebook, to: "https://www.facebook.com/" },
+      { icon: faTwitter, to: "https://twitter.com" },
+      { icon: faLinkedin, to: "https://www.linkedin.com/" },
+      { icon: faInstagram, to: "https://www.instagram.com/" },
+      { icon: faYoutube, to: "https://www.youtube.com/" },
+      { icon: faPinterest, to: "https://pinterest.com/" },
     ];
     var mappedList = listedFontAwesome.map((object, index) => {
-      return <IconLink text={object.text} key={index} />;
+      return (
+        <a href={object.to} key={index}>
+          <IconLink icon={object.icon} />
+        </a>
+      );
     });
     return (
       <div className="iletişim-cont">

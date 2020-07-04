@@ -35,8 +35,10 @@ class Contact extends React.Component {
       { text: "Mersis Numarası:", value: "0733088785300001" },
       { text: "Tepecik V.D.", value: "733 088 7853" },
     ];
-    var mappedContactProps = contactProps.map((object) => (
-      <div className="contact-prop">{object.text + " " + object.value}</div>
+    var mappedContactProps = contactProps.map((object, index) => (
+      <div key={index} className="contact-prop">
+        {object.text + " " + object.value}
+      </div>
     ));
     return (
       <div className="contact-cont">

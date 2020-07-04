@@ -3,12 +3,12 @@ import React from "react";
 import slider1img from "../img/slider1.jpeg";
 import slider2img from "../img/slider2.jpg";
 import slider3img from "../img/slider3.jpg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 import EventBus from "js-event-bus";
 
 const MyEventBus = new EventBus();
-
-var FontAwesome = require("react-fontawesome");
 
 var sliderCount = 4;
 var intervalHizi = 10000;
@@ -189,9 +189,9 @@ class ButtonArrow extends React.Component {
         }
       >
         {this.props.side === "left" ? (
-          <FontAwesome name="arrow-left" />
+          <FontAwesomeIcon icon={faArrowLeft} />
         ) : (
-          <FontAwesome name="arrow-right" />
+          <FontAwesomeIcon icon={faArrowRight} />
         )}
       </div>
     );
