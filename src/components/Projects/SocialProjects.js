@@ -1,14 +1,14 @@
 import React from "react"
 import ProjectTemplate from "./ProjectTemplate"
 
-class ArgeProjectComponent extends React.Component {
+class SocialProjectComponent extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <ProjectTemplate projectName="argeProjects" />
+                <ProjectTemplate projectName="socialProjects" />
             </React.Fragment>
         )
     }
 }
 
-export default ArgeProjectComponent
+export default SocialProjectComponent

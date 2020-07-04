@@ -495,6 +495,15 @@ button.footer-button:hover {
   align-items: flex-start;
   padding: 20px 0px 20px 0px;
 }
+.social-projects {
+  width: 100%;
+  background-color: #1d1d1d;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding:20px 0px 20px 0px;
+}
 .project-cont {
   flex-direction: column;
   display: flex;
@@ -502,6 +511,25 @@ button.footer-button:hover {
   margin-top: 10px;
   margin-bottom: 20px;
   padding: 0px 0px 0px 20px;
+}
+.step-text {
+  font-size: 13px;
+  color: royalblue;
+  font-weight: 700;
+}
+.steps {
+  margin: 10px 0px 10px 10px;
+}
+.step {
+  margin: 10px 0px 10px 0px;
+  width:500px;
+  display: flex;
+}
+.step-index {
+  margin-right: 10px;
+  color: royalblue;
+  font-weight: 600;
+  font-size: 13px;
 }
 .arge-project-title {
   color: royalblue;
@@ -511,11 +539,16 @@ button.footer-button:hover {
 }
 .arge-project-desc-cont {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin-top: 20px;
+  margin-left: 20px;
+}
+.project-img {
+  margin-top: 20px;
+  margin-left: 20px;
 }
 .arge-project-desc {
-  max-width: 420px;
+  max-width: 650px;
   text-align: start;
   margin: 10px 10px 10px 0px;
   font-size: 12px;
