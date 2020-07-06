@@ -24,7 +24,7 @@ class Inputs extends React.Component {
   render() {
     return (
       <div className="iletisim-inputs-cont iletisim-child-cont">
-        <div className="iletisim-inputs-header">Bizimle Hemen Temasa geçin</div>
+        <div className="iletisim-inputs-header">Bizimle İletişime Geçin</div>
         <div className="iletisim-inputs-input-cont">
           <input className="footer-input" placeholder="İsminiz"></input>
           <input className="footer-input" placeholder="Konu"></input>

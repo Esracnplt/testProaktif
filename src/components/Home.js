@@ -59,10 +59,10 @@ class Info2 extends React.Component {
           <Prop
             text1="Sosyal Sorumluluk Projeleri"
             text2="Dış Ticaret Yönetim Sistemi"
-            text3="DontBeCloser (Daha yakın olma projesi)"
+            text3="DontBeCloser (DahaYakınOlma) Projesi"
             info1="Var gücümüzle 'Eğitim' diyoruz."
-            info2="Yer ve zamanından bağımsız, ithalat, ihracat, antrepo,transit, özet beyan ve NCTS gibi tüm işlemleri hızlıca gerçekleştirin"
-            info3="DBC DontBeCloser (Daha yakın olma projesi) ile kendinizi güvene alın."
+            info2="Yer ve zamandan bağımsız olarak ithalat, ihracat, antrepo, transit, özet beyan ve NCTS gibi tüm işlemlerinizi hızlıca gerçekleştirin!"
+            info3="DBC DontBeCloser (DahaYakınOlma) mobil uygulaması ve web yazılımı ile kendinizi güvene alın."
           ></Prop>
         </div>
       </div>

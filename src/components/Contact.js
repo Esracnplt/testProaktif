@@ -21,15 +21,38 @@ class Contact extends React.Component {
   }
   render() {
     var adresler = [
-      { text: "Proaktif Dijital Yönetim ve Eğitim Sistemleri Ltd. Şti." },
+      { highlighted:"Proaktif Dijital Yönetim ve Eğitim Sistemleri Ltd. Şti.",text: "" },
       { text: "Kocaeli Üniversitesi Teknoloji Geliştirme Bölgesi" },
       { text: "Vatan Cad., No: 83 / B-34" },
       { text: "Yeniköy Merkez Mah., Başiskele" },
       { text: "41725 Kocaeli/Turkey" },
     ];
+    function HighText({ object }) {
+      if (object.highlighted) {
+        return (
+          <div style={{display:"flex"}}>
+            <div style={{marginRight:"5px",color:"#fb4360"}}>
+              {object.highlighted}
+            </div>
+            <div>
+              {object.text}
+            </div>
+          </div>
+        )
+      }
+      else {
+        return (
+          <div>
+            <div>
+              {object.text}
+            </div>
+          </div>
+        )
+      }
+    }
     var mappedAdres = adresler.map((object) => (
       <div className="adres" key={object.text}>
-        {object.text}
+        <HighText object={object} />
       </div>
     ));
     var contactProps = [
