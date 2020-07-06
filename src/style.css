@@ -336,6 +336,7 @@ button.footer-button:hover {
   cursor: pointer;
   visibility: hidden;
   user-select: none;
+  z-index: 1;
 }
 .arrow-right {
   right: 0px;
@@ -555,6 +556,28 @@ button.footer-button:hover {
   text-align: start;
   margin: 10px 10px 10px 0px;
   font-size: 12px;
+}
+.slider-text-cont {
+  position: absolute;
+}
+.slider-text {
+  color: white;
+  font-weight: 700;
+  font-size: 45px;
+  max-width: 600px;
+  text-align: center;
+  background-color: #fb4630;
+  padding: 20px 20px 20px 20px;
+  transform: scale(.5);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.slider-text:hover {
+  text-decoration: underline;
+}
+.slider-text::selection {
+  background-color: white;
+  color: #fb4630;
 }
 @media (max-width: 900px) {
   .buttons {

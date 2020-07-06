@@ -1,10 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-import slider1img from "../img/slider1.jpeg";
-import slider2img from "../img/slider2.jpg";
-import slider3img from "../img/slider3.jpg";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import data from "../language.json"
 
 import EventBus from "js-event-bus";
 
@@ -32,15 +31,17 @@ function eksilt(e) {
 }
 let interval = setInterval(arttır, intervalHizi);
 
-class Slider extends React.Component {
+
+
+class DefaultSlider extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { render: true };
+    this.state = { render: (this.props.whichSlider === 1)?true:false, whichSlider: this.props.whichSlider };
   }
   componentDidMount() {
     var slider = this;
     MyEventBus.on("currentslide", function (mesaj) {
-      if (mesaj === 1) {
+      if (mesaj === slider.state.whichSlider) {
         slider.setState({ render: true });
       } else {
         slider.setState({ render: false });
@@ -51,118 +52,25 @@ class Slider extends React.Component {
     MyEventBus.detachAll();
   }
   render() {
+    var languageObject = data.tr.home.sliders[this.props.sliderName]
     if (this.state.render) {
       return (
-        <React.Fragment>
+        <div style={{width:"100%",position:"relative"}} className="center" id={"slider"+this.state.whichSlider}>
           <img
-            src={slider1img}
+            src={require("./../img/" + languageObject.imgname)}
             style={{ width: "100%" }}
             alt="slider"
             className="blur slider-img"
           ></img>
-        </React.Fragment>
+          <Link className="slider-text-cont" to={languageObject.to}>
+            <div className="slider-text">
+              {languageObject.text}
+            </div>
+          </Link>
+        </div>
       );
     } else {
       return true;
-    }
-  }
-}
-
-class Slider2 extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { render: false };
-  }
-  componentDidMount() {
-    var slider = this;
-    MyEventBus.on("currentslide", function (mesaj) {
-      if (mesaj === 2) {
-        slider.setState({ render: true });
-      } else {
-        slider.setState({ render: false });
-      }
-    });
-  }
-  render() {
-    if (this.state.render) {
-      return (
-        <React.Fragment>
-          <img
-            src={slider2img}
-            style={{ width: "100%" }}
-            alt="slider"
-            className="blur slider-img"
-          ></img>
-        </React.Fragment>
-      );
-    } else {
-      return false;
-    }
-  }
-}
-
-class Slider3 extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { render: false };
-  }
-  componentDidMount() {
-    var slider = this;
-    MyEventBus.on("currentslide", function (mesaj) {
-      if (mesaj === 3) {
-        slider.setState({ render: true });
-      } else {
-        slider.setState({ render: false });
-      }
-    });
-  }
-  render() {
-    if (this.state.render) {
-      return (
-        <React.Fragment>
-          <img
-            src={slider3img}
-            style={{ width: "100%" }}
-            alt="slider"
-            className="blur slider-img"
-          ></img>
-        </React.Fragment>
-      );
-    } else {
-      return false;
-    }
-  }
-}
-
-class Slider4 extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { render: false };
-  }
-  componentDidMount() {
-    var slider = this;
-    MyEventBus.on("currentslide", function (mesaj) {
-      if (mesaj === 4) {
-        slider.setState({ render: true });
-      } else {
-        slider.setState({ render: false });
-      }
-    });
-  }
-  render() {
-    if (this.state.render) {
-      return (
-        <React.Fragment>
-          <img
-            src={require("./../img/slider4.jpg")}
-            style={{ width: "100%" }}
-            alt="slider"
-            className="blur slider-img"
-          ></img>
-        </React.Fragment>
-      );
-    } else {
-      return false;
     }
   }
 }
@@ -204,10 +112,14 @@ class Sliders extends React.Component {
       <div className="slider-cont">
         <ButtonArrow side="left"></ButtonArrow>
         <ButtonArrow side="right"></ButtonArrow>
-        <Slider></Slider>
-        <Slider2></Slider2>
-        <Slider3></Slider3>
-        <Slider4></Slider4>
+
+
+        <DefaultSlider whichSlider={1} sliderName="slider1" />
+        <DefaultSlider whichSlider={2} sliderName="slider2" />
+        <DefaultSlider whichSlider={3} sliderName="slider3" />
+        <DefaultSlider whichSlider={4} sliderName="slider4" />
+
+
       </div>
     );
   }

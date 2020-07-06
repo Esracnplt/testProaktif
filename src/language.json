@@ -127,7 +127,29 @@
         "Olası sorunlara",
         "öncesinde",
         "çözümler üretiyoruz!"
-      ]
+      ],
+      "sliders": {
+        "slider1":{
+          "imgname":"slider1.jpeg",
+          "text":"Proaktif Ar-Ge Projeleri",
+          "to":"/argeprojects"
+        },
+        "slider2": {
+          "imgname": "slider2.jpg",
+          "text": "Proaktif Eğitim Destekleri",
+          "to": "/socialprojects"
+        },
+        "slider3": {
+          "imgname": "slider3.jpg",
+          "text": "Proaktif Dış Ticaret Yönetim Sistemi",
+          "to": "/products"
+        },
+        "slider4": {
+          "imgname": "slider4.jpg",
+          "text": "Proaktif Sosyal Sorumluluk Projeleri",
+          "to": "/socialprojects"
+        }
+      }
     },
     "header": {
       "homeScreen": "Anasayfa",
