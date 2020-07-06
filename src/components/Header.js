@@ -5,7 +5,11 @@ import { Link } from "react-router-dom";
 import data from "../language.json";
 import EventBus from "js-event-bus";
 
-var MyEventBus = EventBus();
+export var MyEventBus = EventBus();
+
+export function getDefaultLang() {
+  return (navigator.language || navigator.userLanguage).substring(0, 2)
+}
 
 function HoverMenuChild({ item }) {
   var button = <div className="hover-menu-child">{item.text}</div>;
@@ -45,10 +49,7 @@ class ContactUs extends React.Component {
 class ChangeLanguage extends React.Component {
   constructor(props) {
     super(props);
-    var language = (navigator.userLanguage || navigator.language).substring(
-      0,
-      2
-    );
+    var language = getDefaultLang()
     this.state = {
       language: language,
     };
@@ -140,7 +141,7 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      language: (navigator.language || navigator.userLanguage).substring(0, 2),
+      language: getDefaultLang(),
       hamburgerOpen: false,
     };
     MyEventBus.emit("language", null, this.state.language);

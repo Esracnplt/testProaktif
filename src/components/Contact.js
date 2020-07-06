@@ -1,6 +1,8 @@
 /* eslint-disable no-sequences */
 import React from "react";
 import Header from "./Header";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMapMarkerAlt, faPhoneSquareAlt } from "@fortawesome/free-solid-svg-icons";
 
 class Contact extends React.Component {
   constructor(props) {
@@ -53,8 +55,18 @@ class Contact extends React.Component {
             allowFullScreen
           ></iframe>
         </div>
-        <div className="adresler">{mappedAdres}</div>
-        <div className="contact-props-cont">{mappedContactProps}</div>
+        <div className="adresler">
+          <FontAwesomeIcon icon={faMapMarkerAlt} size="2x" />
+          <div style={{ display: "flex", flexDirection: "column", margin: "0px 0px 0px 10px" }}>
+            {mappedAdres}
+          </div>
+        </div>
+        <div className="contact-props-cont">
+          <FontAwesomeIcon icon={faPhoneSquareAlt} size="2x" />
+          <div style={{marginLeft:"10px"}}>
+            {mappedContactProps}
+          </div>
+        </div>
       </div>
     );
   }

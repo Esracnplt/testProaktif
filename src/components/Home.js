@@ -7,13 +7,15 @@ import Header from "./Header";
 
 import CountUp from "react-countup";
 
+import data from "../language.json"
+
 class Info1 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      part1: "Olası Sorunlara",
-      part2: "öncesinde",
-      part3: "çözümler üretiyoruz",
+      part1: data.tr.home.slogan[0],
+      part2: data.tr.home.slogan[1],
+      part3: data.tr.home.slogan[2],
     };
   }
   render() {
@@ -57,10 +59,10 @@ class Info2 extends React.Component {
           <Prop
             text1="Sosyal Sorumluluk Projeleri"
             text2="Dış Ticaret Yönetim Sistemi"
-            text3="DontBeCloser"
-            info1="Var Gücümüzle 'Eğitim' diyoruz."
-            info2="Yer ve Zamanından Bağımsız, İthalat, İhracat, Antrepo,Transit, Özet Beyan ve NCTS gibi tüm işlemleri Hızlıca gerçekleştirin"
-            info3="DBC ile kendinizi güvene alın."
+            text3="DontBeCloser (Daha yakın olma projesi)"
+            info1="Var gücümüzle 'Eğitim' diyoruz."
+            info2="Yer ve zamanından bağımsız, ithalat, ihracat, antrepo,transit, özet beyan ve NCTS gibi tüm işlemleri hızlıca gerçekleştirin"
+            info3="DBC DontBeCloser (Daha yakın olma projesi) ile kendinizi güvene alın."
           ></Prop>
         </div>
       </div>
@@ -152,7 +154,7 @@ class Home extends React.Component {
         <div className="body">
           <Sliders></Sliders>
           <Info1></Info1>
-          <Info2 header="Nitelikli yazılım, yönetim ve bilişim çözümlerimiz ile üretken karlı ve sürekli bir gelişim için proaktif vizyon"></Info2>
+          <Info2 header="Nitelikli yazılım, yönetim ve bilişim çözümlerimiz ile üretken kârlı ve sürekli bir gelişim için proaktif vizyon"></Info2>
           <Istatistikler />
           <Iletisim></Iletisim>
         </div>

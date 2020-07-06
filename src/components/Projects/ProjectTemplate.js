@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../Header";
 import data from "../../language.json";
+import { MyEventBus, getDefaultLang } from "../Header"
 
 function Proje({ item, index }) {
   function P({ object, name }) {
@@ -45,11 +46,11 @@ function Proje({ item, index }) {
   if (item.img) {
     var imgs = item.img.map((src, index) => {
       return (
-        <div key={index}>
+        <div className="project-img" key={index}>
           <img
             alt="How it works"
             src={require(`./../../img/${src}`)}
-            className="project-img"
+            style={{width:"100%"}}
           />
         </div>
       );
@@ -67,8 +68,21 @@ function Proje({ item, index }) {
 }
 
 class ArgeProjects extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = ({
+      language:getDefaultLang()
+    })
+  }
+  componentDidMount() {
+    MyEventBus.on("language", (lang) => {
+      this.setState({
+        language:lang
+      })
+    })
+  }
   render() {
-    var projects = data.tr.projects[this.props.projectName].map((object, index) => (
+    var projects = data[this.state.language].projects[this.props.projectName].map((object, index) => (
       <div key={index} className="project-cont">
         <Proje key={index} index={index} item={object} />
       </div>
