@@ -267,6 +267,124 @@
             "okuladestek.jpg"
           ]
         }
+      ],
+      "products":[
+        {
+          "title":"Proaktif Dış Ticaret Yönetim Sistemi ve Çevrimiçi Web Yazılımı",
+          "desc":[
+            {
+              "p1":"Önemli bir ihtiyaç ve talebi karşılamak üzere, temelleri  90’lı yıllara uzanan ve ilk zamanlarda masaüstü uygulama olarak hizmet veren ürünümüz, teknolojinin gelişmesi ve internetin yaygınlaşmasıyla birlikte 2000’li  yılların başların itibaren web tabanlı çevrimiçi bir hizmet çözümüne dönüşmüştür. Son olarak mikroservisler mimarisi esas alınarak ve özgün bir yaklaşım ile Teknopark bünyesinde bir Ar-Ge projesi kapsamında geliştirilerek yenilikçi, değişen kullanıcı/sistem isterlerine karşın dinamik ve dayanıklı sistem yapısıyla yeni bir ürün olarak tasarımları yapılarak gerçekleştirilmiş bulunmaktadır. Bu katma değerlikli özellikleri ile ulusal ölçekte olduğu kadar global hizmet sunma ve yurtdışını satış potansiyeli ile ürünümüz sürekli geliştirilebilir ve kullanıcı firmalara (müşterilere) artan kalite standartlarında hizmet verebilmektedir."
+            },
+            {
+              "innerProjects": [
+                {
+                  "title": "Detay Beyan",
+                  "parag":[
+                    {
+                      "p1":{
+                        "text":"",
+                        "steps": [
+                          "İthalat, ihracat ve antrepo beyanname yazımı ve gümrük tescil işlemleri",
+                          "Beyanname vergi hesaplama, kopyalama, Excel veri aktarımı, XML veri aktarımı, ayrıntılı rapor, toplu beyanname dökümleri, beyanname taslak dökümleri",
+                          "Beyannameden dolaşım belgesi düzenleme, onay işlemleri",
+                          "Beyannameden elektronik ihracat faturası hazırlama",
+                          "Birlik onay işlemleri ve ödemeleri",
+                          "E-posta gönderimi ile firma kullanıcılarının kendi müşterilerini bilgilendirilmesi",
+                          "Elektronik Arşivleme",
+                          "Beyannameden fatura ve dekont oluşturma"
+                        ]
+                      }
+                    }
+                  ],
+                  "img": [
+                    "detaybeyan.jpg"
+                  ]
+                },
+                {
+                  "title": "Özet Beyan",
+                  "parag": [
+                    {
+                      "p1": {
+                        "text": "",
+                        "steps": [
+                          "Deniz ithalat, deniz ihracat ve tüm özet beyan rejim işlemleri ve gümrük onaylarının alınması",
+                          "Beyan kopyalama, senet kopyalama, özet beyan listesi",
+                          "Özet beyan taslak dökümleri",
+                          "Elektronik arşivleme"
+                        ]
+                      }
+                    }
+                  ],
+                  "img": [
+                    "ozetbeyan.jpg"
+                  ]
+                },
+                {
+                  "title": "NCTS",
+                  "parag": [
+                    {
+                      "p1": {
+                        "text": "",
+                        "steps": [
+                          "TR ve T1 transit beyanlarının yazılması ve gümrük tescil işlemleri",
+                          "Beyanların statülerinin gümrük sisteminden çevrimiçi güncellenmesi",
+                          "İthalat/ihracat beyanından otomatik transit beyanı oluşturma",
+                          "Elektronik arşivleme",
+                          "Teminat hesaplama",
+                          "Beyanname taslak dökümleri"
+                        ]
+                      }
+                    }
+                  ],
+                  "img": [
+                    "ncts.jpg"
+                  ]
+                },
+                {
+                  "title": "Cari",
+                  "parag": [
+                    {
+                      "p1": {
+                        "text": "",
+                        "steps": [
+                          "Hizmet faturası, borç dekontu, SMM, makbuz, banka belgesi işlemleri",
+                          "Firma cari takip",
+                          "E-fatura, e-arşiv işlemleri",
+                          "Cari işlem dökümü",
+                          "Ayrıntılı raporlar (borçlular, alacaklılar, cari belge raporları, FS raporları)",
+                          "Elektronik arşivleme"
+                        ]
+                      }
+                    }
+                  ],
+                  "img": [
+                    "cari.jpg"
+                  ]
+                },
+                {
+                  "title":"Antrepo/Takip",
+                  "parag":[
+                    {
+                      "p1":{
+                        "text":"",
+                        "steps":[
+                          "Antrepo beyanname listesi",
+                          "Antrepo düşüm raporu, antrepoda kalan malların takibi"
+                        ]
+                      }
+                    }
+                  ],
+                  "img":[
+                    "antrepotakip.jpg"
+                  ]
+                }
+              ]
+            },
+            {
+              "p1":"Son dönemde, uzman yazılım ve sistem mühendislerinden oluşan Proaktif Ar-Ge ekibinin yoğun çalışmalarıyla yukarıda belirtilen modüller mikroservisler mimarisiyle yapılandırılarak esnek ve modüler çözüm stratejisi ile web/sunucu uygulamalarının hem teknik hem de ticari başarımı üst düzeylere çıkarılmış bulunmaktadır.  Ürünümüzün, global pazarlara uygun gerekli tüm düzenlemeler yapılarak yurtdışına pazarlanmasına yönelik teknik olduğu kadar uluslararası mevzuat açısından da önemli çalışmalar planlanmış olup takvim içerisinde projelendirilecektir."
+            }
+          ]
+        }
       ]
     }
   }

@@ -568,7 +568,7 @@ button.footer-button:hover {
   text-align: center;
   background-color: #fb4360;
   padding: 20px 20px 20px 20px;
-  transform: scale(.5);
+  transform: scale(.35);
   border-radius: 10px;
   cursor: pointer;
 }
@@ -578,6 +578,16 @@ button.footer-button:hover {
 .slider-text::selection {
   background-color: white;
   color: #fb4630;
+}
+.inner-project-cont {
+  margin: 5 0px 0px 20px 0px;
+}
+.inner-project-title {
+  color: royalblue;
+  font-weight: 600;
+}
+.inner-project-img {
+  margin: 30px 0px 50px 25px;
 }
 @media (max-width: 900px) {
   .buttons {

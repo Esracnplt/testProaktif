@@ -4,6 +4,7 @@ import "./index.css";
 import Home from "./components/Home";
 import ArgeProjectComponent from "./components/Projects/ArgeProjects";
 import SocialProjectComponent from "./components/Projects/SocialProjects";
+import Products from "./components/Projects/Products"
 import ContactComponent from "./components/Contact";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter, Route } from "react-router-dom";
@@ -22,6 +23,9 @@ ReactDOM.render(
       </Route>
       <Route path="/socialprojects">
         <SocialProjectComponent />
+      </Route>
+      <Route path="/products">
+        <Products />
       </Route>
     </BrowserRouter>
   </React.StrictMode>,

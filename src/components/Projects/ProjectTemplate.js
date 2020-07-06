@@ -4,10 +4,63 @@ import data from "../../language.json";
 import { MyEventBus, getDefaultLang } from "../Header"
 
 function Proje({ item, index }) {
-  function P({ object, name }) {
+  function InnerProjects({ object, index }) {
+    if (object.innerProjects) {
+      var mappedProjects = object.innerProjects.map((object, projectindex) => {
+        if (object.img) {
+          var imgs = object.img.map((src, index) => {
+            return (
+              <div className="inner-project-img project-img" key={index}>
+                <img
+                  alt="How it works"
+                  src={require(`./../../img/${src}`)}
+                  style={{ width: "100%" }}
+                />
+              </div>
+            );
+          });
+        } else {
+          imgs = false;
+        }
+        if (object.parag) {
+          var paragraphs = object.parag.map((paragObject,index) => {
+            return (
+              <div key={index}>
+                <P extraMargin="2" withoutText={true} object={paragObject} name="p1" />
+                <P extraMargin="2" withoutText={true} object={paragObject} name="p2" />
+              </div>
+            )
+          })
+        }
+        else {
+          paragraphs = ""
+        }
+        return (
+           <div key={projectindex} className="inner-project-cont">
+            <div className="inner-project-title">
+              {(projectindex+1) + "." + object.title}
+            </div>
+            <div>
+              {paragraphs}
+            </div>
+            {imgs}
+          </div>
+        )
+      })
+      return (
+        <div className="inner-projects">
+          {mappedProjects}
+        </div>
+      )
+    }
+    else {
+      return false
+    }
+  }
+  function P({ object, name, extraMargin, withoutText }) {
     if (object[name]) {
       if (object[name].steps) {
-        var steps = object[name].steps.map((step,stepIndex) => {
+        var steps = object[name].steps.map((step, stepIndex) => {
           return (
             <div key={stepIndex} className="step">
               <div className="step-index">
@@ -17,10 +70,9 @@ function Proje({ item, index }) {
             </div>
           )
         })
-        var innerComponent = <div>
-          <div className="step-text">
-            {object[name].text}
-          </div>
+        var step_text = (!withoutText) ? <div className="step-text">{object[name].text}</div> : ""
+        var innerComponent = <div style={{marginLeft:((extraMargin)?extraMargin*10:10).toString() + "px"}}>
+          {step_text}
           <div className="steps">
             {steps}
           </div>
@@ -41,6 +93,7 @@ function Proje({ item, index }) {
     <div key={index} className="arge-project-desc-cont">
       <P object={object} name="p1" />
       <P object={object} name="p2" />
+      <InnerProjects object={object} />
     </div>
   ));
   if (item.img) {
