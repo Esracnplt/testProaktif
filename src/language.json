@@ -179,7 +179,7 @@
               "p1": "Geliştirilecek çok modüllü iş-süreç yönetim web yazılımlarının felaket senaryolarına karşın dayanıklı, yüksek erişilebilirliğe sahip dağıtık ve bulut tabanlı mimarisi, projenin önemli bir özelliğidir. Böylelikle sistem güvenilir bir ortam sunarak kolayca ölçeklenebilecek ve yeni sektörlere uyarlanabilecektir.."
             }
           ],
-          "img": ["mikroservisler.jpg"]
+          "img": ["mikroservisler.jpg","mikroservisimg.jpg"]
         },
         {
           "title": "DBC DontBeCloser (DahaYakınOlma) Projesi",
@@ -195,6 +195,9 @@
             {
               "p1":"Sonraki versiyonlar için teknik, proje ve ürün/pazar planlaması ile ticari perspektif amaçlanmaktadır."
             }
+          ],
+          "img":[
+            "dbc.jpg"
           ]
         },
         {
@@ -204,6 +207,9 @@
               "p1": "DBC projesi kapsamında geliştirilmekte olan yöntemin bir aktüatör olarak yer alacağı bu ürüne yönelik proje ile portatif giyilebilen bir aparat tasarımı ve gerçekleştirilmesi amaçlanmaktadır. Aparat, yüz ya da kafa etrafında bir basınçlı hava/ışık/sinyal duvarı oluşturarak koruma sağlayacak şekilde tasarlanmaktadır",
               "p2": "Klasik maske benzeri koruma çözümlerine önemli bir alternatif olarak salgın veya enfekte riski yüksek bazı özellikli ortamlarda önleyici tedbir ürünü olarak ticarileştirilmesi hedeflenmektedir"
             }
+          ],
+          "img":[
+            "smartblowing.jpg"
           ]
         }
       ],
