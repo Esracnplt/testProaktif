@@ -151,8 +151,7 @@ class Header extends React.Component {
     var headerButtons = [
       { text: languageObject.homeScreen, to: "/" },
       {
-        text: languageObject.corporate,
-        inside: [{ text: languageObject.successStory }],
+        text: languageObject.corporate
       },
       { text: languageObject.products, to:"/products" },
       {
