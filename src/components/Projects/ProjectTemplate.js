@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import Header from "../Header";
 import data from "../../language.json";
@@ -128,11 +129,11 @@ class ArgeProjects extends React.Component {
     })
   }
   componentDidMount() {
-    MyEventBus.on("language", (lang) => {
+    /*MyEventBus.on("language", (lang) => {
       this.setState({
         language:lang
       })
-    })
+    })*/
   }
   render() {
     var projects = data[this.state.language].projects[this.props.projectName].map((object, index) => (

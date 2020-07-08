@@ -588,6 +588,7 @@ button.footer-button:hover {
 }
 .inner-project-img {
   margin: 30px 0px 50px 25px;
+  max-width: 300px;
 }
 @media (max-width: 900px) {
   .buttons {

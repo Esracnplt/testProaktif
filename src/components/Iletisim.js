@@ -8,6 +8,8 @@ import {
   faYoutube,
   faPinterest,
 } from "@fortawesome/free-brands-svg-icons";
+import { Link } from "react-router-dom"
+import data from "../language.json"
 
 class About extends React.Component {
   render() {
@@ -44,20 +46,24 @@ class TextLink extends React.Component {
 
 class InsideLinks extends React.Component {
   render() {
-    let textList = [
-      { text: this.props.text1, key: 0 },
-      { text: this.props.text2, key: 1 },
-      { text: this.props.text3, key: 2 },
-      { text: this.props.text4, key: 3 },
-      { text: this.props.text5, key: 4 },
-      { text: this.props.text6, key: 5 },
-    ];
+    let textList = data.tr.footer.links.map((object, index) => {
+      if (object.to) {
+        return (
+          <Link to={{pathname:object.to}}>
+            <TextLink text={object.text} />
+          </Link>
+        )
+      }
+      else {
+        return (
+          <TextLink text={object.text} key={index} />
+        )
+      }
+    })
     return (
       <div className="InsideLink-cont iletisim-child-cont">
-        <div className="inside-link-header">{this.props.title}</div>
-        {textList.map((item) => {
-          return <TextLink text={item.text} key={item.key}></TextLink>;
-        })}
+        <div className="inside-link-header">{data.tr.footer.linktitle}</div>
+        {textList}
       </div>
     );
   }
@@ -112,15 +118,7 @@ class Iletisim extends React.Component {
                     ></InsideLinks>
                         
                     */}
-          <InsideLinks
-            text1="Kurumsal"
-            title="Yönlendirme"
-            text2="Ürünlerimiz"
-            text3="Projelerimiz"
-            text4="İş Birliklerimiz"
-            text5="Başarı Hikayemiz"
-            text6="Kocaeli Üniversitesi Teknopark"
-          ></InsideLinks>
+          <InsideLinks />
           <Inputs></Inputs>
         </div>
         <div className="bağlantılar">{mappedList}</div>

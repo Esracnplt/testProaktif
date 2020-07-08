@@ -121,7 +121,39 @@
       ]
     }
   },
+
+
+
+
+
+
+
+
   "tr": {
+    "footer":{
+      "linktitle":"Yönlendirme",
+      "links":[
+        {
+          "text":"Kurumsal",
+          "to":"/corporate"
+        },
+        {
+          "text": "Ürünlerimiz",
+          "to":"/products"
+        },
+        {
+          "text": "Projelerimiz",
+          "to":"/argeprojects"
+        },
+        {
+          "text": "İş Birliklerimiz"
+        },
+        {
+          "text":"Kocaeli Üniversitesi Teknopark",
+          "to":"https://kouteknopark.com/"
+        }
+      ]
+    },
     "home":{
       "slogan":[
         "Olası sorunlara",
@@ -271,6 +303,101 @@
           ],
           "img": [
             "okuladestek.jpg"
+          ]
+        }
+      ],
+      "corporate":[
+        {
+          "title":"Hakkımızda",
+          "desc":[
+            {
+              "p1":"Proaktif Dijital Yönetim ve Eğitim Sistemleri Ltd. Şti., üst düzey kurucuları ile araştırma ve geliştirme ekibinin 28 yılı aşkın yazılım ve sistem projeleri tecrübesi ve global bir büyüme stratejisi doğrultusunda, 2020 yılından itibaren Kocaeli Üniversitesi Teknoloji Geliştirme Bölgesi’nde konumlanarak faaliyetlerini sürdürmektedir.",
+              "p2":"Kullanılan teknoloji ve özellikleri ile ülkemizde geliştirilen diğer yazılımların ötesinde bir yapıda ve 7/24 çevrimiçi destekle dış ticaret sektöründe kalite ve verimlilik anlayışıyla gümrük müşavirlik firmalarına hizmet sunulması hedeflenmektedir. Bu kapsamda Ar-Ge süreçleri öz kaynaklar ile desteklenen nitelikli ürün geliştirme faaliyetleri planlanmaktadır. Tüm Ar-Ge projeleri için global yatırımcıların yanı sıra özellikle TÜBİTAK, KOSGEB, MARKA Kalkınma Ajansı ve Horizon Europe 2021-2027 fonlarından hibe destek temini için üniversite ilgili bölümleriyle de akademik işbirliği yaparak fon temin edilmesi öncelikli hedeflerimiz arasındadır."
+            },
+            {
+              "p1":"Teknopark çatısı altında bilişim, büyük veri, data analitik, web/sunucu yazılım, mobil yazılım ve alanlarında nitelikli eleman (lisans dereceli) ve altyapı yatırımları yapılmaktadır. Firma çalışanlarının özellikle bilişim/ağ teknolojileri, veri merkezleri, kablosuz iletişim, web/sunucu yazılım, mobil uygulama ve sinyal işleme alanlarında tecrübe ve birikimi bulunmaktadır. Ayrıca lisansüstü dereceli personel istihdamı öngörülmekte olup gerçekleştirilecek Ar-Ge faaliyetleri akademik çalışmalar ile sürekli desteklenecektir. Tüm proje faaliyetleri, standart mühendislik ve proje yönetim süreçlerine uygun olarak gerçekleştirilmektedir. Ticarileştirmeye yönelik profesyonel uygulama testleri ve akademik yeterlikler için test hizmetleri ile bilimsel danışmanlık hizmeti alımı ve işbirlikleri yürütülmektedir. TÜBİTAK TEYDEB (KOBİ Ar-Ge Başlangıç Destek Programı) fonundan faydalanmak üzere proje başvurusunun yanı sıra sonraki dönemlerde ikinci ana faaliyet konusu olarak firma vizyonu içerisinde bulunan Sağlıkta Dijital Teknolojiler (E-Sağlık Uygulamaları, BİT Tabanlı Yenilikçi Tıbbi Cihazlar ve Sağlıkta Büyük Veri ve Veri Analitiği) alanında özgün sinyal işleme ve gömülü sistem/yazılım projeleri (web, mobil, sunucu, büyük veri, veri analitiği çözümleri) planlanmaktadır.",
+              "p2":"Proaktif ilk ticari ürünü web yazılımın ticari hizmete sunulması ile birlikte Meslek Liselerinin ilgili alanlarının yanı sıra Üniversitelerin Dış Ticaret Bölümü ve Lojistik Bölümü öğrencilerinin mevcut staj olanaklarına ek ve alternatif olarak ücretsiz kullanım kapsamından Milli Eğitim Bakanlığı ile bir protokol çerçevesinde birlikte çalışılmaktadır. Bu kapsamda yıllık ortalama 12.000 öğrenciye destek sunulması ön görülmektedir."
+            },
+            {
+              "p1":"Ar-Ge projeleri ile tüm sistem ve yazılım çözümlerinin yanı sıra Proaktif olarak ülke gerçeklerinin ve kurucu ortak aklın ışığı doğrultusunda sosyal sorumluk bilinci ile özellikle öğrencilerimize ve okullara aynî, nakdî ya da eğitim-öğretim destekleri sağlamak üzere projeler gerçekleştirmek önemli bir hedef teşkil etmektedir."
+            }
+          ]
+        },
+        {
+          "title":"Kariyer",
+          "desc":[
+            {
+              "p1":"Proaktif ile kariyer yapmak ve yeni ufuklara yelken açmak için bize özgeçmişlerinizi iletebilirsiniz.",
+              "p2":"Başvurunuz bize ulaştığında aday havuzumuza alınır ve aranan özellikler ile niteliklerinizin örtüşmesi durumunda sizinle iletişime geçilir. Başvurular, sadece Proaktif Dijital Yönetim ve Eğitim Sistemleri Ltd. Şti. İnsan Kaynakları tarafından incelenecek olup gizlilik esası çerçevesinde değerlendirilecektir."
+            },
+            {
+              "p1":"Başvuru için: bilgi@proaktif.org"
+            }
+          ]
+        },
+        {
+          "title":"İş Kültürü ve Değerlerimiz",
+          "desc":[
+            {
+              "innerProjects":[
+                {
+                  "title":"Çalışanlarımız",
+                  "parag":[
+                    {
+                      "p1":"Çalışanlarımız ve yenilikçi vizyonları şirketimizin sahip olduğu en değerli yatırımdır. Gelişime açık profesyonelleri bünyemize dahil eder kalite ve sürekli gelişimi destekleyen en uygun olanakları sunmaya özen gösteririz."
+                    }
+                  ]
+                },
+                {
+                  "title": "Ekip Ruhu",
+                  "parag": [
+                    {
+                      "p1": "Proaktif ailesi olarak; ilkeli, kaliteli, katma değeri yüksek çözümler üretmek ve hizmet sunmak için gerekli tüm çalışmalar ekip ruhuyla yürütülmektedir."
+                    }
+                  ]
+                },
+                {
+                  "title":"Değer Katmak",
+                  "parag":[
+                    {
+                      "p1":"Sektörel firmalar/kullanıcılar, müşteriler, iş birliği yapılan ortaklar, çözüm ortakları, firma çalışanlarımız ve aynı zamanda bünyesinde farklı iş ya da proje süreçlerinde birlikte olduğumuz topluluklar için değer yaratmak istiyoruz. Proaktif ailesinin yöneticileri ve tüm çalışanları sorumluluk bilinci ile tutkulu, heyecanlı ve yenilikçi çalışmalarıyla daima bu hedefe yürüyecektir."
+                    }
+                  ]
+                },
+                {
+                  "title":"Kurumsal Kimlik Kılavuzu",
+                  "parag":[
+                    {
+                      "p1":"Kurumsal renklerimizin (logoda bulunan temel renk bileşenleri) kodları:"
+                    }
+                  ],
+                  "img":[
+                    "logo.png"
+                  ]
+                },
+                {
+                  "title":"Firma Yasal Bilgileri",
+                  "parag":[
+                    {
+                      "p1":"Proaktif Dijital Yönetim ve Eğitim Sistemleri Ltd. Şti.",
+                      "p2":"Vergi Dairesi / No:   Tepecik / 733 088 7853"
+                    },
+                    {
+                      "p1":"Ticaret Sicil No:  30331"
+                    },
+                    {
+                      "p1":"Mersis No:   0733088785300001"
+                    },
+                    {
+                      "p1":"Yetkili:  Barış CİNER (Sahip/Genel Müdür)"
+                    },
+                    {
+                      "p1":"Adres:  Kocaeli Üniversitesi Teknoloji Geliştirme Bölgesi Vatan Cad., No: 83 / B-34 Yeniköy Merkez Mah., Başiskele 41725 Kocaeli/Turkey"
+                    }
+                  ]
+                }
+              ]
+            }
           ]
         }
       ],
