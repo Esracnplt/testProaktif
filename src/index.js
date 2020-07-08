@@ -9,6 +9,7 @@ import ContactComponent from "./components/Contact";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter, Route } from "react-router-dom";
 import Kurumsal from "./components/Projects/Kurumsal"
+import Collabrations from "./components/Projects/Collabrations";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -30,6 +31,9 @@ ReactDOM.render(
       </Route>
       <Route path="/corporate">
         <Kurumsal />
+      </Route>
+      <Route path="/collabrations">
+        <Collabrations />
       </Route>
     </BrowserRouter>
   </React.StrictMode>,

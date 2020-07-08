@@ -161,7 +161,7 @@ class Header extends React.Component {
           { text: languageObject.socialProjects, to: "/socialprojects" },
         ],
       },
-      { text: languageObject.collaborations },
+      { text: languageObject.collaborations, to:"/collabrations" },
     ];
     var mappedButtons = headerButtons.map((object) => (
       <div key={object.text} className="header-button-cont">

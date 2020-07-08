@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -49,7 +50,7 @@ class InsideLinks extends React.Component {
     let textList = data.tr.footer.links.map((object, index) => {
       if (object.to) {
         return (
-          <a href={object.to}>
+          <a key={index} href={object.to}>
             <TextLink text={object.text} />
           </a>
         )

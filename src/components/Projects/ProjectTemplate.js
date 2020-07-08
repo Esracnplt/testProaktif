@@ -4,8 +4,8 @@ import Header from "../Header";
 import data from "../../language.json";
 import { MyEventBus, getDefaultLang } from "../Header"
 
-function Proje({ item, index }) {
-  function InnerProjects({ object, index }) {
+function Proje({ item, index, projectCount }) {
+  function InnerProjects({ object, index, numberVisible }) {
     if (object.innerProjects) {
       var mappedProjects = object.innerProjects.map((object, projectindex) => {
         if (object.img) {
@@ -29,6 +29,7 @@ function Proje({ item, index }) {
               <div key={index}>
                 <P extraMargin="2" withoutText={true} object={paragObject} name="p1" />
                 <P extraMargin="2" withoutText={true} object={paragObject} name="p2" />
+                <PImage isColumn={false} object={paragObject} />
               </div>
             )
           })
@@ -39,7 +40,7 @@ function Proje({ item, index }) {
         return (
            <div key={projectindex} className="inner-project-cont">
             <div className="inner-project-title">
-              {(projectindex+1) + "." + object.title}
+              {((numberVisible === "true") ? (projectindex + 1) + ".":"") + object.title}
             </div>
             <div>
               {paragraphs}
@@ -90,23 +91,52 @@ function Proje({ item, index }) {
       return false
     }
   }
-  var mappedDesc = item.desc.map((object, index) => (
-    <div key={index} className="arge-project-desc-cont">
-      <P object={object} name="p1" />
-      <P object={object} name="p2" />
-      <InnerProjects object={object} />
-    </div>
-  ));
+  function Image({ src, index, extraMargin,width, extraMarginR }) {
+    return (
+      <div
+        className="project-img"
+        style={{
+          marginLeft: ((extraMargin) ? extraMargin * 10 : 0) + "px",
+          marginRight:((extraMarginR)? extraMarginR : 0) + "px"
+        }}
+        key={index}>
+        <img
+          alt="How it works"
+          src={require(`./../../img/${src}`)}
+          style={{
+            width: (width)?width:"inherit"
+          }}
+        />
+      </div>
+    )
+  }
+  function PImage({ object, isColumn }) {
+    if (object.image) {
+      let mappedImage = object.image.map((src, index) => <Image extraMarginR={10} key={index} width="200px" index={index} src={src} />)
+      return (
+        <div style={{display:"flex",flexDirection:(!isColumn)?"row":"column"}}>
+          {mappedImage}
+        </div>
+      )
+    }
+    else {
+      return false
+    }
+  }
+  var mappedDesc = item.desc.map((object, index) => {
+    return (
+      <div key={index} className="arge-project-desc-cont">
+        <P object={object} name="p1" />
+        <P object={object} name="p2" />
+        <InnerProjects numberVisible={"false"} object={object} />
+        <PImage isColumn={false} object={object} />
+      </div>
+    )
+  } );
   if (item.img) {
     var imgs = item.img.map((src, index) => {
       return (
-        <div className="project-img" key={index}>
-          <img
-            alt="How it works"
-            src={require(`./../../img/${src}`)}
-            style={{width:"100%"}}
-          />
-        </div>
+        <Image index={index} src={src} />
       );
     });
   } else {
@@ -114,7 +144,7 @@ function Proje({ item, index }) {
   }
   return (
     <React.Fragment>
-      <div className="arge-project-title">{index + 1 + ".  " + item.title}</div>
+      <div className="arge-project-title">{((projectCount !== 1) ? index + 1 + ".  ":"") + item.title}</div>
       {mappedDesc}
       {imgs}
     </React.Fragment>
@@ -129,6 +159,9 @@ class ArgeProjects extends React.Component {
     })
   }
   componentDidMount() {
+
+    //ingilizce dil çevirisi hazır olunca commentler kaldırılabilir.
+
     /*MyEventBus.on("language", (lang) => {
       this.setState({
         language:lang
@@ -138,7 +171,7 @@ class ArgeProjects extends React.Component {
   render() {
     var projects = data[this.state.language].projects[this.props.projectName].map((object, index) => (
       <div key={index} className="project-cont">
-        <Proje key={index} index={index} item={object} />
+        <Proje key={index} index={index} projectCount={data[this.state.language].projects[this.props.projectName].length} item={object} />
       </div>
     ));
     return <div className="arge-projects">{projects}</div>;
