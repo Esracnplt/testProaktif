@@ -49,9 +49,9 @@ class InsideLinks extends React.Component {
     let textList = data.tr.footer.links.map((object, index) => {
       if (object.to) {
         return (
-          <Link to={{pathname:object.to}}>
+          <a href={object.to}>
             <TextLink text={object.text} />
-          </Link>
+          </a>
         )
       }
       else {
