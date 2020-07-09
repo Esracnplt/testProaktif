@@ -601,6 +601,10 @@ button.footer-button:hover {
   color: royalblue;
   font-weight: 600;
 }
+.bold-text {
+  color: royalblue;
+  font-weight: 700;
+}
 .inner-project-img {
   margin: 30px 0px 50px 25px;
   max-width: 300px;

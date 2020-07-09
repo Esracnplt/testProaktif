@@ -127,7 +127,7 @@ class Istatistikler extends React.Component {
           Rakamlarla Şirketimiz
           <div
             style={{
-              fontSize: "12px",
+              fontSize: "16px",
               textAlign: "center",
               marginTop: "10px",
               color: "white",

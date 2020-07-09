@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 /* eslint-disable no-unused-vars */
 import React from "react";
 import Header from "../Header";
@@ -18,7 +19,8 @@ function Proje({ item, index, projectCount }) {
                   alt="How it works"
                   src={require(`./../../img/${src}`)}
                   style={{
-                    width:"100px"
+                    width: "400px",
+                    marginLeft:"30px"
                   }}
                 />
               </div>
@@ -64,6 +66,28 @@ function Proje({ item, index, projectCount }) {
     }
   }
   function P({ object, name, extraMargin, withoutText }) {
+
+    function charIndexFinder(str, char) {
+      var firstArray = str.split(char)
+      var withoutLast = (firstArray[firstArray.length] !== "") ? firstArray : firstArray.slice(0, firstArray.length - 1)
+      var doubles = withoutLast.filter(((object, index) => {
+        if (index % 2 === 1) {
+          return object
+        }
+      }))
+      var other = withoutLast.filter(((object, index) => {
+        if (index % 2 === 0) {
+          return object
+        }
+      }))
+      return {
+        bold: doubles,
+        def: other,
+        startWithBold: (str[0] === "*")
+      }
+    }
+
+
     if (object[name]) {
       if (object[name].steps) {
         var steps = object[name].steps.map((step, stepIndex) => {
@@ -85,7 +109,30 @@ function Proje({ item, index, projectCount }) {
         </div>
       }
       else {
-        innerComponent = object[name]
+        var text = charIndexFinder(object[name], "*")
+        
+        if (text.bold.length) {
+          innerComponent = text.bold.map((bold, index) => {
+            var newStr;
+            var BoldText = bold
+            if (text.startWithBold) {
+              newStr = <div style={{ display: "flex" }}> <div className="bold-text">{BoldText}</div> <div style={{marginLeft:"5px"}}>{text.def[index]}</div> </div>
+            }
+            else if (!bold) {
+              newStr = text.def[index]
+            }
+            else {
+              newStr = <div style={{ display: "flex" }}> <div className="bold-text"> {text.def[index]} </div> <div style={{ marginLeft: "5px" }}>{BoldText}</div> </div>
+              console.log(text.def[index])
+            }
+            return <React.Fragment key={index}>
+              {newStr}
+            </React.Fragment>
+          })
+        }
+        else {
+          innerComponent = object[name]
+        }
       }
       return <div className="arge-project-desc">
         {innerComponent}
@@ -141,7 +188,7 @@ function Proje({ item, index, projectCount }) {
   if (item.img) {
     var imgs = item.img.map((src, index) => {
       return (
-        <Image extraMargin={2} width="500px" index={index} src={src} />
+        <Image key={index} extraMargin={2} width="500px" index={index} src={src} />
       );
     });
   } else {
