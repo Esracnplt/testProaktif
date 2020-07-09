@@ -11,11 +11,15 @@ function Proje({ item, index, projectCount }) {
         if (object.img) {
           var imgs = object.img.map((src, index) => {
             return (
-              <div className="inner-project-img project-img" key={index}>
+              <div
+                className="project-img"
+                key={index}>
                 <img
                   alt="How it works"
                   src={require(`./../../img/${src}`)}
-                  style={{ width: "100%" }}
+                  style={{
+                    width:"100px"
+                  }}
                 />
               </div>
             );
@@ -91,7 +95,7 @@ function Proje({ item, index, projectCount }) {
       return false
     }
   }
-  function Image({ src, index, extraMargin,width, extraMarginR }) {
+  function Image({ src, index, extraMargin,width, extraMarginR, height }) {
     return (
       <div
         className="project-img"
@@ -104,7 +108,8 @@ function Proje({ item, index, projectCount }) {
           alt="How it works"
           src={require(`./../../img/${src}`)}
           style={{
-            width: (width)?width:"inherit"
+            width: (width) ? width : "inherit",
+            height:(height)?height:"inherit"
           }}
         />
       </div>
@@ -112,7 +117,7 @@ function Proje({ item, index, projectCount }) {
   }
   function PImage({ object, isColumn }) {
     if (object.image) {
-      let mappedImage = object.image.map((src, index) => <Image extraMarginR={10} key={index} width="200px" index={index} src={src} />)
+      let mappedImage = object.image.map((src, index) => <Image extraMarginR={10} key={index}  index={index} height="100px" width="200px" src={src} />)
       return (
         <div style={{display:"flex",flexDirection:(!isColumn)?"row":"column"}}>
           {mappedImage}
@@ -136,7 +141,7 @@ function Proje({ item, index, projectCount }) {
   if (item.img) {
     var imgs = item.img.map((src, index) => {
       return (
-        <Image index={index} src={src} />
+        <Image extraMargin={2} width="500px" index={index} src={src} />
       );
     });
   } else {

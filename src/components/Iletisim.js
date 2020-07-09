@@ -29,10 +29,16 @@ class Inputs extends React.Component {
       <div className="iletisim-inputs-cont iletisim-child-cont">
         <div className="iletisim-inputs-header">Bizimle İletişime Geçin</div>
         <div className="iletisim-inputs-input-cont">
-          <input className="footer-input" placeholder="İsminiz"></input>
-          <input className="footer-input" placeholder="Konu"></input>
-          <input className="footer-input" placeholder="Mesajınız"></input>
-          <button className="footer-button">Gönder</button>
+          <div style={{display:"flex",flexDirection:"row"}}>
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <input className="footer-input" placeholder="Adınız-Soyadınız"></input>
+              <input className="footer-input" placeholder="E-Mail Adresiniz"></input>
+            </div>
+            <textarea className="footer-textarea" placeholder="Mesajınız"></textarea>
+          </div>
+          <div>
+            <button className="footer-button">Gönder</button>
+          </div>
         </div>
       </div>
     );
@@ -106,20 +112,10 @@ class Iletisim extends React.Component {
     return (
       <div className="iletişim-cont">
         <div className="iletişim">
-          <About
-            text="
-                       proaktif 2020
-                    "
-          ></About>
-          {/*
-                        
-                        <InsideLinks text1="Hakkımızda" title="Kurumsal"
-                                text2="Misyon-Vizyon" text3="Kariyer"
-                                text4="Proaktif İş Kimliği" text5="Kurumsal Kimlik"
-                    ></InsideLinks>
-                        
-                    */}
-          <InsideLinks />
+          <div style={{display:"flex",justifyContent:"center"}}>
+            <About text="proaktif 2020" />
+            <InsideLinks />
+          </div>
           <Inputs></Inputs>
         </div>
         <div className="bağlantılar">{mappedList}</div>

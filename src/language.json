@@ -146,7 +146,8 @@
           "to":"/argeprojects"
         },
         {
-          "text": "İş Birliklerimiz"
+          "text": "İş Birliklerimiz",
+          "to":"/collabrations"
         },
         {
           "text":"Kocaeli Üniversitesi Teknopark",
@@ -239,27 +240,31 @@
                       "p1":"GitHub, sürüm kontrol sistemi olarak Git kullanan yazılım geliştirme projeleri için web tabanlı bir depolama servisidir. GitHub özel depolar için ücretli üyelik seçenekleri sunarken, açık kaynaklı projeler için ücretsizdir. Mayıs 2011 itibarıyla GitHub açık kaynaklı projeler tarafından tercih edilen en popüler depolama servisidir."
                     }
                   ]
-                },
-                {
-                  "title": "Referanslarımız",
-                  "numberVisible": true,
-                  "parag":[
-                    {
-                      "p1":" "
-                    }
-                  ]
-                },
-                {
-                  "title":"Meslektaşlarımız",
-                  "numberVisible":true,
-                  "parag":[
-                    {
-                      "image":[
-                          "mavi.jpg","ulukom.jpg","baybilgin.jpg","bilginbilişim.jpg","evrim.jpg"
-                      ]
-                    }
-                  ]
                 }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Referanslarımız",
+          "numberVisible": true,
+          "desc": [
+            {
+              "p1": " "
+            }
+          ]
+        },
+        {
+          "title": "Meslektaşlarımız",
+          "numberVisible": true,
+          "desc": [
+            {
+              "image": [
+                "mavi.jpg",
+                "ulukom.jpg",
+                "baybilgin.jpg",
+                "bilginbilişim.jpg",
+                "evrim.jpg"
               ]
             }
           ]
@@ -462,7 +467,14 @@
                       "p1":"Yetkili:  Barış CİNER (Sahip/Genel Müdür)"
                     },
                     {
-                      "p1":"Adres:  Kocaeli Üniversitesi Teknoloji Geliştirme Bölgesi Vatan Cad., No: 83 / B-34 Yeniköy Merkez Mah., Başiskele 41725 Kocaeli/Turkey"
+                      "p1":"Adres:"
+                    },
+                    {
+                      "p1":"Kocaeli Üniversitesi Teknoloji Geliştirme Bölgesi",
+                      "p2":"Vatan Cad., No: 83 / B-34 Yeniköy Merkez Mah."
+                    },
+                    {
+                      "p1":"Başiskele 41725 Kocaeli/Turkey"
                     }
                   ]
                 }
@@ -477,6 +489,9 @@
           "desc":[
             {
               "p1":"Önemli bir ihtiyaç ve talebi karşılamak üzere, temelleri  90’lı yıllara uzanan ve ilk zamanlarda masaüstü uygulama olarak hizmet veren ürünümüz, teknolojinin gelişmesi ve internetin yaygınlaşmasıyla birlikte 2000’li  yılların başların itibaren web tabanlı çevrimiçi bir hizmet çözümüne dönüşmüştür. Son olarak mikroservisler mimarisi esas alınarak ve özgün bir yaklaşım ile Teknopark bünyesinde bir Ar-Ge projesi kapsamında geliştirilerek yenilikçi, değişen kullanıcı/sistem isterlerine karşın dinamik ve dayanıklı sistem yapısıyla yeni bir ürün olarak tasarımları yapılarak gerçekleştirilmiş bulunmaktadır. Bu katma değerlikli özellikleri ile ulusal ölçekte olduğu kadar global hizmet sunma ve yurtdışını satış potansiyeli ile ürünümüz sürekli geliştirilebilir ve kullanıcı firmalara (müşterilere) artan kalite standartlarında hizmet verebilmektedir."
+            },
+            {
+              "p1": "Son dönemde, uzman yazılım ve sistem mühendislerinden oluşan Proaktif Ar-Ge ekibinin yoğun çalışmalarıyla aşağıda belirtilen modüller mikroservisler mimarisiyle yapılandırılarak esnek ve modüler çözüm stratejisi ile web/sunucu uygulamalarının hem teknik hem de ticari başarımı üst düzeylere çıkarılmış bulunmaktadır.  Ürünümüzün, global pazarlara uygun gerekli tüm düzenlemeler yapılarak yurtdışına pazarlanmasına yönelik teknik olduğu kadar uluslararası mevzuat açısından da önemli çalışmalar planlanmış olup takvim içerisinde projelendirilecektir."
             },
             {
               "innerProjects": [
@@ -582,9 +597,6 @@
                   ]
                 }
               ]
-            },
-            {
-              "p1":"Son dönemde, uzman yazılım ve sistem mühendislerinden oluşan Proaktif Ar-Ge ekibinin yoğun çalışmalarıyla yukarıda belirtilen modüller mikroservisler mimarisiyle yapılandırılarak esnek ve modüler çözüm stratejisi ile web/sunucu uygulamalarının hem teknik hem de ticari başarımı üst düzeylere çıkarılmış bulunmaktadır.  Ürünümüzün, global pazarlara uygun gerekli tüm düzenlemeler yapılarak yurtdışına pazarlanmasına yönelik teknik olduğu kadar uluslararası mevzuat açısından da önemli çalışmalar planlanmış olup takvim içerisinde projelendirilecektir."
             }
           ]
         }
