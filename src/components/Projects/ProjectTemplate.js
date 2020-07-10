@@ -91,12 +91,22 @@ function Proje({ item, index, projectCount }) {
 
     if (object[name]) {
       if (object[name].steps) {
+        function StepNumber({ stepIndex, object }) {
+          if (object.numberVisible) {
+            return (
+              <div className="step-index">
+                {(stepIndex + 1) + "."}
+              </div>
+            )
+          }
+          else {
+            return false
+          }
+        }
         var steps = object[name].steps.map((step, stepIndex) => {
           return (
             <div key={stepIndex} className="step">
-              <div className="step-index">
-                {(stepIndex+1) + "." }
-              </div>
+              <StepNumber stepIndex={stepIndex} object={object[name]} />
               {step}
             </div>
           )

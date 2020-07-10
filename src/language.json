@@ -476,6 +476,17 @@
                     },
                     {
                       "p1":"Başiskele 41725 Kocaeli/Turkey"
+                    },
+                    {
+                      "p1":"*Banka Hesap Bilgileri:*",
+                      "p2":{
+                        "text":"",
+                        "numberVisible":false,
+                        "steps":[
+                          "TL Hesabı   İş Bankası     TRXXX",
+                          "TL Hesabı   Ziraat Bankası TRXXX"
+                        ]
+                      }
                     }
                   ]
                 }
