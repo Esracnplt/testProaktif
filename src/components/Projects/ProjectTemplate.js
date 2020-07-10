@@ -6,9 +6,10 @@ import data from "../../language.json";
 import { MyEventBus, getDefaultLang } from "../Header"
 
 function Proje({ item, index, projectCount }) {
-  function InnerProjects({ object, index, numberVisible }) {
+  function InnerProjects({ object, numberVisible }) {
     if (object.innerProjects) {
       var mappedProjects = object.innerProjects.map((object, projectindex) => {
+        var imgSize = object.imgSize || 400
         if (object.img) {
           var imgs = object.img.map((src, index) => {
             return (
@@ -19,7 +20,7 @@ function Proje({ item, index, projectCount }) {
                   alt="How it works"
                   src={require(`./../../img/${src}`)}
                   style={{
-                    width: "400px",
+                    width: imgSize,
                     marginLeft:"30px"
                   }}
                 />

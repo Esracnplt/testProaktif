@@ -56,7 +56,14 @@ class InsideLinks extends React.Component {
     let textList = data.tr.footer.links.map((object, index) => {
       if (object.to) {
         return (
-          <a key={index} href={object.to}>
+          <Link key={index} to={object.to}>
+            <TextLink text={object.text} />
+          </Link>
+        )
+      }
+      else if (object.externalTo) {
+        return (
+          <a target={"_blank"} rel="noopener noreferrer" key={index} href={object.externalTo}>
             <TextLink text={object.text} />
           </a>
         )
@@ -112,7 +119,7 @@ class Iletisim extends React.Component {
     return (
       <div className="iletişim-cont">
         <div className="iletişim">
-          <div style={{display:"flex",justifyContent:"center"}}>
+          <div style={{display:"flex",justifyContent:"space-between"}}>
             <About text="proaktif 2020" />
             <InsideLinks />
           </div>

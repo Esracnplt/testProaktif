@@ -151,7 +151,7 @@
         },
         {
           "text":"Kocaeli Üniversitesi Teknopark",
-          "to":"https://kouteknopark.com/"
+          "externalTo":"https://kouteknopark.com/"
         }
       ]
     },
@@ -446,6 +446,7 @@
                       "p1":"Kurumsal renklerimizin (logoda bulunan temel renk bileşenleri) kodları:"
                     }
                   ],
+                  "imgSize":100,
                   "img":[
                     "logo.png"
                   ]

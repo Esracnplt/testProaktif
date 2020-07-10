@@ -203,9 +203,6 @@ input.main-input:focus::placeholder {
   display: flex;
   flex-direction: column;
 }
-.InsideLink-cont {
-  margin: 0px 20px 0px 20px;
-}
 .inside-link-header {
   color: white;
   font-weight: 700;
@@ -289,7 +286,6 @@ button.footer-button:hover {
   display: flex;
   flex-direction: column;
   color: white;
-  margin: 0px 10px 0px 10px;
 }
 .about-header {
   font-weight: 700;
@@ -608,6 +604,9 @@ button.footer-button:hover {
 .inner-project-img {
   margin: 30px 0px 50px 25px;
   max-width: 300px;
+}
+.iletisim-child-cont {
+  text-align: center;
 }
 @media (max-width: 900px) {
   .buttons {
