@@ -556,7 +556,7 @@ button.footer-button:hover {
 .arge-project-desc-cont {
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
+  margin-top: 0px;
   margin-left: 20px;
 }
 .project-img {
@@ -565,7 +565,7 @@ button.footer-button:hover {
 .arge-project-desc {
   max-width: 650px;
   text-align: start;
-  margin: 10px 10px 10px 0px;
+  margin: 10px 10px 10px 10px;
   font-size: 12px;
 }
 .slider-text-cont {
@@ -591,7 +591,10 @@ button.footer-button:hover {
   color: #fb4630;
 }
 .inner-project-cont {
-  margin: 50px 0px 20px 0px;
+  margin: 10px 0px 20px 0px;
+}
+.inner-projects {
+  margin-top: 10px;
 }
 .inner-project-title {
   color: royalblue;
