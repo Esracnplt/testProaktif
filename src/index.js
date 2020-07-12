@@ -10,31 +10,35 @@ import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter, Route } from "react-router-dom";
 import Kurumsal from "./components/Projects/Kurumsal"
 import Collabrations from "./components/Projects/Collabrations";
+import Header from "./components/Header"
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Route exact path="/">
-        <Home />
-      </Route>
-      <Route path="/contact">
-        <ContactComponent />
-      </Route>
-      <Route path="/argeprojects">
-        <ArgeProjectComponent />
-      </Route>
-      <Route path="/socialprojects">
-        <SocialProjectComponent />
-      </Route>
-      <Route path="/products">
-        <Products />
-      </Route>
-      <Route path="/corporate">
-        <Kurumsal />
-      </Route>
-      <Route path="/collabrations">
-        <Collabrations />
-      </Route>
+      <Header />
+      <div className="body">
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/contact">
+          <ContactComponent />
+        </Route>
+        <Route path="/argeprojects">
+          <ArgeProjectComponent />
+        </Route>
+        <Route path="/socialprojects">
+          <SocialProjectComponent />
+        </Route>
+        <Route path="/products">
+          <Products />
+        </Route>
+        <Route path="/corporate">
+          <Kurumsal />
+        </Route>
+        <Route path="/collabrations">
+          <Collabrations />
+        </Route>
+      </div>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")

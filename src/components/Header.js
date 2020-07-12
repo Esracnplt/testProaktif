@@ -114,6 +114,8 @@ class Header extends React.Component {
       component.setState({
         hamburgerOpen: false,
       });
+      document.querySelector("html").classList.remove("of-y-hidden")
+      document.querySelector(".other-buttons").classList.remove("visible")
       document
         .getElementById("hamburger-part1")
         .classList.remove("hamburger-open");
@@ -127,6 +129,8 @@ class Header extends React.Component {
       component.setState({
         hamburgerOpen: true,
       });
+      document.querySelector("html").classList.add("of-y-hidden")
+      document.querySelector(".other-buttons").classList.add("visible")
       document
         .getElementById("hamburger-part1")
         .classList.add("hamburger-open");
@@ -169,39 +173,45 @@ class Header extends React.Component {
         <HeaderMenu item={object} />
       </div>
     ));
-    return (
-      <div className="header" id="header">
-        <Link to="/">
-          <div id="logo" className="logo ortala">
-            <img style={{ height: "60px" }} src={logo} alt="Logo"></img>
-          </div>
-        </Link>
-        <div
-          className="hamburger"
-          onMouseDown={() => {
-            this.changeHamburger(this);
-          }}
-        >
-          <svg
-            viewBox="0 0 100 80"
-            width="40"
-            height="40"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="white"
-          >
-            <rect id="hamburger-part1" width="100" height="10"></rect>
-            <rect id="hamburger-part2" y="30" width="100" height="10"></rect>
-            <rect id="hamburger-part3" y="60" width="100" height="10"></rect>
-          </svg>
-        </div>
-        <div className="buttons">
-          {mappedButtons}
-          <div className="margin">
-            <ContactUs text={languageObject.contactUs} />
-          </div>
-        </div>
-        <ChangeLanguage />
+    var buttons = <div className="buttons">
+      {mappedButtons}
+      <div className="margin">
+        <ContactUs text={languageObject.contactUs} />
       </div>
+    </div>
+    return (
+      <React.Fragment>
+        <div className="header" id="header">
+          <Link to="/">
+            <div id="logo" className="logo ortala">
+              <img style={{ height: "60px" }} src={logo} alt="Logo"></img>
+            </div>
+          </Link>
+          <div
+            className="hamburger"
+            onMouseDown={() => {
+              this.changeHamburger(this);
+            }}
+          >
+            <svg
+              viewBox="0 0 100 80"
+              width="40"
+              height="40"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="white"
+            >
+              <rect id="hamburger-part1" rx="5" width="100" height="20"></rect>
+              <rect id="hamburger-part2" rx="5" y="30" width="100" height="20"></rect>
+              <rect id="hamburger-part3" rx="5" y="60" width="100" height="20"></rect>
+            </svg>
+          </div>
+          {buttons}
+          <ChangeLanguage />
+        </div>
+        <div className="other-buttons">
+            {buttons}
+        </div>
+      </React.Fragment>
     );
   }
 }

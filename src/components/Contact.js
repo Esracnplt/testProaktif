@@ -1,6 +1,5 @@
 /* eslint-disable no-sequences */
 import React from "react";
-import Header from "./Header";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt, faPhoneSquareAlt } from "@fortawesome/free-solid-svg-icons";
 
@@ -99,12 +98,7 @@ class ContactComponent extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div className="header">
-          <Header />
-        </div>
-        <div className="body">
-          <Contact />
-        </div>
+        <Contact />
       </React.Fragment>
     );
   }

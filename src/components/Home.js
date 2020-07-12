@@ -150,14 +150,11 @@ class Home extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Header />
-        <div className="body">
-          <Sliders></Sliders>
-          <Info1></Info1>
-          <Info2 header="Nitelikli yazılım, yönetim ve bilişim çözümlerimiz ile üretken kârlı ve sürekli bir gelişim için proaktif vizyon"></Info2>
-          <Istatistikler />
-          <Iletisim></Iletisim>
-        </div>
+        <Sliders></Sliders>
+        <Info1></Info1>
+        <Info2 header="Nitelikli yazılım, yönetim ve bilişim çözümlerimiz ile üretken kârlı ve sürekli bir gelişim için proaktif vizyon"></Info2>
+        <Istatistikler />
+        <Iletisim></Iletisim>
       </React.Fragment>
     );
   }

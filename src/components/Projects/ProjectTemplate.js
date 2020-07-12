@@ -1,7 +1,6 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable no-unused-vars */
 import React from "react";
-import Header from "../Header";
 import data from "../../language.json";
 import { MyEventBus, getDefaultLang } from "../Header"
 
@@ -245,12 +244,7 @@ class ProjectTemplate extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div className="header">
-          <Header />
-        </div>
-        <div className="body">
-          <ArgeProjects projectName={this.props.projectName} />
-        </div>
+        <ArgeProjects projectName={this.props.projectName} />
       </React.Fragment>
     );
   }
