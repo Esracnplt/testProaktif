@@ -151,7 +151,7 @@ class Home extends React.Component {
       <React.Fragment>
         <Sliders></Sliders>
         <Info1></Info1>
-        <Info2 header="Nitelikli yazılım, yönetim ve bilişim çözümlerimiz ile üretken kârlı ve sürekli bir gelişim için proaktif vizyon"></Info2>
+        <Info2 header="Nitelikli yazılım, yönetim ve bilişim çözümlerimiz ile üretken, kârlı ve sürekli bir gelişim için proaktif vizyon."></Info2>
         <Istatistikler />
       </React.Fragment>
     );

@@ -12,17 +12,35 @@ function Proje({ item, index, projectCount }) {
         if (object.img) {
           var imgs = object.img.map((src, index) => {
             return (
-              <div
-                className="project-img"
-                key={index}>
-                <img
-                  alt="How it works"
-                  src={require(`./../../img/${src}`)}
-                  style={{
-                    width: imgSize,
-                    marginLeft:"30px"
-                  }}
-                />
+              <div key={index} style={{display:"flex","alignItems":"center"}}>
+                <div className="project-img" key={index}>
+                  {
+                    // height ile oran korunuyor
+                  }
+                  <img alt="How it works" src={require(`./../../img/${src}`)} style={{height:(622/477)*imgSize ,width: imgSize, marginLeft: "30px" }} />
+                </div>
+                <div className="colors">
+                  {
+                    object.imgColorSet.map((item, index) => {
+                      return (
+                        <div key={index} className="color-parent-cont">
+                          <div style={{backgroundColor:item.hex}} className="color-box color"></div>
+                          <div className="color-child-cont">
+                            <div className="color">
+                              {"HEX: " + item.hex}
+                            </div>
+                            <div className="color">
+                              {"RGB: " + item.rgb}
+                            </div>
+                            <div className="color">
+                              {"CMYK: " + item.cmyk}
+                            </div>
+                          </div>
+                        </div>
+                      )
+                    })
+                  }
+                </div>
               </div>
             );
           });

@@ -76,6 +76,8 @@ button.rounded-button {
   border-radius: 20px;
   padding: 10px 20px 10px 20px;
   transition-duration: 200ms;
+  transition-property: background-color,color;
+  user-select: none;
   cursor: pointer;
 }
 button.rounded-button:hover {
@@ -472,6 +474,7 @@ button.footer-button:hover {
 #hamburger-part2,
 #hamburger-part3 {
   transition-duration: 200ms;
+  transition-property: transform;
   transform-origin: center;
 }
 #hamburger-part1.hamburger-open {
@@ -568,7 +571,33 @@ button.footer-button:hover {
   margin-left: 20px;
 }
 .project-img {
-  margin-top: 20px;
+  display: flex;
+}
+.colors {
+  margin-left: 20px;
+}
+.color-parent-cont {
+  display: flex;
+  margin-left: 20px;
+  height:25px;
+  align-items: center;
+  margin: 5px 0px;
+  justify-content: space-evenly;
+  position: relative;
+}
+.color-child-cont {
+    width:450px;
+    display: flex;
+    margin-left: 10px;
+    justify-content: space-around;
+}
+.color-box {
+  height: 100%;
+  width:40px;
+  border-radius: 5px;
+}
+.color {
+  margin:0px 5px;
 }
 .arge-project-desc {
   max-width: 650px;
