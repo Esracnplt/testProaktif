@@ -11,36 +11,46 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Kurumsal from "./components/Projects/Kurumsal"
 import Collabrations from "./components/Projects/Collabrations";
 import Header from "./components/Header"
+import Footer from "./components/Iletisim"
+
+class Website extends React.Component {
+  render() {
+    return (
+      <React.StrictMode>
+        <BrowserRouter>
+          <Header />
+          <div className="body">
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/contact">
+              <ContactComponent />
+            </Route>
+            <Route path="/argeprojects">
+              <ArgeProjectComponent />
+            </Route>
+            <Route path="/socialprojects">
+              <SocialProjectComponent />
+            </Route>
+            <Route path="/products">
+              <Products />
+            </Route>
+            <Route path="/corporate">
+              <Kurumsal />
+            </Route>
+            <Route path="/collabrations">
+              <Collabrations />
+            </Route>
+            <Footer />
+          </div>
+        </BrowserRouter>
+      </React.StrictMode>
+    )
+  }
+}
 
 ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Header />
-      <div className="body">
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/contact">
-          <ContactComponent />
-        </Route>
-        <Route path="/argeprojects">
-          <ArgeProjectComponent />
-        </Route>
-        <Route path="/socialprojects">
-          <SocialProjectComponent />
-        </Route>
-        <Route path="/products">
-          <Products />
-        </Route>
-        <Route path="/corporate">
-          <Kurumsal />
-        </Route>
-        <Route path="/collabrations">
-          <Collabrations />
-        </Route>
-      </div>
-    </BrowserRouter>
-  </React.StrictMode>,
+  <Website />,
   document.getElementById("root")
 );
 

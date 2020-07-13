@@ -2,7 +2,6 @@
 import React from "react";
 import "../style.css";
 import Sliders from "./Sliders";
-import Iletisim from "./Iletisim";
 import Header from "./Header";
 
 import CountUp from "react-countup";
@@ -154,7 +153,6 @@ class Home extends React.Component {
         <Info1></Info1>
         <Info2 header="Nitelikli yazılım, yönetim ve bilişim çözümlerimiz ile üretken kârlı ve sürekli bir gelişim için proaktif vizyon"></Info2>
         <Istatistikler />
-        <Iletisim></Iletisim>
       </React.Fragment>
     );
   }

@@ -99,7 +99,7 @@ class IconLink extends React.Component {
   }
 }
 
-class Iletisim extends React.Component {
+class Footer extends React.Component {
   render() {
     var listedFontAwesome = [
       { icon: faFacebook, to: "https://www.facebook.com/" },
@@ -131,4 +131,4 @@ class Iletisim extends React.Component {
   }
 }
 
-export default Iletisim;
+export default Footer;
