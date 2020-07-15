@@ -10,6 +10,33 @@ function Proje({ item, index, projectCount }) {
       var mappedProjects = object.innerProjects.map((object, projectindex) => {
         var imgSize = object.imgSize || 400
         if (object.img) {
+          function ColorSet({ object }) {
+            if (object.imgColorSet) {
+              return (
+                object.imgColorSet.map((item, index) => {
+                  return (
+                    <div key={index} className="color-parent-cont">
+                      <div style={{ backgroundColor: item.hex }} className="color-box color"></div>
+                      <div className="color-child-cont">
+                        <div className="color">
+                          {"HEX: " + item.hex}
+                        </div>
+                        <div className="color">
+                          {"RGB: " + item.rgb}
+                        </div>
+                        <div className="color">
+                          {"CMYK: " + item.cmyk}
+                        </div>
+                      </div>
+                    </div>
+                  )
+                })
+              )
+            }
+            else {
+              return false
+            }
+          }
           var imgs = object.img.map((src, index) => {
             return (
               <div key={index} style={{display:"flex","alignItems":"center"}}>
@@ -17,29 +44,10 @@ function Proje({ item, index, projectCount }) {
                   {
                     // height ile oran korunuyor
                   }
-                  <img alt="How it works" src={require(`./../../img/${src}`)} style={{height:(622/477)*imgSize ,width: imgSize, marginLeft: "30px" }} />
+                  <img alt="How it works" src={require(`./../../img/${src}`)} style={{ height: ((object.isLogo) ? (622 / 477) * imgSize :"auto"),width: imgSize, marginLeft: "30px" }} />
                 </div>
                 <div className="colors">
-                  {
-                    object.imgColorSet.map((item, index) => {
-                      return (
-                        <div key={index} className="color-parent-cont">
-                          <div style={{backgroundColor:item.hex}} className="color-box color"></div>
-                          <div className="color-child-cont">
-                            <div className="color">
-                              {"HEX: " + item.hex}
-                            </div>
-                            <div className="color">
-                              {"RGB: " + item.rgb}
-                            </div>
-                            <div className="color">
-                              {"CMYK: " + item.cmyk}
-                            </div>
-                          </div>
-                        </div>
-                      )
-                    })
-                  }
+                  <ColorSet object={object} />
                 </div>
               </div>
             );

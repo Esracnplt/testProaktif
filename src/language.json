@@ -447,6 +447,7 @@
                     }
                   ],
                   "imgSize":100,
+                  "isLogo":true,
                   "img":[
                     "logo.png"
                   ],
