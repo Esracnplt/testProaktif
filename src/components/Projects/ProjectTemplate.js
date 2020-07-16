@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable array-callback-return */
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useCallback, useRef } from "react";
 import data from "../../language.json";
 import { MyEventBus, getDefaultLang } from "../Header"
 
@@ -9,6 +10,7 @@ function Proje({ item, index, projectCount }) {
     if (object.innerProjects) {
       var mappedProjects = object.innerProjects.map((object, projectindex) => {
         var imgSize = object.imgSize || 400
+        var controledDim = object.controledDim || "width"
         if (object.img) {
           function ColorSet({ object }) {
             if (object.imgColorSet) {
@@ -44,7 +46,12 @@ function Proje({ item, index, projectCount }) {
                   {
                     // height ile oran korunuyor
                   }
-                  <img alt="How it works" src={require(`./../../img/${src}`)} style={{ height: ((object.isLogo) ? (622 / 477) * imgSize :"auto"),width: imgSize, marginLeft: "30px" }} />
+                  <img alt="How it works" src={require(`./../../img/${src}`)}
+                    id={"img" + index.toString()}
+                    style={{ 
+                      width: ((controledDim === "width") ? imgSize : "auto"), marginLeft: "30px", height: ((controledDim === "height") ? imgSize : "auto")
+                     }} 
+                    />
                 </div>
                 <div className="colors">
                   <ColorSet object={object} />
