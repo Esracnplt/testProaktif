@@ -111,7 +111,7 @@ class Footer extends React.Component {
     ];
     var mappedList = listedFontAwesome.map((object, index) => {
       return (
-        <a href={object.to} key={index}>
+        <a target="_blank" rel="noopener noreferrer" href={object.to} key={index}>
           <IconLink icon={object.icon} />
         </a>
       );

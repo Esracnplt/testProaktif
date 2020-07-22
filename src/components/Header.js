@@ -182,9 +182,12 @@ class Header extends React.Component {
     return (
       <React.Fragment>
         <div className="header" id="header">
-          <Link to="/">
+          <Link style={{"display":"flex","alignItems":"center"}} to="/">
             <div id="logo" className="logo ortala">
               <img style={{ height: "60px" }} src={logo} alt="Logo"></img>
+            </div>
+            <div style={{"color":"white","fontWeight":"700","letterSpacing":"3px"}}>
+              PROAKTIF
             </div>
           </Link>
           <div
