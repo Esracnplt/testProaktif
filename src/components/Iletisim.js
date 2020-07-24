@@ -29,7 +29,7 @@ class Inputs extends React.Component {
       <div className="iletisim-inputs-cont iletisim-child-cont">
         <div className="iletisim-inputs-header">Bizimle İletişime Geçin</div>
         <div className="iletisim-inputs-input-cont">
-          <div style={{display:"flex",flexDirection:"row"}}>
+          <div style={{display:"flex",flexDirection:"column"}}>
             <div style={{ display: "flex", flexDirection: "column" }}>
               <input className="footer-input" placeholder="Adınız-Soyadınız"></input>
               <input className="footer-input" placeholder="E-Mail Adresiniz"></input>
@@ -116,11 +116,12 @@ class Footer extends React.Component {
         </a>
       );
     });
+    var languageBox = data.tr.footer
     return (
       <div className="iletişim-cont">
         <div className="iletişim">
           <div style={{display:"flex",justifyContent:"space-between"}}>
-            <About text="proaktif 2020" />
+            <About text={languageBox.proaktif_desc} />
             <InsideLinks />
           </div>
           <Inputs></Inputs>

@@ -209,7 +209,7 @@ input.main-input:focus::placeholder {
 }
 .iletişim {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 .inside-link-header {
   color: white;
@@ -224,13 +224,12 @@ input.main-input:focus::placeholder {
   opacity: 0.8;
 }
 .iletisim-inputs-cont {
-  margin: 0px 10px 0px 10px;
+  margin: 0px 20px 0px 20px;
 }
 .iletisim-inputs-header {
   color: white;
   font-weight: 700;
   text-align: center;
-  margin-top: 10px;
 }
 .iletisim-inputs-input-cont {
   flex-direction: column;
@@ -240,12 +239,12 @@ input.footer-input {
   height: 30px;
   margin-top: 10px;
   border-radius: 10px;
-  border: 2px solid white;
+  border: 0px;
   background-color: white;
   padding: 0px 10px 0px 10px;
   color: royalblue;
   font-weight: 700;
-  width: 250px;
+  width: 300px;
   transition-duration: 200ms;
 }
 textarea.footer-textarea {
@@ -254,10 +253,10 @@ textarea.footer-textarea {
   color: royalblue;
   height:100px;
   margin-top: 10px;
-  margin-left: 10px;
   padding: 10px 10px 10px 10px;
   resize: none;
-  width:100%;
+  width:300px;
+  border: 0px;
 }
 textarea.footer-textarea::placeholder {
   color: royalblue;
@@ -266,11 +265,6 @@ textarea.footer-textarea::placeholder {
 input.footer-input::placeholder {
   color: royalblue;
   opacity: 0.7;
-}
-input.footer-input:focus {
-  background-color: rgb(39, 39, 39);
-  border-color: rgb(39, 39, 39);
-  color: royalblue;
 }
 button.footer-button {
   width: 100px;
@@ -304,6 +298,7 @@ button.footer-button:hover {
   max-width: 250px;
   width: max-content;
   font-weight: 500;
+  margin-top: 10px;
 }
 .bağlantılar {
   display: flex;
@@ -646,7 +641,8 @@ button.footer-button:hover {
   max-width: 300px;
 }
 .iletisim-child-cont {
-  text-align: center;
+  text-align: start;
+  margin: 0px 10px 0px 10px;
 }
 .other-buttons {
   position: fixed;

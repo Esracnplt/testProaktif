@@ -187,7 +187,7 @@ class Header extends React.Component {
               <img style={{ height: "60px" }} src={logo} alt="Logo"></img>
             </div>
             <div style={{"color":"white","fontWeight":"700","letterSpacing":"3px"}}>
-              PROAKTIF
+              PROAKTİF
             </div>
           </Link>
           <div
