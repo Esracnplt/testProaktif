@@ -11,10 +11,41 @@ export function getDefaultLang() {
   return (navigator.language || navigator.userLanguage).substring(0, 2)
 }
 
+window.changeHamburger = () => {
+  window.scrollTo(0,0)
+  if (window.hamburgerOpen) {
+    window.hamburgerOpen = false
+    document.querySelector("html").classList.remove("of-y-hidden")
+    document.querySelector(".other-buttons").classList.remove("visible")
+    document
+      .getElementById("hamburger-part1")
+      .classList.remove("hamburger-open");
+    document
+      .getElementById("hamburger-part2")
+      .classList.remove("hamburger-open");
+    document
+      .getElementById("hamburger-part3")
+      .classList.remove("hamburger-open");
+  } else {
+    window.hamburgerOpen = true
+    document.querySelector("html").classList.add("of-y-hidden")
+    document.querySelector(".other-buttons").classList.add("visible")
+    document
+      .getElementById("hamburger-part1")
+      .classList.add("hamburger-open");
+    document
+      .getElementById("hamburger-part2")
+      .classList.add("hamburger-open");
+    document
+      .getElementById("hamburger-part3")
+      .classList.add("hamburger-open");
+  }
+}
+
 function HoverMenuChild({ item }) {
   var button = <div className="hover-menu-child">{item.text}</div>;
   if (item.to) {
-    return <Link to={item.to}>{button}</Link>;
+    return <Link onClick={window.changeHamburger} to={item.to}>{button}</Link>;
   } else {
     return <div>{button}</div>;
   }
@@ -28,9 +59,9 @@ function HoverMenu({ item }) {
 }
 
 function HeaderButtons({ item }) {
-  var headerButton = <button className="header-button">{item.text}</button>;
+  var headerButton = <div className="header-button">{item.text}</div>;
   if (item.to) {
-    return <Link to={item.to}>{headerButton}</Link>;
+    return <Link onClick={window.changeHamburger} to={item.to}>{headerButton}</Link>;
   } else {
     return <div>{headerButton}</div>;
   }
@@ -97,6 +128,14 @@ function HeaderMenu({ item }) {
 }
 
 class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      language: getDefaultLang(),
+      hamburgerOpen: false,
+    };
+    MyEventBus.emit("language", null, this.state.language);
+  }
   componentWillUnmount() {
     //link değişince header yine olsada aslında başka bir tane olacağı için eventları kapatıyor bu sayede ramden tasarruf ediyor.
     MyEventBus.detachAll();
@@ -108,47 +147,20 @@ class Header extends React.Component {
         language: msg,
       });
     });
-  }
-  changeHamburger(component) {
-    if (component.state.hamburgerOpen) {
-      component.setState({
-        hamburgerOpen: false,
-      });
-      document.querySelector("html").classList.remove("of-y-hidden")
-      document.querySelector(".other-buttons").classList.remove("visible")
-      document
-        .getElementById("hamburger-part1")
-        .classList.remove("hamburger-open");
-      document
-        .getElementById("hamburger-part2")
-        .classList.remove("hamburger-open");
-      document
-        .getElementById("hamburger-part3")
-        .classList.remove("hamburger-open");
-    } else {
-      component.setState({
-        hamburgerOpen: true,
-      });
-      document.querySelector("html").classList.add("of-y-hidden")
-      document.querySelector(".other-buttons").classList.add("visible")
-      document
-        .getElementById("hamburger-part1")
-        .classList.add("hamburger-open");
-      document
-        .getElementById("hamburger-part2")
-        .classList.add("hamburger-open");
-      document
-        .getElementById("hamburger-part3")
-        .classList.add("hamburger-open");
+    /*function OnClick(elem) {
+      console.log("deneme")
+      elem.onmousedown = function () {
+        if (component.state.hamburgerOpen === true) {
+          component.changeHamburger(component)
+        }
+      }
     }
-  }
-  constructor(props) {
-    super(props);
-    this.state = {
-      language: getDefaultLang(),
-      hamburgerOpen: false,
-    };
-    MyEventBus.emit("language", null, this.state.language);
+    document.querySelectorAll("a > button.header-button").forEach((elem) => {
+      OnClick(elem)
+    })
+    document.querySelectorAll("a > button.logo").forEach(elem => {
+      OnClick(elem)
+    })*/
   }
   render() {
     var languageObject = data[this.state.language].header;
@@ -193,7 +205,7 @@ class Header extends React.Component {
           <div
             className="hamburger"
             onMouseDown={() => {
-              this.changeHamburger(this);
+              window.changeHamburger();
             }}
           >
             <svg
