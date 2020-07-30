@@ -48,6 +48,7 @@ function Proje({ item, index, projectCount }) {
                   }
                   <img alt="How it works" src={require(`./../../img/${src}`)}
                     id={"img" + index.toString()}
+                    className="project-image"
                     style={{ 
                       width: ((controledDim === "width") ? imgSize : "auto"), marginLeft: "30px", height: ((controledDim === "height") ? imgSize : "auto")
                      }} 
@@ -197,6 +198,7 @@ function Proje({ item, index, projectCount }) {
         <img
           alt="How it works"
           src={require(`./../../img/${src}`)}
+          className="project-image"
           style={{
             width: (width) ? width : "inherit",
             height:(height)?height:"inherit"
@@ -209,7 +211,7 @@ function Proje({ item, index, projectCount }) {
     if (object.image) {
       let mappedImage = object.image.map((src, index) => <Image extraMarginR={10} key={index}  index={index} height="100px" width="200px" src={src} />)
       return (
-        <div style={{display:"flex",flexDirection:(!isColumn)?"row":"column"}}>
+        <div className="pimage" style={{display:"flex",flexDirection:(!isColumn)?"row":"column"}}>
           {mappedImage}
         </div>
       )

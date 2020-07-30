@@ -25,14 +25,24 @@ class About extends React.Component {
 
 class Inputs extends React.Component {
   render() {
+    var languageBox = data.tr.footer
+    var options = languageBox.message_topic.map((text,index) => {
+      return (
+        <option className="topic" key={index}> {text} </option>
+      )
+    })
     return (
       <div className="iletisim-inputs-cont iletisim-child-cont">
         <div className="iletisim-inputs-header">Bizimle İletişime Geçin</div>
         <div className="iletisim-inputs-input-cont">
-          <div style={{display:"flex",flexDirection:"column"}}>
+          <div className="email-sender-cont">
             <div style={{ display: "flex", flexDirection: "column" }}>
               <input className="footer-input" placeholder="Adınız-Soyadınız"></input>
               <input className="footer-input" placeholder="E-Mail Adresiniz"></input>
+              <select className="topic_select">
+                <option disabled defaultValue className="topic" > {languageBox["message-def"]} </option>
+                {options}
+              </select>
             </div>
             <textarea className="footer-textarea" placeholder="Mesajınız"></textarea>
           </div>

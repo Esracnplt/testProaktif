@@ -568,6 +568,26 @@ button.footer-button:hover {
 .project-img {
   display: flex;
 }
+.project-img {
+  margin-top: 10px;
+}
+.topic_select {
+  border-radius: 10px;
+  height: 30px;
+  margin-top: 10px;
+  border:0px;
+  color:rgba(65, 105, 225,.7);
+  font-weight: 700;
+  width: 320px;
+}
+.email-sender-cont {
+  display: flex;
+  flex-direction: column;
+}
+.topic_select > .topic {
+  color: royalblue;
+  border-radius: 20px;
+}
 .colors {
   margin-left: 20px;
 }
@@ -660,6 +680,9 @@ button.footer-button:hover {
   flex-direction: column;
 }
 @media (max-width: 900px) {
+  .email-sender-cont {
+    align-items: center;
+  }
   .header > .buttons {
     visibility: hidden;
     position: absolute;
@@ -749,9 +772,24 @@ button.footer-button:hover {
     margin-bottom: 10px;
   }
   .project-img {
-    width: 80vw;
+    width: 30vw;
   }
   .arge-project-desc {
     padding: 0px 20px 0px 0px;
+    max-width: 75%;
+  }
+  .color-parent-cont {
+    height: max-content;
+  }
+  .color-box {
+    height:40px;
+  }
+  .pimage {
+    display: flex;
+    flex-direction: column !important;
+  }
+  .color-child-cont {
+    display: flex;
+    flex-direction: column;
   }
 }

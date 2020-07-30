@@ -131,6 +131,10 @@
 
   "tr": {
     "footer":{
+      "message-def":"Mesajınızın Konusunu Seçiniz",
+      "message_topic":[
+        "Genel","Bilgi Talebi","Demo","Öneri-Şikayet"
+      ],
       "proaktif_desc":"Ar-Ge projeleri ile tüm sistem ve yazılım çözümlerinin yanı sıra Proaktif olarak ülke gerçeklerinin ve kurucu ortak aklın ışığı doğrultusunda, sosyal sorumluk bilinci ile özellikle öğrencilerimize ve okullara aynî, nakdî ya da eğitim-öğretim destekleri sağlamak üzere projeler gerçekleştirmek önemli bir hedef teşkil etmektedir.",
       "linktitle":"Yönlendirme",
       "links":[

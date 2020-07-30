@@ -59,7 +59,7 @@ function HoverMenu({ item }) {
 }
 
 function HeaderButtons({ item }) {
-  var headerButton = <div className="header-button">{item.text}</div>;
+  var headerButton = <button className="header-button">{item.text}</button>;
   if (item.to) {
     return <Link onClick={window.changeHamburger} to={item.to}>{headerButton}</Link>;
   } else {
