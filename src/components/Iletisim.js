@@ -12,6 +12,9 @@ import {
 import { Link } from "react-router-dom"
 import data from "../language.json"
 
+import * as emailjs from "emailjs";
+
+
 class About extends React.Component {
   render() {
     return (
@@ -24,6 +27,37 @@ class About extends React.Component {
 }
 
 class Inputs extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      "email": "",
+      "name": "",
+      "topic": "",
+      "message":""
+    }
+    this.sendEmail = this.sendEmail.bind(this)
+  }
+  changeState(comp, id, stateName) {
+    var newValue = document.getElementById(id).value
+    comp.setState({[stateName]:newValue})
+  }
+  sendEmail(comp) {
+    if (this.state.name && this.state.email && this.state.topic && this.state.message) {
+      function idSelector(id) {
+        return document.getElementById(id)
+      }
+      idSelector("name").value = idSelector("email").value = idSelector("message").value = ""
+
+      fetch("netkozanet/contactform/contactform.php?" + new URLSearchParams({
+        "subject": this.state.topic,
+        "message": this.state.message,
+        "name": this.state.name,
+        "email": this.state.email
+        }),{
+        method: "POST"
+      })
+    }
+  }
   render() {
     var languageBox = data.tr.footer
     var options = languageBox.message_topic.map((text,index) => {
@@ -37,17 +71,17 @@ class Inputs extends React.Component {
         <div className="iletisim-inputs-input-cont">
           <div className="email-sender-cont">
             <div style={{ display: "flex", flexDirection: "column" }}>
-              <input className="footer-input" placeholder="Adınız-Soyadınız"></input>
-              <input className="footer-input" placeholder="E-Mail Adresiniz"></input>
-              <select className="topic_select">
+              <input onChange={()=>this.changeState(this,"name","name")} id="name" className="footer-input" placeholder="Adınız-Soyadınız"></input>
+              <input onChange={() => this.changeState(this, "email", "email")} id="email" className="footer-input" placeholder="E-Mail Adresiniz"></input>
+              <select onChange={() => this.changeState(this, "topic", "topic")} id="topic" className="topic_select">
                 <option disabled defaultValue className="topic" > {languageBox["message-def"]} </option>
                 {options}
               </select>
             </div>
-            <textarea className="footer-textarea" placeholder="Mesajınız"></textarea>
+            <textarea onChange={() => this.changeState(this, "message", "message")} id="message" className="footer-textarea" placeholder="Mesajınız"></textarea>
           </div>
           <div>
-            <button className="footer-button">Gönder</button>
+            <button onClick={this.sendEmail} className="footer-button">Gönder</button>
           </div>
         </div>
       </div>
