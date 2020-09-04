@@ -36,10 +36,15 @@ let interval = setInterval(arttır, intervalHizi);
 class DefaultSlider extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { render: (this.props.whichSlider === 1)?true:false, whichSlider: this.props.whichSlider };
+    this.state = {
+      render: (this.props.whichSlider === 1) ? true : false, whichSlider: this.props.whichSlider, innerWidth: window.innerWidth
+    };
   }
   componentDidMount() {
     var slider = this;
+    window.onresize = function (e) {
+      slider.setState({innerWidth:window.innerWidth})
+    }
     MyEventBus.on("currentslide", function (mesaj) {
       if (mesaj === slider.state.whichSlider) {
         slider.setState({ render: true });
@@ -55,13 +60,13 @@ class DefaultSlider extends React.Component {
     var languageObject = data.tr.home.sliders[this.props.sliderName]
     if (this.state.render) {
       return (
-        <div style={{width:"100%",position:"relative"}} className="center" id={"slider"+this.state.whichSlider}>
-          <img
+        <div style={{ width: "100%",backgroundSize:"100%",backgroundRepeat:"no-repeat","height":((this.state.innerWidth/1920)*500).toString() + "px", position: "relative", backgroundImage:`url(${require('./../img/'+languageObject.imgname)})`}} className="center" id={"slider"+this.state.whichSlider}>
+          {/* <img
             src={require("./../img/" + languageObject.imgname)}
             style={{ width: "100%" }}
             alt="slider"
             className="blur slider-img"
-          ></img>
+          ></img> */}
           <Link className="slider-text-cont" to={languageObject.to}>
             <div className="slider-text">
               {languageObject.text}

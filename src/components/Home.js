@@ -145,11 +145,67 @@ class Istatistikler extends React.Component {
   }
 }
 
+function Button({text,ClickFunction}) {
+  return (
+    <div>
+      <button onClick={ClickFunction} className="homebutton">
+        {text}
+      </button>
+    </div>
+  )
+}
+
+class Buttons extends React.Component {
+  demoOlustur() {
+    console.log("merhaba")
+  }
+  GumrukYonlendirmesi() {
+    window.open("https://gumruksistemdurumu.org/","_blank")
+  }
+  constructor(props) {
+    super(props)
+    this.state = {
+      texts: [
+        {
+          text: "Gümrük Sistemi Durumu",
+          ClickFunction:this.GumrukYonlendirmesi
+        },
+        {
+          text: "Sosyal Sorumluluk Projesi"
+        },
+        {
+          text: "Demo Oluştur",
+          ClickFunction:this.demoOlustur
+        },
+        {
+          text: "Sertifika Kontrol"
+        },
+        {
+          text: "Sunucu Arama"
+        }
+      ]
+    }
+  }
+  render() {
+    var mappedButtons = this.state.texts.map((button,index) => {
+      return (
+        <Button ClickFunction={button.ClickFunction} key={index} text={button.text} />
+      )
+    })
+    return (
+      <div className="homebuttons">
+        {mappedButtons}
+      </div>
+    )
+  }
+}
+
 class Home extends React.Component {
   render() {
     return (
       <React.Fragment>
         <Sliders></Sliders>
+        <Buttons/>
         <Info1></Info1>
         <Info2 header="Nitelikli yazılım, yönetim ve bilişim çözümlerimiz ile üretken, kârlı ve sürekli bir gelişim için proaktif vizyon."></Info2>
         <Istatistikler />
