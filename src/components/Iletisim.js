@@ -12,7 +12,7 @@ import {
 import { Link } from "react-router-dom"
 import data from "../language.json"
 
-import * as emailjs from "emailjs";
+// import * as emailjs from "emailjs";
 
 
 class About extends React.Component {

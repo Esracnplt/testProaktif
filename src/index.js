@@ -22,6 +22,9 @@ function Website() {
           <Route exact path="/">
             <Home />
           </Route>
+          <Route exact path="/proaktif/">
+            <Home />
+          </Route>
           <Route path="/contact">
             <ContactComponent />
           </Route>

@@ -1,12 +1,17 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
 import "../style.css";
 import Sliders from "./Sliders";
 import Header from "./Header";
-
+import CreateDemo from './CreateDemo';
+import ProaktifTab from '../utils/ProaktifTab';
 import CountUp from "react-countup";
 
 import data from "../language.json"
+import { faTumblr } from "@fortawesome/free-brands-svg-icons";
 
 class Info1 extends React.Component {
   constructor(props) {
@@ -145,7 +150,7 @@ class Istatistikler extends React.Component {
   }
 }
 
-function Button({text,ClickFunction}) {
+function Button({ text, ClickFunction }) {
   return (
     <div>
       <button onClick={ClickFunction} className="homebutton">
@@ -155,57 +160,325 @@ function Button({text,ClickFunction}) {
   )
 }
 
-class Buttons extends React.Component {
-  demoOlustur() {
-    console.log("merhaba")
+const Buttons = () => {
+  const ReactSwal = withReactContent(Swal)
+  const ref = useRef();
+
+  const [hasLoadedSchools, setHasLoadedSchools] = useState(false);
+  const [egitimDestekleriTabs, setEgitimDestekleriTabs] = useState({
+    liseler: {
+      id: "liseler",
+      buttonText: "Liseler",
+      content: "Liseler listesi",
+    },
+    yuksekOkullar: {
+      id: "yuksekOkullar",
+      buttonText: "Yüksek Okullar",
+      content: "Yüksek Okullar listesi",
+    }
+  });
+
+  useEffect(() => {
+    if (hasLoadedSchools) {
+      Swal.close();
+      ReactSwal.fire({
+        title: "Eğitim Destekleri",
+        confirmButtonText: "Tamam",
+        html: <ProaktifTab tabs={egitimDestekleriTabs} />
+      });
+    }
+  }, [egitimDestekleriTabs, hasLoadedSchools]);
+
+  const demoOlustur = (currentValues) => {
+    ReactSwal.fire({
+      title: <p>Demo Sunucu İçin Bilgilerinizi Giriniz..</p>,
+      //footer: 'Copyright 2018',
+      allowOutsideClick: false,
+      showCloseButton: true,
+      showCancelButton: true,
+      focusConfirm: false,
+      cancelButtonText: "Vazgeç",
+      confirmButtonText: "Kaydol",
+      html: <CreateDemo currentValues={currentValues} ref={ref} />,
+      // onOpen: () => {
+      //   // `MySwal` is a subclass of `Swal`
+      //   //   with all the same instance & static methods
+      //   //ReactSwal.clickConfirm()
+      // },
+      // onDestroy: () => {
+      // },
+    }).then(async (result) => {
+      if (result.value) {
+        // setClickedCofirm(true);
+        const { saveResult, currentValues } = await ref.current.saveDemo();
+        if (!saveResult)
+          demoOlustur(currentValues);
+      }
+    });
   }
-  GumrukYonlendirmesi() {
-    window.open("https://gumruksistemdurumu.org/","_blank")
+
+  const btnDemoCreateClick = (e) => {
+    demoOlustur();
   }
-  constructor(props) {
-    super(props)
-    this.state = {
-      texts: [
-        {
-          text: "Gümrük Sistemi Durumu",
-          ClickFunction:this.GumrukYonlendirmesi
-        },
-        {
-          text: "Sosyal Sorumluluk Projesi"
-        },
-        {
-          text: "Demo Oluştur",
-          ClickFunction:this.demoOlustur
-        },
-        {
-          text: "Sertifika Kontrol"
-        },
-        {
-          text: "Sunucu Arama"
+
+  const btnEgitimDestekleriClick = (e) => {
+    ReactSwal.fire({
+      title: "Eğitim Destekleri",
+      confirmButtonText: "Tamam",
+      icon: (!hasLoadedSchools) ? "info" : "",
+      html: (!hasLoadedSchools) ? <div>Bilgiler getiriliyor...<br />Lütfen bekleyiniz.</div> : <ProaktifTab tabs={egitimDestekleriTabs} />,
+      onOpen: () => {
+        if (!hasLoadedSchools) {
+          fetch("https://proaktif.org/index/okullar/")
+            .then((data) => {
+              setEgitimDestekleriTabs(tabs =>
+                ({
+                  ...tabs,
+                  liseler: {
+                    ...tabs.liseler,
+                    content: data.okulLise
+                  },
+                  yuksekOkullar: {
+                    ...tabs.yuksekOkullar,
+                    content: data.okulYuksekokul
+                  }
+                }));
+              setHasLoadedSchools(true);
+            })
+            .catch((e) => {
+              Swal.close();
+              ReactSwal.fire({
+                title: "Eğitim Destekleri",
+                confirmButtonText: "Tamam",
+                html: `<div style="color:red;">Bilgiler getirilirken hata oluştu!<br/>${e}</div>`,
+                icon: 'error',
+              });
+            })
         }
-      ]
+      },
+    })
+  }
+
+  /**
+   * START: Sertifika Kontrol Swal Kondları
+   */
+  const [sertifikaKontrolUyariMesaji, setSertifikaKontrolUyariMesaji] = useState();
+
+  const inputSertifikaNo = useRef(null);
+
+  useEffect(() => {
+    if (sertifikaKontrolUyariMesaji) {
+      Swal.close();
+      showSertifikaKontrolSwall(sertifikaKontrolUyariMesaji);
+
+    }
+    return () => {
+      setSertifikaKontrolUyariMesaji("");
+    };
+  }, [sertifikaKontrolUyariMesaji]);
+
+  const sertifikaKontrolSwalPreConfirm = (isConfirmed) => {
+    if (inputSertifikaNo.current.value.length < 1 || inputSertifikaNo.current.value == "") {
+      setSertifikaKontrolUyariMesaji("Lütfen sertifika numaranızı kontrol ediniz...");
+      return false;
     }
   }
-  render() {
-    var mappedButtons = this.state.texts.map((button,index) => {
-      return (
-        <Button ClickFunction={button.ClickFunction} key={index} text={button.text} />
-      )
+
+  const showSertifikaKontrolSwall = (sertifikaKontrolUyariMesaji) => {
+    ReactSwal.fire({
+      title: <div><strong>Sertifika Sorgulama</strong><br /><label id="mesaj" style={{ fontSize: "11px !important", color: "red" }}>{sertifikaKontrolUyariMesaji}</label></div>,
+      html: <div><input type="text" id="sertifikano" ref={inputSertifikaNo} style={{ "borderRadius": "5px", "fontSize": "20px", "backgroundColor": "#f0f8ff", "width": "300px" }} placeholder="TC Kimlik veya Sertifika No.."></input></div>,
+      showCloseButton: true,
+      showCancelButton: false,
+      focusConfirm: false,
+      confirmButtonText: "Sertifika Ara",
+      allowOutsideClick: false,
+      footer: "Sorgulamak istediğiniz Sertifika veya TC Kimlik Numarasını Giriniz..",
+      preConfirm: sertifikaKontrolSwalPreConfirm,
+    }).then((result) => {
+      if (result.value) {
+        const sertifikaNo = inputSertifikaNo.current.value;
+        fetch("/sertifika/sertifikadurumkontrol?BelgeNo" + sertifikaNo)
+          .then(data => {
+            console.log(data);
+            const aciklama = "";
+            if (data.uyari == 0) {
+              if (data.egitmen)
+                aciklama = '<div style="text-align:left"><b>Sertifika Sahibi:</b> ' + data.adsoyad + '<br><b>Eğitmen:</b> ' + data.egitmen + '<br><b>Sertifika Tarihi:</b> ' + data.zaman + '</div>';
+              else
+                aciklama = '<div style="text-align:left"><b>Sertifika Sahibi:</b> ' + data.adsoyad + '<br><b>Sertifika Tarihi:</b> ' + data.zaman + '</div>';
+              Swal.fire({
+                title: "Sertifika Doğrulandı",
+                html: aciklama,
+                type: "success",
+                confirmButtonText: "Tamam",
+                footer: "Yukarıda bilgileri yazılı kullanıcı Sertifikalı kullanıcımızdır.",
+              });
+            }
+            else
+              Swal.fire({
+                title: "Sertifika Bulunamadı",
+                html: 'Girdiğiniz ' + sertifikaNo + ' TC Kimlik / Sertifika numaralı Sertifika sistemimizde bulunamadı..',
+                type: "error",
+                confirmButtonText: "Tamam",
+                footer: sertifikaNo + " TC Kimlik / Sertifika Numaralı Sertifika yok ya da bilgiler yanlış girilmiş...",
+              });
+          })
+          .catch(res => {
+            console.log("Hata" + JSON.stringify(res));
+            Swal.fire("Bir hata oluştu. Lütfen Online Destekten yazınız...");
+          });
+      }
     })
-    return (
-      <div className="homebuttons">
-        {mappedButtons}
-      </div>
-    )
   }
+
+  const btnSertifikaKontrolClick = () => {
+    showSertifikaKontrolSwall(sertifikaKontrolUyariMesaji);
+  }
+  /**
+   * END: Sertifika Kontrol Swal Kodları
+   */
+
+  /**
+   * START: Sunucu Bul Swal Kodları
+   */
+  const [sunucuBulUyariMesaji, setSunucuBulUyariMesaji] = useState()
+  const inputSunucuBulTCKNO = useRef(null);
+
+  useEffect(() => {
+    if (sunucuBulUyariMesaji) {
+      const sunucuBulTCKNO = inputSunucuBulTCKNO.current.value;
+      Swal.close();
+      showSunucuBulSwall(sunucuBulTCKNO, sunucuBulUyariMesaji);
+    }
+    return () => {
+      setSunucuBulUyariMesaji("");
+    };
+  }, [sunucuBulUyariMesaji]);
+
+  const sunucuBulSwalPreConfirm = (isConfirmed) => {
+    if (inputSunucuBulTCKNO.current.value.length != "11") {
+      setSunucuBulUyariMesaji("Lütfen Tc Kimlik numaranızı kontrol ediniz...");
+      return false;
+    }
+  }
+  const showSunucuBulSwall = (sunucuBulTCKNO, sunucuBulUyariMesaji) => {
+    ReactSwal.fire({
+      title: <div><strong>Sunucu Bul</strong><br /><label id="mesaj" style={{ "fontSize": "11px !important", "color": "red" }}>{sunucuBulUyariMesaji}</label></div>,
+      html: <div><input id="tckimlikno" ref={inputSunucuBulTCKNO} style={{ "borderRadius": "5px", "fontSize": "20px", "backgroundColor": "#f0f8ff" }} placeholder="TC Kimlik No.." /></div>,
+      showCloseButton: true,
+      showCancelButton: false,
+      focusConfirm: false,
+      confirmButtonText: "Sunucu Ara",
+      allowOutsideClick: false,
+      footer: "Şirket sunucu adresinizi bulmak için Tc Kimlik Numaranızı Giriniz..",
+      preConfirm: sunucuBulSwalPreConfirm,
+      onOpen: () => {
+        inputSunucuBulTCKNO.current.value = sunucuBulTCKNO;
+      },
+    }).then((result) => {
+      if (result.value) {
+        const tc = inputSunucuBulTCKNO.current.value;
+        fetch("https://proaktif.org/index/sunucubul/" + tc)
+          .then(data => {
+            if (data.sonuc === "var") {
+              ReactSwal.fire({
+                title: "Şirketinizin Sunucu Adresi/Adresleri",
+                html: <div style={{ "textAlign": "left" }} title="Açmak için tıklayınız..">{data.sunucu}</div>,
+                icon: "success",
+                confirmButtonText: "Tamam",
+                footer: "Şirketinizin adresini açmak için ismine tıklayınız..",
+              });
+            }
+            else
+              ReactSwal.fire({
+                title: "Sunucu Bulunamadı",
+                html: <div>'Girdiğiniz {tc} TC kimlik numarasının kayıtlı olduğu herhangi bir sunucu bulunamadı..</div>,
+                icon: "error",
+                confirmButtonText: "Tamam",
+                footer: "TC kimlik numaranızın doğruluğundan emin olunuz...",
+              });
+          })
+          .catch(res => {
+            console.log("Hata" + JSON.stringify(res));
+            Swal("Bir hata oluştu. Lütfen Online Destekten yazınız...");
+          });
+      }
+    })
+  }
+
+  const btnSunucuBulClick = () => {
+    showSunucuBulSwall("", sunucuBulUyariMesaji);
+  }
+  /**
+   * END: Sunucu Bul Swal Kodları
+   */
+
+  const GumrukYonlendirmesi = () => {
+    window.open("https://gumruksistemdurumu.org/", "_blank")
+  }
+
+  const [state, setState] = useState({
+    texts: [
+      {
+        text: "Gümrük Sistemi Durumu",
+        ClickFunction: GumrukYonlendirmesi
+      },
+      {
+        text: "Eğitim Destekleri",
+        ClickFunction: btnEgitimDestekleriClick,
+      },
+      {
+        text: "Demo Oluştur",
+        ClickFunction: btnDemoCreateClick
+      },
+      {
+        text: "Sertifika Kontrol",
+        ClickFunction: btnSertifikaKontrolClick
+      },
+      {
+        text: "Sunucu Arama",
+        ClickFunction: btnSunucuBulClick
+      }
+    ]
+  });
+
+  var mappedButtons = state.texts.map((button, index) => {
+    return (
+      <Button ClickFunction={button.ClickFunction} key={index} text={button.text} />
+    )
+  })
+  return (
+    <div className="homebuttons">
+      {mappedButtons}
+    </div>
+  )
 }
 
 class Home extends React.Component {
+  componentDidMount() {
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = "https://embed.tawk.to/5f4aba311e7ade5df44518a9/default";
+    script.onload = () => this.startTawk();
+    //For head
+    document.head.appendChild(script);
+  }
+
+  startTawk() {
+    const hostName = window.location.hostname;
+    var Tawk_API = Tawk_API || {};
+    Tawk_API.visitor = {
+      name: hostName
+    };
+    const Tawk_LoadStart = new Date();
+  }
+
   render() {
     return (
       <React.Fragment>
         <Sliders></Sliders>
-        <Buttons/>
+        <Buttons />
         <Info1></Info1>
         <Info2 header="Nitelikli yazılım, yönetim ve bilişim çözümlerimiz ile üretken, kârlı ve sürekli bir gelişim için proaktif vizyon."></Info2>
         <Istatistikler />

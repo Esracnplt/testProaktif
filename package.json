@@ -2,7 +2,7 @@
   "name": "proaktif",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://netkoza.net/proaktif/build/",
+  "homepage": "http://netkoza.net/proaktif",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.29",
     "@fortawesome/free-brands-svg-icons": "^5.13.1",
@@ -21,7 +21,9 @@
     "react-fontawesome": "^1.7.1",
     "react-router-dom": "^5.2.0",
     "react-router-scroll-top": "^0.2.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.3",
+    "sweetalert2": "^10.0.2",
+    "sweetalert2-react-content": "^3.2.0"
   },
   "scripts": {
     "watch": "npm-watch",
