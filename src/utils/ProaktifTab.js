@@ -31,7 +31,7 @@ const ProaktifTab = ({ tabs }) => {
     }, [activeLink])
 
     const TabButtons = Object.keys(tabs).map((tab) => {
-        return (<button key={tabs[tab].id} className={`tablinks ${activeLink == tabs[tab].id && "active"}`} onClick={(e) => setActiveLink(tabs[tab].id)}>{tabs[tab].buttonText}</button>);
+        return (<button key={tabs[tab].id} className={`tablinks ${activeLink === tabs[tab].id && "active"}`} onClick={(e) => setActiveLink(tabs[tab].id)}>{tabs[tab].buttonText}</button>);
     })
 
     return (
@@ -40,7 +40,7 @@ const ProaktifTab = ({ tabs }) => {
                 <div className="proaktif-tab-buttons">
                     {TabButtons}
                 </div>
-                <div className="proaktif-tab-content" dangerouslySetInnerHTML={{ __html: content }} >
+                <div className="proaktif-tab-content" dangerouslySetInnerHTML={{ __html: content }} style={{textAlign:"left", fontSize:"15px"}}>
                 </div>
             </div>
         </>

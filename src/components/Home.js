@@ -184,6 +184,7 @@ const Buttons = () => {
       ReactSwal.fire({
         title: "Eğitim Destekleri",
         confirmButtonText: "Tamam",
+        showCloseButton: true,
         html: <ProaktifTab tabs={egitimDestekleriTabs} />
       });
     }
@@ -225,11 +226,13 @@ const Buttons = () => {
     ReactSwal.fire({
       title: "Eğitim Destekleri",
       confirmButtonText: "Tamam",
+      showCloseButton: true,
       icon: (!hasLoadedSchools) ? "info" : "",
       html: (!hasLoadedSchools) ? <div>Bilgiler getiriliyor...<br />Lütfen bekleyiniz.</div> : <ProaktifTab tabs={egitimDestekleriTabs} />,
       onOpen: () => {
         if (!hasLoadedSchools) {
-          fetch("https://proaktif.org/index/okullar/")
+          fetch("/index/okullar/")
+            .then(response => response.json())
             .then((data) => {
               setEgitimDestekleriTabs(tabs =>
                 ({
@@ -250,6 +253,7 @@ const Buttons = () => {
               ReactSwal.fire({
                 title: "Eğitim Destekleri",
                 confirmButtonText: "Tamam",
+                showCloseButton: true,
                 html: `<div style="color:red;">Bilgiler getirilirken hata oluştu!<br/>${e}</div>`,
                 icon: 'error',
               });
@@ -278,7 +282,7 @@ const Buttons = () => {
   }, [sertifikaKontrolUyariMesaji]);
 
   const sertifikaKontrolSwalPreConfirm = (isConfirmed) => {
-    if (inputSertifikaNo.current.value.length < 1 || inputSertifikaNo.current.value == "") {
+    if (inputSertifikaNo.current.value.length < 1 || inputSertifikaNo.current.value === "") {
       setSertifikaKontrolUyariMesaji("Lütfen sertifika numaranızı kontrol ediniz...");
       return false;
     }
@@ -287,7 +291,7 @@ const Buttons = () => {
   const showSertifikaKontrolSwall = (sertifikaKontrolUyariMesaji) => {
     ReactSwal.fire({
       title: <div><strong>Sertifika Sorgulama</strong><br /><label id="mesaj" style={{ fontSize: "11px !important", color: "red" }}>{sertifikaKontrolUyariMesaji}</label></div>,
-      html: <div><input type="text" id="sertifikano" ref={inputSertifikaNo} style={{ "borderRadius": "5px", "fontSize": "20px", "backgroundColor": "#f0f8ff", "width": "300px" }} placeholder="TC Kimlik veya Sertifika No.."></input></div>,
+      html: <div><input type="text" id="sertifikano" ref={inputSertifikaNo} style={{ "borderRadius": "5px", "fontSize": "16px", "backgroundColor": "#f0f8ff", "padding": "5px", "height": "20px", "width": "100%" }} placeholder="TC Kimlik veya Sertifika No.."></input></div>,
       showCloseButton: true,
       showCancelButton: false,
       focusConfirm: false,
@@ -298,36 +302,46 @@ const Buttons = () => {
     }).then((result) => {
       if (result.value) {
         const sertifikaNo = inputSertifikaNo.current.value;
-        fetch("/sertifika/sertifikadurumkontrol?BelgeNo" + sertifikaNo)
-          .then(data => {
-            console.log(data);
-            const aciklama = "";
-            if (data.uyari == 0) {
-              if (data.egitmen)
-                aciklama = '<div style="text-align:left"><b>Sertifika Sahibi:</b> ' + data.adsoyad + '<br><b>Eğitmen:</b> ' + data.egitmen + '<br><b>Sertifika Tarihi:</b> ' + data.zaman + '</div>';
-              else
-                aciklama = '<div style="text-align:left"><b>Sertifika Sahibi:</b> ' + data.adsoyad + '<br><b>Sertifika Tarihi:</b> ' + data.zaman + '</div>';
-              Swal.fire({
-                title: "Sertifika Doğrulandı",
-                html: aciklama,
-                type: "success",
-                confirmButtonText: "Tamam",
-                footer: "Yukarıda bilgileri yazılı kullanıcı Sertifikalı kullanıcımızdır.",
+        ReactSwal.fire({
+          title: <div><strong>Sertifika Sorgulama</strong><br /><label id="mesaj" style={{ fontSize: "11px !important", color: "red" }}>{sertifikaKontrolUyariMesaji}</label></div>,
+          showCloseButton: true,
+          icon: "info",
+          html: <div>Bilgiler getiriliyor...<br />Lütfen bekleyiniz.</div>,
+          onOpen: () => {
+            fetch("/sertifika/sertifikadurumkontrol?BelgeNo=" + sertifikaNo)
+              .then(response => response.json())
+              .then(data => {
+                let aciklama = "";
+                if (data.uyari === "0") {
+                  if (data.egitmen)
+                    aciklama = '<div style="text-align:left"><b>Sertifika Sahibi:</b> ' + data.adsoyad + '<br><b>Eğitmen:</b> ' + data.egitmen + '<br><b>Sertifika Tarihi:</b> ' + data.zaman + '</div>';
+                  else
+                    aciklama = '<div style="text-align:left"><b>Sertifika Sahibi:</b> ' + data.adsoyad + '<br><b>Sertifika Tarihi:</b> ' + data.zaman + '</div>';
+                  ReactSwal.fire({
+                    title: "Sertifika Doğrulandı",
+                    html: <div dangerouslySetInnerHTML={{ __html: aciklama }}></div>,
+                    type: "success",
+                    showCloseButton: true,
+                    confirmButtonText: "Tamam",
+                    footer: "Yukarıda bilgileri yazılı kullanıcı Sertifikalı kullanıcımızdır.",
+                  });
+                }
+                else
+                  Swal.fire({
+                    title: "Sertifika Bulunamadı",
+                    html: 'Girdiğiniz ' + sertifikaNo + ' TC Kimlik / Sertifika numaralı Sertifika sistemimizde bulunamadı..',
+                    type: "error",
+                    showCloseButton: true,
+                    confirmButtonText: "Tamam",
+                    footer: sertifikaNo + " TC Kimlik / Sertifika Numaralı Sertifika yok ya da bilgiler yanlış girilmiş...",
+                  });
+              })
+              .catch(res => {
+                console.log("Hata" + res);
+                Swal.fire("Sertifika Ara", "Bir hata oluştu. Lütfen Online Destekten yazınız...", "error");
               });
-            }
-            else
-              Swal.fire({
-                title: "Sertifika Bulunamadı",
-                html: 'Girdiğiniz ' + sertifikaNo + ' TC Kimlik / Sertifika numaralı Sertifika sistemimizde bulunamadı..',
-                type: "error",
-                confirmButtonText: "Tamam",
-                footer: sertifikaNo + " TC Kimlik / Sertifika Numaralı Sertifika yok ya da bilgiler yanlış girilmiş...",
-              });
-          })
-          .catch(res => {
-            console.log("Hata" + JSON.stringify(res));
-            Swal.fire("Bir hata oluştu. Lütfen Online Destekten yazınız...");
-          });
+          },
+        })
       }
     })
   }
@@ -357,7 +371,7 @@ const Buttons = () => {
   }, [sunucuBulUyariMesaji]);
 
   const sunucuBulSwalPreConfirm = (isConfirmed) => {
-    if (inputSunucuBulTCKNO.current.value.length != "11") {
+    if (inputSunucuBulTCKNO.current.value.length !== 11) {
       setSunucuBulUyariMesaji("Lütfen Tc Kimlik numaranızı kontrol ediniz...");
       return false;
     }
@@ -379,30 +393,45 @@ const Buttons = () => {
     }).then((result) => {
       if (result.value) {
         const tc = inputSunucuBulTCKNO.current.value;
-        fetch("https://proaktif.org/index/sunucubul/" + tc)
-          .then(data => {
-            if (data.sonuc === "var") {
-              ReactSwal.fire({
-                title: "Şirketinizin Sunucu Adresi/Adresleri",
-                html: <div style={{ "textAlign": "left" }} title="Açmak için tıklayınız..">{data.sunucu}</div>,
-                icon: "success",
-                confirmButtonText: "Tamam",
-                footer: "Şirketinizin adresini açmak için ismine tıklayınız..",
+        ReactSwal.fire({
+          title: <div><strong>Sunucu Bul</strong><br /><label id="mesaj" style={{ "fontSize": "11px !important", "color": "red" }}>{sunucuBulUyariMesaji}</label></div>, confirmButtonText: "Tamam",
+          showCloseButton: true,
+          icon: "info",
+          html: <div>Bilgiler getiriliyor...<br />Lütfen bekleyiniz.</div>,
+          onOpen: () => {
+            fetch("/index/sunucubul/" + tc)
+              .then(response => response.json())
+              .then(data => {
+                if (data.sonuc === "var") {
+                  ReactSwal.fire({
+                    title: "Şirketinizin Sunucu Adresi/Adresleri",
+                    html: <div style={{ "textAlign": "left" }} title="Açmak için tıklayınız.." dangerouslySetInnerHTML={{ __html: data.sunucu }}></div>,
+                    icon: "success",
+                    showCloseButton: true,
+                    confirmButtonText: "Tamam",
+                    footer: "Şirketinizin adresini açmak için ismine tıklayınız..",
+                  });
+                }
+                else
+                  ReactSwal.fire({
+                    title: "Sunucu Bulunamadı",
+                    html: <div>'Girdiğiniz {tc} TC kimlik numarasının kayıtlı olduğu herhangi bir sunucu bulunamadı..</div>,
+                    icon: "error",
+                    showCloseButton: true,
+                    confirmButtonText: "Tamam",
+                    footer: "TC kimlik numaranızın doğruluğundan emin olunuz...",
+                  }).then((result) => {
+                    if (result.value) {
+                      showSunucuBulSwall(tc, sunucuBulUyariMesaji);
+                    }
+                  });
+              })
+              .catch(res => {
+                console.log("Hata" + JSON.stringify(res));
+                Swal.fire("Sunucu Bul", "Bir hata oluştu. Lütfen Online Destekten yazınız...", "error");
               });
-            }
-            else
-              ReactSwal.fire({
-                title: "Sunucu Bulunamadı",
-                html: <div>'Girdiğiniz {tc} TC kimlik numarasının kayıtlı olduğu herhangi bir sunucu bulunamadı..</div>,
-                icon: "error",
-                confirmButtonText: "Tamam",
-                footer: "TC kimlik numaranızın doğruluğundan emin olunuz...",
-              });
-          })
-          .catch(res => {
-            console.log("Hata" + JSON.stringify(res));
-            Swal("Bir hata oluştu. Lütfen Online Destekten yazınız...");
-          });
+          },
+        })
       }
     })
   }
@@ -449,7 +478,7 @@ const Buttons = () => {
     )
   })
   return (
-    <div className="homebuttons">
+    <div className="homebuttons" style={{ zIndex: "10" }}>
       {mappedButtons}
     </div>
   )
@@ -457,21 +486,27 @@ const Buttons = () => {
 
 class Home extends React.Component {
   componentDidMount() {
+    const Tawk_LoadStart = new Date();
     const script = document.createElement("script");
+    script.id = 'tawkId';
     script.async = true;
     script.src = "https://embed.tawk.to/5f4aba311e7ade5df44518a9/default";
+    script.charset = 'UTF-8';
+    script.setAttribute('crossorigin', '*');
     script.onload = () => this.startTawk();
     //For head
     document.head.appendChild(script);
   }
 
+  componentWillUnmount() {
+    document.getElementById("tawkId").remove();
+  }
+
   startTawk() {
-    const hostName = window.location.hostname;
     var Tawk_API = Tawk_API || {};
     Tawk_API.visitor = {
-      name: hostName
+      name: window.location.hostname
     };
-    const Tawk_LoadStart = new Date();
   }
 
   render() {

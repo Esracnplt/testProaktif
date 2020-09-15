@@ -154,15 +154,15 @@ const CreateDemo = forwardRef((props, ref) => {
         setInputsErrorMessages(inptVls => ({ ...inptVls, [name]: errorMessage }))
     }
 
-    const handleOnBlur=(event)=>{
+    const handleOnBlur = (event) => {
         return false;
-        event.target.value = event.target.value.replace(/([\wöçşğüıİ])/gi, 
-        function(a, b){return b.replace("I","ı").toLowerCase()}).replace(/(^[a-zöçşğüı]|[\s|\.][a-zöçşğüı])/g, 
-        function(c, d){return d.replace("i","İ").toUpperCase()});
+        event.target.value = event.target.value.replace(/([\wöçşğüıİ])/gi,
+            function (a, b) { return b.replace("I", "ı").toLowerCase() }).replace(/(^[a-zöçşğüı]|[\s|\.][a-zöçşğüı])/g,
+                function (c, d) { return d.replace("i", "İ").toUpperCase() });
     }
 
     useEffect(() => {
-        if (sadi !== "") {
+        if (salindi === "" && sadi !== "") {
             setSunucuMesaj(MesajTurleri.INFO);
             const producedTimeoutId = setTimeout(function () { solustur(); }, 5000);
             setTimeoutId(producedTimeoutId);
@@ -199,7 +199,8 @@ const CreateDemo = forwardRef((props, ref) => {
     }
 
     function solustur() {
-        fetch("https://proaktif.org/Kullanicikayit/solustur/?sadi=" + sadi)
+        fetch("/Kullanicikayit/solustur/?sadi=" + sadi)
+            .then(response => response.json())
             .then(data => {
                 if (data.success === true) {
                     //setSunucuMesaj("Sunucunuz <span style='color:green;font-size:14px;font-weight:bold;'>" + data.result.name + " </span>adresi ile oluşturuldu.<img src='/img/ok.png' style='height: 20px;'></img>");
@@ -296,7 +297,8 @@ const CreateDemo = forwardRef((props, ref) => {
             return { saveResult: false, currentValues: { inputs, inputsErrorMessages, sadi, salindi, sunucuMesaj } };
         } else {
             const fatchData = inputsToFetchData();
-            const result = await fetch("https://proaktif.org/Kullanicikayit/demokayit/?sadi=" + sadi + fatchData)
+            const result = await fetch("/Kullanicikayit/demokayit/?sadi=" + sadi + fatchData)
+                .then(response => response.json())
                 .then(async (data) => {
                     if (data.sonuc === 'OK') {
                         await Swal.fire({
@@ -306,7 +308,7 @@ const CreateDemo = forwardRef((props, ref) => {
                             confirmButtonText: "Tamam"
                         })
                             .then((result) => {
-                                //window.open("http://" + sadi + '/&ID=' + data.kullanicikisiidx, '_blank');
+                                window.open("http://" + sadi + '/&ID=' + data.kullanicikisiidx, '_blank');
                             });
                         return true;
                     }
