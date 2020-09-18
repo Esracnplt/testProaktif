@@ -25,9 +25,11 @@ class Info1 extends React.Component {
   render() {
     return (
       <div className="center" id="info1">
-        {this.state.part1}
-        <div style={{ margin: 5, fontWeight: 700 }}>{this.state.part2}</div>
-        {this.state.part3}
+        <div style={{ textAlign: "center" }}>
+          {this.state.part1}
+          <span style={{ margin: 5, fontWeight: 700 }}>{this.state.part2}</span>
+          {this.state.part3}
+        </div>
       </div>
     );
   }
@@ -152,11 +154,9 @@ class Istatistikler extends React.Component {
 
 function Button({ text, ClickFunction }) {
   return (
-    <div>
-      <button onClick={ClickFunction} className="homebutton">
-        {text}
-      </button>
-    </div>
+    <button onClick={ClickFunction} className="homebutton">
+      {text}
+    </button>
   )
 }
 
@@ -175,6 +175,11 @@ const Buttons = () => {
       id: "yuksekOkullar",
       buttonText: "Yüksek Okullar",
       content: "Yüksek Okullar listesi",
+    },
+    digerKurumlar: {
+      id: "digerKurumlar",
+      buttonText: "Diğer Kurumlar",
+      content: `<div>1- <a href="http://tdv.proaktif.org/" target="_blank">Türk Dışticaret Vakfı</a><br></div>`,
     }
   });
 
@@ -192,7 +197,7 @@ const Buttons = () => {
 
   const demoOlustur = (currentValues) => {
     ReactSwal.fire({
-      title: <p>Demo Sunucu İçin Bilgilerinizi Giriniz..</p>,
+      title: <p style={{ fontSize: "20px", fontWeight: "700" }}>Demo Sunucu İçin Bilgilerinizi Giriniz..</p>,
       //footer: 'Copyright 2018',
       allowOutsideClick: false,
       showCloseButton: true,
@@ -202,18 +207,18 @@ const Buttons = () => {
       confirmButtonText: "Kaydol",
       html: <CreateDemo currentValues={currentValues} ref={ref} />,
       // onOpen: () => {
-      //   // `MySwal` is a subclass of `Swal`
-      //   //   with all the same instance & static methods
       //   //ReactSwal.clickConfirm()
       // },
       // onDestroy: () => {
       // },
     }).then(async (result) => {
       if (result.value) {
-        // setClickedCofirm(true);
         const { saveResult, currentValues } = await ref.current.saveDemo();
         if (!saveResult)
           demoOlustur(currentValues);
+      }
+      if (!result.isConfirmed && ref.current && ref.current.salindi && ref.current.salindi !== "") {
+        ref.current.deleteDemo(ref.current.createdDomainInfo);
       }
     });
   }
@@ -427,7 +432,7 @@ const Buttons = () => {
                   });
               })
               .catch(res => {
-                console.log("Hata" + JSON.stringify(res));
+                console.log("Hata" + res);
                 Swal.fire("Sunucu Bul", "Bir hata oluştu. Lütfen Online Destekten yazınız...", "error");
               });
           },
@@ -478,13 +483,14 @@ const Buttons = () => {
     )
   })
   return (
-    <div className="homebuttons" style={{ zIndex: "10" }}>
+    <div className="homebuttons">
       {mappedButtons}
     </div>
   )
 }
 
 class Home extends React.Component {
+
   componentDidMount() {
     const Tawk_LoadStart = new Date();
     const script = document.createElement("script");

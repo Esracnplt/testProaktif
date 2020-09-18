@@ -146,12 +146,12 @@ class IconLink extends React.Component {
 class Footer extends React.Component {
   render() {
     var listedFontAwesome = [
-      { icon: faFacebook, to: "https://www.facebook.com/" },
-      { icon: faTwitter, to: "https://twitter.com" },
-      { icon: faLinkedin, to: "https://www.linkedin.com/" },
-      { icon: faInstagram, to: "https://www.instagram.com/" },
-      { icon: faYoutube, to: "https://www.youtube.com/" },
-      { icon: faPinterest, to: "https://pinterest.com/" },
+      { icon: faFacebook, to: "https://www.facebook.com/Proaktif-115947936916326" },
+      { icon: faTwitter, to: "https://twitter.com/proaktiftr" },
+      { icon: faLinkedin, to: "https://www.linkedin.com/company/proaktiftr" },
+      { icon: faInstagram, to: "https://www.instagram.com/proaktiftr" },
+      { icon: faYoutube, to: "https://www.youtube.com/channel/UCAEhH6H1trzuv30ZNXA7fXg" },
+      { icon: faPinterest, to: "https://pinterest.com/proaktiftr" },
     ];
     var mappedList = listedFontAwesome.map((object, index) => {
       return (

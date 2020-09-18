@@ -9,10 +9,17 @@ export const MesajTurleri = {
 }
 
 const CreateDemo = forwardRef((props, ref) => {
-    const [sunucuMesaj, setSunucuMesaj] = useState((props.currentValues && props.currentValues.sunucuMesaj) ? props.currentValues.sunucuMesaj : "")
-    const [sadi, setSadi] = useState((props.currentValues && props.currentValues.setSadi) ? props.currentValues.setSadi : "");
+    const [sunucuMesajTuru, setSunucuMesajTuru] = useState((props.currentValues && props.currentValues.sunucuMesajTuru) ? props.currentValues.sunucuMesajTuru : "")
+    const [sunucuMesajExtraBilgi, setSunucuMesajExtraBilgi] = useState((props.currentValues && props.currentValues.sunucuMesajExtraBilgi) ? props.currentValues.sunucuMesajExtraBilgi : "")
     const [salindi, setSalindi] = useState((props.currentValues && props.currentValues.salindi) ? props.currentValues.salindi : "")
+    const [sadi, setSadi] = useState((props.currentValues && props.currentValues.sadi) ? props.currentValues.sadi : "");
     const [timeoutId, setTimeoutId] = useState("");
+    const [kayitBasarili, setKayitBasarili] = useState(false);
+    const [createdDomainInfo, setCreatedDomainInfo] = useState((props.currentValues && props.currentValues.createdDomainInfo) ? props.currentValues.createdDomainInfo : null)
+
+    const getCurrentValues = () => {
+        return { inputs, inputsErrorMessages, sadi, salindi, sunucuMesajExtraBilgi, sunucuMesajTuru, createdDomainInfo }
+    }
 
     useEffect(() => {
         checkValidations();
@@ -22,9 +29,24 @@ const CreateDemo = forwardRef((props, ref) => {
         }
     }, []);
 
+    useEffect(() => {
+        if (salindi !== "" && salindi !== sadi)
+            deleteDemo();
+
+        if (salindi === "" && sadi !== "") {
+            setSunucuMesajExtraBilgi("");
+            setSunucuMesajTuru(MesajTurleri.INFO);
+            const producedTimeoutId = setTimeout(function () { solustur(); }, 5000);
+            setTimeoutId(producedTimeoutId);
+        }
+    }, [sadi])
+
     useImperativeHandle(ref, () => {
         return {
-            saveDemo: saveDemo
+            saveDemo: saveDemo,
+            deleteDemo: deleteDemo,
+            salindi: salindi,
+            createdDomainInfo: createdDomainInfo,
         }
     });
 
@@ -161,14 +183,6 @@ const CreateDemo = forwardRef((props, ref) => {
                 function (c, d) { return d.replace("i", "İ").toUpperCase() });
     }
 
-    useEffect(() => {
-        if (salindi === "" && sadi !== "") {
-            setSunucuMesaj(MesajTurleri.INFO);
-            const producedTimeoutId = setTimeout(function () { solustur(); }, 5000);
-            setTimeoutId(producedTimeoutId);
-        }
-    }, [sadi])
-
     const handleOnBlurFirmaAdi = (event) => {
         if (salindi === "")
             if (inputs.firmaadi.length > 2) {
@@ -202,38 +216,42 @@ const CreateDemo = forwardRef((props, ref) => {
         fetch("/Kullanicikayit/solustur/?sadi=" + sadi)
             .then(response => response.json())
             .then(data => {
+                setSunucuMesajExtraBilgi("");
                 if (data.success === true) {
-                    //setSunucuMesaj("Sunucunuz <span style='color:green;font-size:14px;font-weight:bold;'>" + data.result.name + " </span>adresi ile oluşturuldu.<img src='/img/ok.png' style='height: 20px;'></img>");
-                    setSunucuMesaj(MesajTurleri.SUCCESS);
-                    setSadi(data.result.name);
+                    //setSunucuMesajTuru("Sunucunuz <span style='color:green;font-size:14px;font-weight:bold;'>" + data.result.name + " </span>adresi ile oluşturuldu.<img src='/img/ok.png' style='height: 20px;'></img>");
                     setSalindi(data.result.name);
+                    setCreatedDomainInfo(data.result);
+                    setSadi(data.result.name);
+                    setSunucuMesajTuru(MesajTurleri.SUCCESS);
                 }
                 if (data.success === false) {
-                    //setSunucumesaj("Sunucunuz <span style='color:green;font-size:14px'>" + sadi.toLowerCase() + "pro.proaktif.org </span>adresi ile oluşturulamadı.<img src='/img/cancel.png' style='height: 20px;'></img>");
-                    setSunucuMesaj(MesajTurleri.WARNING);
+                    //setSunucuMesajTuru("Sunucunuz <span style='color:green;font-size:14px'>" + sadi.toLowerCase() + "pro.proaktif.org </span>adresi ile oluşturulamadı.<img src='/img/cancel.png' style='height: 20px;'></img>");
                     setSalindi("");
+                    if (data.errors.length > 0 && data.errors.find(e => e.code == 81053))
+                        setSunucuMesajExtraBilgi("Sunucu alan adı önceden alınmış bir alan adıdır!")
+                    setSunucuMesajTuru(MesajTurleri.WARNING);
                 }
             })
             .catch(e => {
                 console.log("ERROR from function solustur: " + e);
-                setSunucuMesaj(MesajTurleri.ERROR);
+                setSunucuMesajTuru(MesajTurleri.ERROR);
             });
     }
 
-    const ShowSunucuMesaj = () => {
+    const ShowSunucuMesajTuru = () => {
         let text = <></>;
-        switch (sunucuMesaj) {
+        switch (sunucuMesajTuru) {
             case (MesajTurleri.INFO):
-                text = (<>Sunucunuz <span style={{ color: "red" }}>{sadi}</span>demo.proaktif.org adresi ile hazırlanacaktır.</>);
+                text = (<>Sunucunuz <span style={{ color: "red", 'fontSize': '14px', 'fontWeight': '600' }}>{sadi.toLowerCase()}</span><span style={{ 'color': '#0f4aef', 'fontSize': '14px', 'fontWeight': '600' }}>demo{new Date().toISOString().substr(0, 10).replaceAll("-", "")}.proaktif.org</span> adresi ile hazırlanacaktır.<br />{sunucuMesajExtraBilgi}</>);
                 break;
             case (MesajTurleri.SUCCESS):
-                text = (<>Sunucunuz <span style={{ 'color': 'green', 'font-size': '14px', 'font-weight': 'bold' }}>{sadi}</span> adresi ile oluşturuldu.<img src='/img/ok.png' alt="success result" style={{ 'height': '20px' }}></img></>);
+                text = (<>Sunucunuz <span style={{ 'color': '#0f4aef', 'fontSize': '14px', 'fontWeight': 'bold' }}>{salindi}</span> adresi ile oluşturuldu.<img src='/img/ok.png' alt="success result" style={{ 'height': '15px' }}></img><br />{sunucuMesajExtraBilgi}</>);
                 break;
             case (MesajTurleri.WARNING):
-                text = (<>Sunucunuz <span style={{ "color": "green", "font-size": "14px" }}>{sadi.toLowerCase() + "pro.proaktif.org"}</span>adresi ile oluşturulamadı.<img src='/img/cancel.png' alt="error result" style={{ height: "20px" }}></img></>);
+                text = (<>Sunucunuz <span style={{ "color": "green", "fontSize": "14px" }}>{sadi.toLowerCase()}</span>demo{new Date().toISOString().substr(0, 10).replaceAll("-", "")}.proaktif.org adresi ile oluşturulamadı.<img src='/img/cancel.png' alt="error result" style={{ height: "15px" }}></img><br />{sunucuMesajExtraBilgi}</>);
                 break;
             case (MesajTurleri.ERROR):
-                text = (<>Kayıt İşlemi sırasında hata oluştu. Lütfen daha sonra tekrar deneyiniz.</>);
+                text = (<>Kayıt İşlemi sırasında hata oluştu. Lütfen daha sonra tekrar deneyiniz.<br />{sunucuMesajExtraBilgi}</>);
                 break;
         }
         return text;
@@ -258,9 +276,12 @@ const CreateDemo = forwardRef((props, ref) => {
 
     const phoneMask = (val) => {
         val = val.replace(/ /gm, '').replace(/[^\d]/g, "");
+
+        val = (val.length === 1 && val !== "5") ? val = "5" + val : val;
         val = val.length >= 4 ? `${val.substring(0, 3)}-${val.substring(3, val.length)}` : val;
         val = val.length >= 8 ? `${val.substring(0, 7)}-${val.substring(7, val.length)}` : val;
         val = val.length > 12 ? `${val.substring(0, 12)}` : val;
+
         return val;
     }
 
@@ -294,17 +315,28 @@ const CreateDemo = forwardRef((props, ref) => {
     const saveDemo = async () => {
         checkValidations();
         if (Object.values(inputsErrorMessages).find(ie => ie !== "") || Object.keys(inputs).find(i => (inputs[i] === "" && inputsProperties[i].required))) {
-            return { saveResult: false, currentValues: { inputs, inputsErrorMessages, sadi, salindi, sunucuMesaj } };
+            return { saveResult: false, currentValues: getCurrentValues() };
         } else {
             const fatchData = inputsToFetchData();
+
+            Swal.fire({
+                title: "Demo oluşturma",
+                showCloseButton: true,
+                icon: "info",
+                allowOutsideClick: false,
+                html: "<div>Demo  sunucunuz oluşturuluyor...<br />Lütfen bekleyiniz.</div>",
+            });
+
             const result = await fetch("/Kullanicikayit/demokayit/?sadi=" + sadi + fatchData)
                 .then(response => response.json())
                 .then(async (data) => {
                     if (data.sonuc === 'OK') {
+                        setKayitBasarili(true);
                         await Swal.fire({
                             title: "Kayıt Başarılı",
                             text: data.mesaj,
                             type: "success",
+                            allowOutsideClick: false,
                             confirmButtonText: "Tamam"
                         })
                             .then((result) => {
@@ -331,8 +363,9 @@ const CreateDemo = forwardRef((props, ref) => {
                             title: title,
                             text: data.mesaj,
                             type: type,
+                            allowOutsideClick: false,
                             confirmButtonText: "Tamam"
-                        });
+                        })
 
                         return false;
                     }
@@ -342,17 +375,25 @@ const CreateDemo = forwardRef((props, ref) => {
                         title: "Hata Oluştu",
                         text: e,
                         type: "error",
+                        allowOutsideClick: false,
                         confirmButtonText: "Tamam"
                     });
-                    return false;
-                })
-            return { saveResult: result, currentValues: { inputs, inputsErrorMessages, sadi, salindi, sunucuMesaj } };
+                    return false;//{ saveResult: false, currentValues: getCurrentValues }
+                });
+
+            return { saveResult: result, currentValues: getCurrentValues() };
         }
+    }
+
+    const deleteDemo = (domainInfo = createdDomainInfo) => {
+        fetch("/Kullanicikayit/subdomainsil?domainName=" + domainInfo.name + "&domainId=" + domainInfo.id)
+            .then(result => result.json())
+            .then(result => console.log(result))
     }
 
     return (
         <div>
-            {sunucuMesaj !== "" && <div className={`proaktif-alert ${sunucuMesaj}`}><ShowSunucuMesaj /></div>}
+            {sunucuMesajTuru !== "" && <div className={`proaktif-alert ${sunucuMesajTuru}`}><ShowSunucuMesajTuru /></div>}
             <div className="proaktif-form-group">
                 <input type="text" name="firmaadi" onChange={handleChange} onBlur={handleOnBlurFirmaAdi} onFocus={handleOnFocusFirmaAdi} id="firmaadi" placeholder={inputsProperties.firmaadi.placeHolder} value={inputs.firmaadi} title={inputsProperties.firmaadi.title} className={`proaktif-input ${inputsErrorMessages.firmaadi.length > 0 && ' error'} `} />
                 {inputsErrorMessages.firmaadi.length > 0 && (<span className="error-message">{inputsErrorMessages.firmaadi}</span>)}
