@@ -350,6 +350,7 @@ button.footer-button:hover {
   width: max-content;
   font-weight: 500;
   margin-top: 10px;
+  text-align: justify;
 }
 
 .bağlantılar {
@@ -779,7 +780,7 @@ button.footer-button:hover {
 
 .iletisim-child-cont {
   text-align: start;
-  margin: 0px 10px 0px 10px;
+  margin: 0px 10px 20px 10px;
 }
 
 .other-buttons {
@@ -1017,7 +1018,6 @@ button.footer-button:hover {
   }
   .about-text {
     width: 100%;
-    text-align: center;
     margin-top: 10px;
   }
   .footer-input {
