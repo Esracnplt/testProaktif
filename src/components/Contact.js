@@ -56,6 +56,7 @@ class Contact extends React.Component {
     ));
     var contactProps = [
       { text: "Telefon Numarası:", value: "0850 333 00 61 - 0533 766 11 42" },
+      { text: "E-Posta Adresi:", value: "info@proaktif.org" },
       { text: "Mersis Numarası:", value: "0733088785300001" },
       { text: "Tepecik V.D.", value: "733 088 7853" },
     ];
