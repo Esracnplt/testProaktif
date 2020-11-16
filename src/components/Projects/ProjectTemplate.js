@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable array-callback-return */
 /* eslint-disable no-unused-vars */
+import { faAutoprefixer } from "@fortawesome/free-brands-svg-icons";
 import React, { useCallback, useRef } from "react";
 import data from "../../language.json";
 import { MyEventBus, getDefaultLang } from "../Header"
@@ -46,7 +47,7 @@ function Proje({ item, index, projectCount }) {
                   {
                     // height ile oran korunuyor
                   }
-                  <img alt="How it works" src={require(`./../../img/${src}`)}
+                  <img alt="Custom Alt" src={require(`./../../img/${src}`)}
                     id={"img" + index.toString()}
                     className="project-image"
                     style={{ 
@@ -64,7 +65,8 @@ function Proje({ item, index, projectCount }) {
           imgs = false;
         }
         if (object.parag) {
-          var paragraphs = object.parag.map((paragObject,index) => {
+          var paragraphs = object.parag.map((paragObject, index) => {
+            console.log(paragObject)
             return (
               <div key={index}>
                 <P extraMargin="2" withoutText={true} object={paragObject} name="p1" />
@@ -121,6 +123,30 @@ function Proje({ item, index, projectCount }) {
       }
     }
 
+    function GetBoldVersion(text) {
+      if (text.bold.length) {
+        innerComponent = text.bold.map((bold, index) => {
+          var newStr;
+          var BoldText = bold
+          if (text.startWithBold) {
+            newStr = <div style={{ display: "flex" }}> <div className="bold-text">{BoldText}</div> <div style={{ marginLeft: "5px" }}>{text.def[index]}</div> </div>
+          }
+          else if (!bold) {
+            newStr = text.def[index]
+          }
+          else {
+            newStr = <div style={{ display: "flex" }}> <div className="bold-text"> {text.def[index]} </div> <div style={{ marginLeft: "5px" }}>{BoldText}</div> </div>
+          }
+          return <React.Fragment key={index}>
+            {newStr}
+          </React.Fragment>
+        })
+      }
+      else {
+        innerComponent = text.def
+      }
+      return innerComponent
+    }
 
     if (object[name]) {
       if (object[name].steps) {
@@ -155,46 +181,37 @@ function Proje({ item, index, projectCount }) {
       else {
         var text = charIndexFinder(object[name], "*")
         
-        if (text.bold.length) {
-          innerComponent = text.bold.map((bold, index) => {
-            var newStr;
-            var BoldText = bold
-            if (text.startWithBold) {
-              newStr = <div style={{ display: "flex" }}> <div className="bold-text">{BoldText}</div> <div style={{marginLeft:"5px"}}>{text.def[index]}</div> </div>
-            }
-            else if (!bold) {
-              newStr = text.def[index]
-            }
-            else {
-              newStr = <div style={{ display: "flex" }}> <div className="bold-text"> {text.def[index]} </div> <div style={{ marginLeft: "5px" }}>{BoldText}</div> </div>
-              console.log(text.def[index])
-            }
-            return <React.Fragment key={index}>
-              {newStr}
-            </React.Fragment>
-          })
-        }
-        else {
-          innerComponent = object[name]
-        }
+        innerComponent = GetBoldVersion(text)
       }
       return <div className="arge-project-desc">
         {innerComponent}
       </div>
     }
+    else if (typeof object == "string") {
+      text = charIndexFinder(object, "*")
+      innerComponent = GetBoldVersion(text)
+      console.log()
+      return (
+        <div className="arge-project-desc">
+          {innerComponent}
+        </div>
+      )
+    }
     else {
       return false
     }
   }
+
+
   function Image({ src, index, extraMargin,width, extraMarginR, height }) {
     return (
       <div
         className="project-img"
         style={{
-          marginLeft: ((extraMargin) ? extraMargin * 10 : 0) + "px",
-          marginRight:((extraMarginR)? extraMarginR : 0) + "px"
+          marginLeft: ((extraMargin) ? extraMargin : 0).toString() + "px",
+          marginRight:((extraMarginR)? extraMarginR : 0).toString() + "px"
         }}
-        key={index}>
+        key={(index)?index:"none"}>
         <img
           alt="How it works"
           src={require(`./../../img/${src}`)}
@@ -208,23 +225,53 @@ function Proje({ item, index, projectCount }) {
     )
   }
   function PImage({ object, isColumn }) {
-    if (object.image) {
-      let mappedImage = object.image.map((src, index) => <Image extraMarginR={10} key={index}  index={index} height="100px" width="200px" src={src} />)
+    if (typeof object.image == "string") {
+      var imageSrc = (object.image) ? object.image : object
+        return (
+          <div className="pimage" style={{ display: "flex", flexDirection: (!isColumn) ? "row" : "column" }}>
+            <Image extraMargin={8} height="100px" width="200px" src={imageSrc} />
+          </div>
+        )
+    }
+    else if (typeof object.image == "object") {
+      let mappedImage = object.image.map((src, index) => <Image extraMargin={8} key={index} index={index} height="100px" width="200px" src={src} />)
       return (
-        <div className="pimage" style={{display:"flex",flexDirection:(!isColumn)?"row":"column"}}>
+        <div className="pimage" style={{ display: "flex", flexDirection: (!isColumn) ? "row" : "column" }}>
           {mappedImage}
         </div>
       )
     }
-    else {
-      return false
-    }
+    else return false
   }
   var mappedDesc = item.desc.map((object, index) => {
+    function ImgPara({ name }) {
+      if (typeof object[name] == "string") {
+        return <P object={object} name={name} />
+      }
+      else if (typeof object[name] == "object") {
+        function PImageStatement({ object }) {
+          if (object.image) {
+            return <PImage isColumn={(object.isColumn) ? object.isColumn:false} object={object} />
+          }
+          else {
+            return false
+          }
+        }
+        return (
+          <div style={{display:"flex",flexDirection:object.isColumn}}>
+            <PImageStatement object={object[name]} />
+            <P name={name} object={object[name].text} />
+          </div>
+        )
+      }
+      else {
+        return false
+      }
+    }
     return (
       <div key={index} className="arge-project-desc-cont">
-        <P object={object} name="p1" />
-        <P object={object} name="p2" />
+        <ImgPara name="p1" />
+        <ImgPara name="p2" />
         <InnerProjects numberVisible={"false"} object={object} />
         <PImage isColumn={false} object={object} />
       </div>
@@ -233,7 +280,7 @@ function Proje({ item, index, projectCount }) {
   if (item.img) {
     var imgs = item.img.map((src, index) => {
       return (
-        <Image key={index} extraMargin={2} width="500px" index={index} src={src} />
+        <Image key={index} extraMargin={30} width="500px" index={index} src={src} />
       );
     });
   } else {

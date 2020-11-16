@@ -323,6 +323,20 @@
           "img":[
             "smartblowing.jpg"
           ]
+        },
+        {
+          "title":"4. Dış Ticaret Yönetimi Detay Beyan Uygulaması Çevrimiçi Mesleki Eğitim Sistem ve Yazılımı Geliştirilmesi Projesi",
+          "desc":[
+            {
+              "p1":"Proje kapsamında, ulusal ve global Dış Ticaret Yönetim Sistem ve Yazılımlarının (DTYS) en önemli bileşenlerinden olan çevrimiçi Detay Beyan (DB) uygulama süreçlerinin profesyonel mesleki eğitim ve sertifikasyon çözümü olacak etkin bir çevrimiçi web uygulama sistemi ve yazılımı geliştirilmesi ve ticarileştirilmesi amaçlanmaktadır.",
+              "p2":{
+                "text":"Ağırlıklı olarak firma öz kaynakları ile yürütülmekte olan proje, KOSGEB Ar-Ge, İnovasyon Destek Programı kapsamında da desteklenmektedir (No:06.11.2020/2045).",
+                "image":"kosgeb.jpg",
+                "isColumn":true
+              }
+            }
+          ],
+          "img":["kosgeb2.png","kosgeb3.jpg"]
         }
       ],
       "socialProjects": [
@@ -536,7 +550,7 @@
               "p1":"Önemli bir ihtiyaç ve talebi karşılamak üzere, temelleri  90’lı yıllara uzanan ve ilk zamanlarda masaüstü uygulama olarak hizmet veren ürünümüz, teknolojinin gelişmesi ve internetin yaygınlaşmasıyla birlikte 2000’li  yılların başların itibaren web tabanlı çevrimiçi bir hizmet çözümüne dönüşmüştür. Son olarak mikroservisler mimarisi esas alınarak ve özgün bir yaklaşım ile Teknopark bünyesinde bir Ar-Ge projesi kapsamında geliştirilerek yenilikçi, değişen kullanıcı/sistem isterlerine karşın dinamik ve dayanıklı sistem yapısıyla yeni bir ürün olarak tasarımları yapılarak gerçekleştirilmiş bulunmaktadır. Bu katma değerlikli özellikleri ile ulusal ölçekte olduğu kadar global hizmet sunma ve yurtdışını satış potansiyeli ile ürünümüz sürekli geliştirilebilir ve kullanıcı firmalara (müşterilere) artan kalite standartlarında hizmet verebilmektedir."
             },
             {
-              "p1": "Son dönemde, uzman yazılım ve sistem mühendislerinden oluşan Proaktif Ar-Ge ekibinin yoğun çalışmalarıyla aşağıda belirtilen modüller mikroservisler mimarisiyle yapılandırılarak esnek ve modüler çözüm stratejisi ile web/sunucu uygulamalarının hem teknik hem de ticari başarımı üst düzeylere çıkarılmış bulunmaktadır.  Ürünümüzün, global pazarlara uygun gerekli tüm düzenlemeler yapılarak yurtdışına pazarlanmasına yönelik teknik olduğu kadar uluslararası mevzuat açısından da önemli çalışmalar planlanmış olup takvim içerisinde projelendirilecektir."
+              "p1":"Son dönemde, uzman yazılım ve sistem mühendislerinden oluşan Proaktif Ar-Ge ekibinin yoğun çalışmalarıyla aşağıda belirtilen modüller mikroservisler mimarisiyle yapılandırılarak esnek ve modüler çözüm stratejisi ile web/sunucu uygulamalarının hem teknik hem de ticari başarımı üst düzeylere çıkarılmış bulunmaktadır.  Ürünümüzün, global pazarlara uygun gerekli tüm düzenlemeler yapılarak yurtdışına pazarlanmasına yönelik teknik olduğu kadar uluslararası mevzuat açısından da önemli çalışmalar planlanmış olup takvim içerisinde projelendirilecektir."
             },
             {
               "innerProjects": [

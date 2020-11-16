@@ -1,3 +1,9 @@
+/* eslint-disable eqeqeq */
+/* eslint-disable default-case */
+/* eslint-disable no-unreachable */
+/* eslint-disable no-useless-escape */
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
 import Swal from 'sweetalert2'
 
