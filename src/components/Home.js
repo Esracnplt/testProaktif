@@ -238,14 +238,7 @@ const Buttons = () => {
       html: (!hasLoadedSchools) ? <div>Bilgiler getiriliyor...<br />Lütfen bekleyiniz.</div> : <ProaktifTab tabs={egitimDestekleriTabs} />,
       onOpen: () => {
         if (!hasLoadedSchools) {
-          fetch("/index/okullar/",
-          {
-            headers: {
-              //'Content-Type': 'application/x-www-form-urlencoded',
-              'Access-Control-Allow-Origin': '*',
-              'Accept': 'application/json',
-            }
-          })
+          fetch("/index/okullar/")
             .then(response => response.json())
             .then((data) => {
               setEgitimDestekleriTabs(tabs =>
