@@ -219,7 +219,7 @@ const CreateDemo = forwardRef((props, ref) => {
     }
 
     function solustur() {
-        fetch("/Kullanicikayit/solustur/?sadi=" + sadi)
+        fetch("https://pro.proaktif.org/Kullanicikayit/solustur/?sadi=" + sadi)
             .then(response => response.json())
             .then(data => {
                 setSunucuMesajExtraBilgi("");
@@ -333,7 +333,7 @@ const CreateDemo = forwardRef((props, ref) => {
                 html: "<div>Demo  sunucunuz oluşturuluyor...<br />Lütfen bekleyiniz.</div>",
             });
 
-            const result = await fetch("/Kullanicikayit/demokayit/?sadi=" + sadi + fatchData)
+            const result = await fetch("https://pro.proaktif.org/Kullanicikayit/demokayit/?sadi=" + sadi + fatchData)
                 .then(response => response.json())
                 .then(async (data) => {
                     if (data.sonuc === 'OK') {
@@ -392,7 +392,7 @@ const CreateDemo = forwardRef((props, ref) => {
     }
 
     const deleteDemo = (domainInfo = createdDomainInfo) => {
-        fetch("/Kullanicikayit/subdomainsil?domainName=" + domainInfo.name + "&domainId=" + domainInfo.id)
+        fetch("https://pro.proaktif.org/Kullanicikayit/subdomainsil?domainName=" + domainInfo.name + "&domainId=" + domainInfo.id)
             .then(result => result.json())
             .then(result => console.log(result))
     }

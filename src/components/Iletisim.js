@@ -77,7 +77,7 @@ const Inputs = () => {
         },
         body: "subject=" + state.topic + "&message=" + state.message + "&name=" + state.name + "&email=" + state.email + "&phonenumber=" + state.phoneNumber
       };
-      fetch("/netkozanet/contactform/contactform.php", requestOptions)
+      fetch("https://pro.proaktif.org/netkozanet/contactform/contactform.php", requestOptions)
         .then(r => r.json()).then(result => {
           if (result && result.sonuc) {
             setState({ ...defaultValue, topic: state.topic });

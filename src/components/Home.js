@@ -238,7 +238,7 @@ const Buttons = () => {
       html: (!hasLoadedSchools) ? <div>Bilgiler getiriliyor...<br />Lütfen bekleyiniz.</div> : <ProaktifTab tabs={egitimDestekleriTabs} />,
       onOpen: () => {
         if (!hasLoadedSchools) {
-          fetch("/index/okullar/")
+          fetch("https://pro.proaktif.org/index/okullar")
             .then(response => response.json())
             .then((data) => {
               setEgitimDestekleriTabs(tabs =>
@@ -315,7 +315,7 @@ const Buttons = () => {
           icon: "info",
           html: <div>Bilgiler getiriliyor...<br />Lütfen bekleyiniz.</div>,
           onOpen: () => {
-            fetch("/sertifika/sertifikadurumkontrol?BelgeNo=" + sertifikaNo)
+            fetch("https://pro.proaktif.org/sertifika/sertifikadurumkontrol?BelgeNo=" + sertifikaNo)
               .then(response => response.json())
               .then(data => {
                 let aciklama = "";
@@ -406,7 +406,7 @@ const Buttons = () => {
           icon: "info",
           html: <div>Bilgiler getiriliyor...<br />Lütfen bekleyiniz.</div>,
           onOpen: () => {
-            fetch("/index/sunucubul/" + tc)
+            fetch("https://pro.proaktif.org/index/sunucubul/" + tc)
               .then(response => response.json())
               .then(data => {
                 if (data.sonuc === "var") {
