@@ -13,7 +13,7 @@ import ProaktifTab from '../utils/ProaktifTab';
 import CountUp from "react-countup";
 
 import data from "../language.json"
-import { faTumblr } from "@fortawesome/free-brands-svg-icons";
+
 
 class Info1 extends React.Component {
   constructor(props) {
