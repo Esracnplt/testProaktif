@@ -302,7 +302,7 @@ function fixedImage(src) {
     return false
   }
   return (
-    <img width="600" src={require("../../img/"+src)} />
+    <img width="600" style={{marginTop:50,height:280,width:600}} src={require("../../img/"+src)} />
   )
 }
 
@@ -344,7 +344,7 @@ class ArgeProjects extends React.Component {
 }
 
 class ProjectTemplate extends React.Component {
-  render() {
+  render() { 
     return (
       <React.Fragment>
         <ArgeProjects projectName={this.props.projectName} />
