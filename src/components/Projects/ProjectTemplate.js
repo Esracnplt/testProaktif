@@ -5,7 +5,6 @@ import { faAutoprefixer } from "@fortawesome/free-brands-svg-icons";
 import React, { useCallback, useRef } from "react";
 import data from "../../language.json";
 import { MyEventBus, getDefaultLang } from "../Header"
-import img from '../../img/office.jpg'
 
 function Proje({ item, index, projectCount }) {
   function InnerProjects({ object, numberVisible }) {
@@ -300,8 +299,7 @@ class ArgeProjects extends React.Component {
   constructor(props) {
     super(props)
     this.state = ({
-      language:getDefaultLang(),
-      projectName:props.projectName
+      language:getDefaultLang()
     })
   }
   componentDidMount() {
@@ -315,20 +313,12 @@ class ArgeProjects extends React.Component {
     })*/
   }
   render() {
-    console.log(data,"data json",data[this.state.language],"project name",this.state.projectName);
-    var projects = data[this.state.language].projects[this.state.projectName].map((object, index) => (
+    var projects = data[this.state.language].projects[this.props.projectName].map((object, index) => (
       <div key={index} className="project-cont">
-        <Proje key={index} index={index} projectCount={data[this.state.language].projects[this.state.projectName].length} item={object} />
+        <Proje key={index} index={index} projectCount={data[this.state.language].projects[this.props.projectName].length} item={object} />
       </div>
     ));
-    return(<div className="row" style={{backgroundColor:"#1d1d1d"}}>
-     <div className="arge-projects col-lg-6">
-       {projects}
-       </div>
-       <div className="arge-projects col-lg-6 mt-4">
-        <img className="m-4" width="700px" style={{marginRight:100,marginTop:"100px !important"}} src={img}/>    
-     </div>
-    </div>);
+    return <div className="arge-projects">{projects}</div>;
   }
 }
 

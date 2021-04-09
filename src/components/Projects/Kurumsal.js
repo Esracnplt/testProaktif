@@ -5,9 +5,9 @@ import ProjectTemplate from "./ProjectTemplate";
 class KurumsalComponent extends React.Component {
     render() {
         return (
-            <>
-                <ProjectTemplate  projectName="corporate" />
-            </>
+            <div>
+                <ProjectTemplate projectName="corporate" />
+            </div>
         )
     }
 }
