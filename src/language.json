@@ -121,6 +121,7 @@
       ],     
        "corporate":[
         {
+          "fixedImage":"office.jpg",
           "title":"Hakkımızda",
           "desc":[
             {
@@ -468,6 +469,9 @@
 
 
   "tr": {
+    "fixedImages" : {
+        "corporate":"office.jpg"
+    },
     "footer":{
       "message-def":"Mesajınızın Konusunu Seçiniz",
       "message_topic":[

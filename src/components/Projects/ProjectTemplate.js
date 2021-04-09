@@ -67,7 +67,7 @@ function Proje({ item, index, projectCount }) {
         }
         if (object.parag) {
           var paragraphs = object.parag.map((paragObject, index) => {
-            console.log(paragObject)
+            //console.log(paragObject)
             return (
               <div key={index}>
                 <P extraMargin="2" withoutText={true} object={paragObject} name="p1" />
@@ -191,7 +191,7 @@ function Proje({ item, index, projectCount }) {
     else if (typeof object == "string") {
       text = charIndexFinder(object, "*")
       innerComponent = GetBoldVersion(text)
-      console.log()
+      //console.log()
       return (
         <div className="arge-project-desc">
           {innerComponent}
@@ -296,6 +296,16 @@ function Proje({ item, index, projectCount }) {
   );
 }
 
+function fixedImage(src) {
+  //console.log("src",src)
+  if (!src) {
+    return false
+  }
+  return (
+    <img width="600" src={require("../../img/"+src)} />
+  )
+}
+
 class ArgeProjects extends React.Component {
   constructor(props) {
     super(props)
@@ -315,18 +325,19 @@ class ArgeProjects extends React.Component {
     })*/
   }
   render() {
-    console.log(data,"data json",data[this.state.language],"project name",this.state.projectName);
+    //console.log(data,"data json",data[this.state.language],"project name",this.state.projectName);
     var projects = data[this.state.language].projects[this.state.projectName].map((object, index) => (
       <div key={index} className="project-cont">
         <Proje key={index} index={index} projectCount={data[this.state.language].projects[this.state.projectName].length} item={object} />
       </div>
     ));
+    //console.log(data[this.state.language].projects[this.state.projectName])
     return(<div className="row" style={{backgroundColor:"#1d1d1d"}}>
      <div className="arge-projects col-lg-6">
        {projects}
        </div>
        <div className="arge-projects col-lg-6">
-        <img className="m-4 mt-4" width="700px" style={{marginRight:100}} src={img}/>    
+         {fixedImage(data[this.state.language].fixedImages[this.state.projectName])}
      </div>
     </div>);
   }
