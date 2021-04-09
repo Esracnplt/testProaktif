@@ -325,8 +325,8 @@ class ArgeProjects extends React.Component {
      <div className="arge-projects col-lg-6">
        {projects}
        </div>
-       <div className="arge-projects col-lg-6">
-        <img className="m-4 mt-4" width="700px" style={{marginRight:100}} src={img}/>    
+       <div className="arge-projects col-lg-6 mt-4">
+        <img className="m-4" width="700px" style={{marginRight:100,marginTop:"100px !important"}} src={img}/>    
      </div>
     </div>);
   }
