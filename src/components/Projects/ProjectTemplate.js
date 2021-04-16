@@ -302,10 +302,17 @@ function fixedImage(src) {
     return false
   }
   return (
-    <img width="600" style={{marginTop:50,height:280,width:600}} src={require("../../img/"+src)} />
+    <img style={{marginTop:50,height:250,width:700}} src={require("../../img/"+src)} />
   )
 }
-
+function teknopark(src) {
+  if (!src) {
+    return false
+  }
+  return (
+    <img  style={{marginTop:50,height:280,width:700}} src={require("../../img/"+src)} />
+  )
+}
 class ArgeProjects extends React.Component {
   constructor(props) {
     super(props)
@@ -327,18 +334,23 @@ class ArgeProjects extends React.Component {
   render() {
     //console.log(data,"data json",data[this.state.language],"project name",this.state.projectName);
     var projects = data[this.state.language].projects[this.state.projectName].map((object, index) => (
-      <div key={index} className="project-cont">
+      <div key={index} className="project-cont ml-4">
         <Proje key={index} index={index} projectCount={data[this.state.language].projects[this.state.projectName].length} item={object} />
       </div>
     ));
     //console.log(data[this.state.language].projects[this.state.projectName])
     return(<div className="row" style={{backgroundColor:"#1d1d1d"}}>
-     <div className="arge-projects col-lg-6">
+     <div className="arge-projects col-lg-6 ">
        {projects}
        </div>
-       <div className="arge-projects col-lg-6">
+       <div className="arge-projects col-lg-6 " >
+        <div className="row" style={{marginLeft:0}}>
          {fixedImage(data[this.state.language].fixedImages[this.state.projectName])}
-     </div>
+      </div>   
+      <div className="row" style={{marginLeft:0}}>
+        {teknopark(data[this.state.language].teknopark[this.state.projectName])}
+      </div>
+      </div>
     </div>);
   }
 }

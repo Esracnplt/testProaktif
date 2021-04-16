@@ -89,16 +89,17 @@ class ChangeLanguage extends React.Component {
     var currentLanguage = (
       navigator.userLanguage || navigator.language
     ).substring(0, 2);
-    if (component.state.language === "tr") {
+    console.log(currentLanguage,"current language");
+    if (component.state.language === "tr" || component.state.language === "tr-TR") {
       component.setState({
-        language: "en",
+        language: "en"||"en-US",
       });
-      currentLanguage = "en";
-    } else if (component.state.language === "en") {
+      currentLanguage = "en"||"en-US";
+    } else if (component.state.language === "en"|| component.state.language === "en-US") {
       component.setState({
-        language: "tr",
+        language: "tr"||"tr-TR",
       });
-      currentLanguage = "tr";
+      currentLanguage = "tr" ||"tr-TR";
     }
     MyEventBus.emit("language", null, currentLanguage);
   }
