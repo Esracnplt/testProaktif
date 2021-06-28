@@ -1,235 +1,103 @@
-import React from "react";
-import "../style.css";
-import logo from "../img/logo.png";
-import { Link } from "react-router-dom";
-import data from "../language.json";
-import EventBus from "js-event-bus";
+import React, { useEffect, useState } from 'react';
+import translate from '../i18nProvider/translate';
+import LanguageSelect from './layout/languageSelect';
+import { faBars, faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Link, useLocation } from 'react-router-dom';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { navClass } from '../utils/atomUtils';
 
-export var MyEventBus = EventBus();
+export default function Header(props) {
+    const { history } = props;
 
-export function getDefaultLang() {
-  return (navigator.language || navigator.userLanguage).substring(0, 2)
-}
+    const [windowSize, setWindowSize] = useState(false);
+    const [openMenu, setOpenMenu] = useState(false);
+    const [openSubMenu, setopenSubMenu] = useState(false);
+     const [navClassN, setNavClassN] = useRecoilState(navClass);
 
-window.changeHamburger = () => {
-  window.scrollTo(0,0)
-  if (window.hamburgerOpen) {
-    window.hamburgerOpen = false
-    document.querySelector("html").classList.remove("of-y-hidden")
-    document.querySelector(".other-buttons").classList.remove("visible")
-    document
-      .getElementById("hamburger-part1")
-      .classList.remove("hamburger-open");
-    document
-      .getElementById("hamburger-part2")
-      .classList.remove("hamburger-open");
-    document
-      .getElementById("hamburger-part3")
-      .classList.remove("hamburger-open");
-  } else {
-    window.hamburgerOpen = true
-    document.querySelector("html").classList.add("of-y-hidden")
-    document.querySelector(".other-buttons").classList.add("visible")
-    document
-      .getElementById("hamburger-part1")
-      .classList.add("hamburger-open");
-    document
-      .getElementById("hamburger-part2")
-      .classList.add("hamburger-open");
-    document
-      .getElementById("hamburger-part3")
-      .classList.add("hamburger-open");
-  }
-}
+     const location = useLocation();
+     const path = location.pathname.split("/");
+ 
+ 
+     useEffect(() => {
+       if (path[1].length === 0) {
+           setNavClassN("mainBar mainbar-color");
+       } else {
+        setNavClassN("navMain");
+       }
+     }, [navClassN]);
 
-function HoverMenuChild({ item }) {
-  var button = <div className="hover-menu-child">{item.text}</div>;
-  if (item.to) {
-    return <Link onClick={window.changeHamburger} to={item.to}>{button}</Link>;
-  } else {
-    return <div>{button}</div>;
-  }
-}
-
-function HoverMenu({ item }) {
-  var mappedList = item.map((object) => (
-    <HoverMenuChild key={object.text} item={object} />
-  ));
-  return <div className="hover-menu">{mappedList}</div>;
-}
-
-function HeaderButtons({ item }) {
-  var headerButton = <button className="header-button">{item.text}</button>;
-  if (item.to) {
-    return <Link onClick={window.changeHamburger} to={item.to}>{headerButton}</Link>;
-  } else {
-    return <div>{headerButton}</div>;
-  }
-}
-
-class ContactUs extends React.Component {
-  render() {
-    return (
-      <Link to="/contact">
-        <button className="rounded-button">{this.props.text}</button>
-      </Link>
-    );
-  }
-}
-
-class ChangeLanguage extends React.Component {
-  constructor(props) {
-    super(props);
-    var language = getDefaultLang()
-    this.state = {
-      language: language,
-    };
-  }
-  changeFlag(component) {
-    var currentLanguage = (
-      navigator.userLanguage || navigator.language
-    ).substring(0, 2);
-    console.log(currentLanguage,"current language");
-    if (component.state.language === "tr" || component.state.language === "tr-TR") {
-      component.setState({
-        language: "en"||"en-US",
-      });
-      currentLanguage = "en"||"en-US";
-    } else if (component.state.language === "en"|| component.state.language === "en-US") {
-      component.setState({
-        language: "tr"||"tr-TR",
-      });
-      currentLanguage = "tr" ||"tr-TR";
-    }
-    MyEventBus.emit("language", null, currentLanguage);
-  }
-  render() {
-    return (
-      <React.Fragment>
-        <div
-          className="flag"
-          id="flag"
-          onMouseDown={() => {
-            this.changeFlag(this);
-          }}
-        >
-          {this.state.language.toUpperCase()}
-        </div>
-      </React.Fragment>
-    );
-  }
-}
-
-function HeaderMenu({ item }) {
-  if (item.inside) {
-    return <HoverMenu item={item.inside} />;
-  } else {
-    return false;
-  }
-}
-
-class Header extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      language: getDefaultLang(),
-      hamburgerOpen: false,
-    };
-    MyEventBus.emit("language", null, this.state.language);
-  }
-  componentWillUnmount() {
-    //link değişince header yine olsada aslında başka bir tane olacağı için eventları kapatıyor bu sayede ramden tasarruf ediyor.
-    MyEventBus.detachAll();
-  }
-  componentDidMount() {
-    var component = this;
-    MyEventBus.on("language", function (msg) {
-      component.setState({
-        language: msg,
-      });
-    });
-    /*function OnClick(elem) {
-      console.log("deneme")
-      elem.onmousedown = function () {
-        if (component.state.hamburgerOpen === true) {
-          component.changeHamburger(component)
+      console.log(navClassN,"navClassN");
+    useEffect(() => {
+        function updateSize() {
+            if (window.innerWidth >= 982) {
+                setWindowSize(true)
+            }
+            else if (window.innerWidth < 982) {
+                setWindowSize(false);
+            }
         }
-      }
-    }
-    document.querySelectorAll("a > button.header-button").forEach((elem) => {
-      OnClick(elem)
-    })
-    document.querySelectorAll("a > button.logo").forEach(elem => {
-      OnClick(elem)
-    })*/
-  }
-  render() {
-    var languageObject = data[this.state.language].header;
-    var headerButtons = [
-      { text: languageObject.homeScreen, to: "/" },
-      {
-        text: languageObject.corporate, to:"/corporate"
-      },
-      { text: languageObject.products, to:"/products" },
-      {
-        text: languageObject.projects,
-        inside: [
-          { text: languageObject.argeProjects, to: "/argeprojects" },
-          { text: languageObject.socialProjects, to: "/socialprojects" },
-        ],
-      },
-      { text: languageObject.collaborations, to:"/collabrations" },
-    ];
-    var mappedButtons = headerButtons.map((object) => (
-      <div key={object.text} className="header-button-cont">
-        <HeaderButtons item={object} />
-        <HeaderMenu item={object} />
-      </div>
-    ));
-    var buttons = <div className="buttons">
-      {mappedButtons}
-      <div className="margin">
-        <ContactUs text={languageObject.contactUs} />
-      </div>
-    </div>
+        window.addEventListener('resize', updateSize);
+        updateSize();
+        return () => window.removeEventListener('resize', updateSize);
+    }, []);
     return (
-      <React.Fragment>
-        <div className="header" id="header">
-          <Link style={{"display":"flex","alignItems":"center"}} to="/">
-            <div id="logo" className="logo ortala">
-              <img style={{ height: "60px" }} src={logo} alt="Logo"></img>
-            </div>
-            <div style={{"color":"white","fontWeight":"700","letterSpacing":"3px"}}>
-              PROAKTİF
-            </div>
-          </Link>
-          <div
-            className="hamburger"
-            onMouseDown={() => {
-              window.changeHamburger();
-            }}
-          >
-            <svg
-              viewBox="0 0 100 80"
-              width="40"
-              height="40"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="white"
-            >
-              <rect id="hamburger-part1" rx="5" width="100" height="20"></rect>
-              <rect id="hamburger-part2" rx="5" y="30" width="100" height="20"></rect>
-              <rect id="hamburger-part3" rx="5" y="60" width="100" height="20"></rect>
-            </svg>
-          </div>
-          {buttons}
-          <ChangeLanguage />
-        </div>
-        <div className="other-buttons">
-            {buttons}
-        </div>
-      </React.Fragment>
-    );
-  }
-}
+        <header className={"w-100 " + navClassN}>
+            <div className="d-flex align-items-center justify-content-between p-2 w-100">
+                <div className="d-flex justify-content-start">
+                    {windowSize === true ? (
+                        <div className="d-flex align-items-center justify-content-center">
+                            <img height='60px' width='60px' className="ml-2" style={{opacity:"none"}} src={'/assests/img/logo.png'} />
+                            <p style={{ color: "white", marginTop: 10, marginLeft: 5, fontSize: 15, fontWeight: "bold",fontStyle:"italic" }}>Proaktif</p>
 
-export default Header;
+                        </div>) : (<div>
+                            <a onClick={() => setOpenMenu(!openMenu)}>
+                                <FontAwesomeIcon style={{ color: "white" }} icon={faBars} />
+                            </a>
+                        </div>)}
+                </div>
+
+                <div className="d-flex align-items-center justify-self-center">
+                    {windowSize === false && (<img height='55px' width='55px' src={'/assests/img/logo.png'} />)}
+                </div>
+                <div className="d-flex justify-content-end row mr-4">
+                    {windowSize === true && (<>
+                        <li className="mr-2"><a href="/">{translate('home')}</a></li>
+                        <li className="mr-2"><Link to="/Corporate">{translate('corparate')}</Link></li>
+                        <li className="mr-2"><Link to="/Products">{translate('product')} </Link></li>
+                        <li class="dropdown mr-2">
+                            <a class="dropdown-toggle" data-toggle="dropdown" style={{ backgroundColor: "#007bff", color: "white" }} href="#">{translate('projects')}</a>
+                            <ul class="dropdown-menu sub-menu" style={{backgroundColor:"rgb(0, 173, 239,0.6)",color: "white",boxShadow:"3px 2px 13px 0px rgba(50, 55, 50, 0.93)" }}>
+                                <li><a href="/Projects"> AR-GE Projelerimiz</a></li>
+                                <li><a href="/VolunterEdu"> Eğitim geleceğimiz sosyal sorumluluk Projelerimiz</a></li>
+                            </ul>
+                        </li>
+                        <li className="mr-2"><Link to="/Referance">{translate('collaborations')}</Link></li>
+                        <li className="mr-3 ml-3 "><Link to="/Contact">{translate('contact')}</Link></li>
+                    </>)}
+
+                    <LanguageSelect />
+                </div>
+            </div>
+            <div>
+                {openMenu === true && windowSize === false &&
+                    <div className="mobile-menu" style={{ zIndex: 1 }}>
+                        <ul className="mobile-sub-menu">
+                            <li><a href="/">Anasayfa</a></li>
+                            <li><Link to="/Corporate">Kurumsal</Link></li>
+                            <li><Link to="/Products"> Ürünlerimiz</Link></li>
+                            <li><a onClick={() => setopenSubMenu(!openSubMenu)} style={{ cursor: "pointer",backgroundColor:"transparent !important" }}>Projelerimiz</a>
+                            {openSubMenu ? <FontAwesomeIcon className="ml-2" icon={faSortDown} /> : <FontAwesomeIcon className="ml-2" icon={faSortUp} />}</li>
+                            {openSubMenu &&
+                                <ul className="mobile-sub-menu">
+                                    <li><a href="/Projects"> AR-GE Projelerimiz</a></li>
+                                    <li><a href="/Products"> Eğitim geleceğimiz sosyal sorumluluk Projelerimiz</a></li>
+                                </ul>}
+                            <li><Link to="/Referance"> İş Birliklerimiz</Link></li>
+                            <li><button className="mt-3" className="contact-btn"><Link to="/Contact">İletişim</Link></button></li>
+                        </ul>
+                    </div>}
+            </div>
+        </header>
+    );
+}

@@ -32,16 +32,19 @@ const ProaktifTab = ({ tabs }) => {
     }, [activeLink])
 
     const TabButtons = Object.keys(tabs).map((tab) => {
-        return (<button key={tabs[tab].id} className={`tablinks ${activeLink === tabs[tab].id && "active"}`} onClick={(e) => setActiveLink(tabs[tab].id)}>{tabs[tab].buttonText}</button>);
+        return (<button key={tabs[tab].id} className={`btn-tab  ${activeLink === tabs[tab].id && "active"}`} style={{border:"none",borderRadius:"5px !important"}} onClick={(e) => setActiveLink(tabs[tab].id)}>{tabs[tab].buttonText}</button>);
     })
-
     return (
         <>
-            <div className="proaktif-tab">
-                <div className="proaktif-tab-buttons">
-                    {TabButtons}
-                </div>
-                <div className="proaktif-tab-content" dangerouslySetInnerHTML={{ __html: content }} style={{textAlign:"left", fontSize:"15px"}}>
+            <div className="card">
+                <div className="card-header">
+                    <div className="d-flex align-items-center justify-content-center">
+                        {TabButtons}
+                    </div>
+                    <div className="card-body">
+                        <div className="proaktif-tab-content" dangerouslySetInnerHTML={{ __html: content }} style={{ textAlign: "left", fontSize: "15px" }}>
+                        </div>
+                    </div>
                 </div>
             </div>
         </>
