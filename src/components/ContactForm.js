@@ -3,8 +3,12 @@ import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import Select from "react-select";
 import Swal from 'sweetalert2';
+import { injectIntl } from "react-intl";
+import translate from '../i18nProvider/translate';
 
-export default function ContactForm() { 
+
+function ContactForm(props) { 
+    const{intl}=props;
     const [selectedOption, setSelectedOption] = useState();
     const options = [
         { value: '', label: 'Mesajınızın konusunu seçiniz...' },
@@ -85,9 +89,9 @@ export default function ContactForm() {
     return (
         <div>
             <form>
-                <input className="react-tel-input form-control" onChange={changeState} value={state.name} id="name" placeholder="Adınız-Soyadınız" />
-                <input className="react-tel-input mt-2 form-control" onChange={changeState} value={state.email} id="email" placeholder="E-Mail Adresiniz" />
-                <input className="react-tel-input mt-2 form-control"onChange={changeState} value={state.phoneNumber} id="phoneNumber"  placeholder="Telefon Numaranız" />
+                <input className="react-tel-input form-control" onChange={changeState} value={state.name} id="name" placeholder={intl.formatMessage({ id: "name-surname" })}/>
+                <input className="react-tel-input mt-2 form-control" onChange={changeState} value={state.email} id="email" placeholder="E-Mail" />
+                <input className="react-tel-input mt-2 form-control"onChange={changeState} value={state.phoneNumber} id="phoneNumber"  placeholder={intl.formatMessage({ id: "phone" })} />
                 <Select
                     className="mt-2"
                     styles={MenuStyle}
@@ -95,11 +99,12 @@ export default function ContactForm() {
                     onChange={handleChange}
                     options={options}
                 />
-                <textarea className="react-tel-input mt-2 form-control" onChange={changeState} value={state.message} id="message" placeholder="Mesajınız" />
+                <textarea className="react-tel-input mt-2 form-control" onChange={changeState} value={state.message} id="message" placeholder={intl.formatMessage({ id: "message" })} />
                 <div className="d-flex align-items-center justify-content-end">
-                    <button onClick={sendEmail} className="footer-button"> Gönder </button>
+                    <button onClick={sendEmail} className="footer-button">{translate('Send')}</button>
                 </div>
             </form>
         </div>
     );
 }
+export default injectIntl(ContactForm);

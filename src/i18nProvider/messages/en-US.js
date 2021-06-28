@@ -17,6 +17,10 @@ export default {
         "supportEdu":"Educational Supports",
         "createDemo":"Create Demo",
         "certificateCheck":"Certificate Check",
-        "serverSearch":"Server Search"
-
+        "serverSearch":"Server Search",
+        //footer
+        "name-surname": "Name Surname",
+        "phone":"Phone Number",
+        "Messagge":"Message",
+        "Send":"Send"
     }}
