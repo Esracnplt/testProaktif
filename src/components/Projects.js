@@ -5,7 +5,7 @@ export default function Projects() {
         <div>
             <div>
                 <div class="sample-header">
-                    <img src="assests/img/teknopark.jpg" />
+                    <img src="assests/img/teknopark.jpg" style={{height:"100vh"}} />
                 </div>
 
                 <div className="m-top71 sample-section-wrap" style={{ padding: 40 }}>

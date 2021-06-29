@@ -6,7 +6,11 @@ export default function Contact() {
     return (
         <div>
             <div class="sample-header">
+<<<<<<< Updated upstream
                 <img src="assests/img/teknopark.jpg" alt="Kocaeli Teknoloji Araştırma ve Geliştirme Merkezi"/>
+=======
+                <img  src="assests/img/teknopark.jpg" style={{height:"100vh"}} />
+>>>>>>> Stashed changes
             </div>
             <div className="m-top71 sample-section-wrap" style={{ padding: 40 }}>
                 <div className="sample-section">

@@ -18,7 +18,7 @@ export default function Corporate() {
     return (
         <div>
             <div class="sample-header">
-                <img src="assests/img/teknopark.jpg" />
+                <img src="assests/img/teknopark.jpg" style={{height:"100vh"}} />
             </div>
 
             <div className={navClassName === "navMain" ? "m-top71 sample-section-wrap" : "sample-section-wrap"} style={{ padding: 40 }}>

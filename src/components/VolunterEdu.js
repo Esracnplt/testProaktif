@@ -5,7 +5,7 @@ const VolunterEdu = () => {
         <div className="d-flex align-items-center justify-content-center">
             <div>
                 <div class="sample-header">
-                    <img src="assests/img/teknopark.jpg" />
+                    <img src="assests/img/teknopark.jpg" style={{height:"100vh"}}/>
                 </div>
 
                 <div className="m-top71 sample-section-wrap" style={{ padding: 40 }}>
