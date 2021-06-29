@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
 import Swal from 'sweetalert2';
 
 export const MesajTurleri = {
@@ -177,9 +177,11 @@ const CreateDemo = forwardRef((props, ref) => {
 
     const handleOnBlur = (event) => {
         return false;
+        /*
         event.target.value = event.target.value.replace(/([\wöçşğüıİ])/gi,
             function (a, b) { return b.replace("I", "ı").toLowerCase() }).replace(/(^[a-zöçşğüı]|[\s|\.][a-zöçşğüı])/g,
                 function (c, d) { return d.replace("i", "İ").toUpperCase() });
+                */
     }
 
     const handleOnBlurFirmaAdi = (event) => {
@@ -226,7 +228,7 @@ const CreateDemo = forwardRef((props, ref) => {
                 if (data.success === false) {
                     //setSunucuMesajTuru("Sunucunuz <span style='color:green;font-size:14px'>" + sadi.toLowerCase() + "pro.proaktif.org </span>adresi ile oluşturulamadı.<img src='/img/cancel.png' style='height: 20px;'></img>");
                     setSalindi("");
-                    if (data.errors.length > 0 && data.errors.find(e => e.code == 81053))
+                    if (data.errors.length > 0 && data.errors.find(e => e.code === 81053))
                         setSunucuMesajExtraBilgi("Sunucu alan adı önceden alınmış bir alan adıdır!")
                     setSunucuMesajTuru(MesajTurleri.WARNING);
                 }
@@ -249,7 +251,7 @@ const CreateDemo = forwardRef((props, ref) => {
             case (MesajTurleri.WARNING):
                 text = (<>Sunucunuz <span style={{ "color": "green", "fontSize": "14px" }}>{sadi.toLowerCase()}</span>demo{new Date().toISOString().substr(0, 10).replaceAll("-", "")}.proaktif.org adresi ile oluşturulamadı.<img src='/img/cancel.png' alt="error result" style={{ height: "15px" }}></img><br />{sunucuMesajExtraBilgi}</>);
                 break;
-            case (MesajTurleri.ERROR):
+            default://case (MesajTurleri.ERROR):
                 text = (<>Kayıt İşlemi sırasında hata oluştu. Lütfen daha sonra tekrar deneyiniz.<br />{sunucuMesajExtraBilgi}</>);
                 break;
         }
