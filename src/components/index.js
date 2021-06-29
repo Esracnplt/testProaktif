@@ -89,44 +89,44 @@ export default function Index() {
 
     const btnEgitimDestekleriClick = (e) => {
         ReactSwal.fire({
-          title: "Eğitim Destekleri",
-          confirmButtonText: "Tamam",
-          showCloseButton: true,
-          icon: (!hasLoadedSchools) ? "info" : "",
-          html: (!hasLoadedSchools) ? <div>Bilgiler getiriliyor...<br />Lütfen bekleyiniz.</div> : <ProaktifTab tabs={egitimDestekleriTabs} />,
-          willOpen: () => {
-            if (!hasLoadedSchools) {
-              fetch("https://pro.proaktif.org/index/okullar")
-                .then(response => response.json())
-                .then((data) => {
-                  setEgitimDestekleriTabs(tabs =>
-                    ({
-                      ...tabs,
-                      liseler: {
-                        ...tabs.liseler,
-                        content: data.okulLise
-                      },
-                      yuksekOkullar: {
-                        ...tabs.yuksekOkullar,
-                        content: data.okulYuksekokul
-                      }
-                    }));
-                  setHasLoadedSchools(true);
-                })
-                .catch((e) => {
-                  Swal.close();
-                  ReactSwal.fire({
-                    title: "Eğitim Destekleri",
-                    confirmButtonText: "Tamam",
-                    showCloseButton: true,
-                    html: `<div style="color:red;">Bilgiler getirilirken hata oluştu!<br/>${e}</div>`,
-                    icon: 'error',
-                  });
-                })
-            }
-          },
+            title: "Eğitim Destekleri",
+            confirmButtonText: "Tamam",
+            showCloseButton: true,
+            icon: (!hasLoadedSchools) ? "info" : "",
+            html: (!hasLoadedSchools) ? <div>Bilgiler getiriliyor...<br />Lütfen bekleyiniz.</div> : <ProaktifTab tabs={egitimDestekleriTabs} />,
+            willOpen: () => {
+                if (!hasLoadedSchools) {
+                    fetch("https://pro.proaktif.org/index/okullar")
+                        .then(response => response.json())
+                        .then((data) => {
+                            setEgitimDestekleriTabs(tabs =>
+                            ({
+                                ...tabs,
+                                liseler: {
+                                    ...tabs.liseler,
+                                    content: data.okulLise
+                                },
+                                yuksekOkullar: {
+                                    ...tabs.yuksekOkullar,
+                                    content: data.okulYuksekokul
+                                }
+                            }));
+                            setHasLoadedSchools(true);
+                        })
+                        .catch((e) => {
+                            Swal.close();
+                            ReactSwal.fire({
+                                title: "Eğitim Destekleri",
+                                confirmButtonText: "Tamam",
+                                showCloseButton: true,
+                                html: `<div style="color:red;">Bilgiler getirilirken hata oluştu!<br/>${e}</div>`,
+                                icon: 'error',
+                            });
+                        })
+                }
+            },
         })
-      }
+    }
 
     /**
      * End: Sertifika Kontrol Swal Kondları
@@ -259,7 +259,7 @@ export default function Index() {
             footer: "Şirket sunucu adresinizi bulmak için Tc Kimlik Numaranızı Giriniz..",
             preConfirm: sunucuBulSwalPreConfirm,
             didOpen: () => {
-                console.log(inputSunucuBulTCKNO.current,"inputSunucuBulTCKNO.current");
+                console.log(inputSunucuBulTCKNO.current, "inputSunucuBulTCKNO.current");
                 inputSunucuBulTCKNO.current.value = sunucuBulTCKNO;
             },
         }).then((result) => {
@@ -293,8 +293,9 @@ export default function Index() {
                                         confirmButtonText: "Tamam",
                                         footer: "TC kimlik numaranızın doğruluğundan emin olunuz...",
                                     }).then((result) => {
-                                        console.log(result,"result");
-                                        if (result.value) {  debugger;
+                                        console.log(result, "result");
+                                        if (result.value) {
+                                            debugger;
                                             showSunucuBulSwall(tc, sunucuBulUyariMesaji);
                                         }
                                     });
@@ -333,28 +334,28 @@ export default function Index() {
     return (
         <>
             <div class="sample-header">
-                <img src="assests/img/teknopark.jpg" style={{height:"100vh"}} />
+                <img src="assests/img/teknopark.jpg" style={{ height: "100vh" }} />
             </div>
             <div>
                 <Slide easing="ease">
                     <div className="each-slide">
                         <div className="img-fluid" style={{ 'backgroundImage': `url(${slideImages[0]})` }}>
-                            <span style={{ backgroundColor: "rgb(0, 173, 239,0.3)", color: "white", fontWeight: "bold", fontSize: 25, borderRadius: 10 }}><a style={{color:"white"}} href="/VolunterEdu">Proaktif Eğitim Destekleri</a></span>
+                            <span style={{ backgroundColor: "rgb(0, 173, 239,0.3)", color: "white", fontWeight: "bold", fontSize: 25, borderRadius: 10 }}><a style={{ color: "white" }} href="/VolunterEdu">Proaktif Eğitim Destekleri</a></span>
                         </div>
                     </div>
                     <div className="each-slide">
                         <div className="img-fluid" style={{ 'backgroundImage': `url(${slideImages[1]})` }}>
-                            <span style={{ backgroundColor: "rgb(0, 173, 239,0.3)", color: "white", fontWeight: "bold", fontSize: 25, borderRadius: 10 }}><a style={{color:"white"}} href="/Products">Proaktif Dış Ticaret yönetim </a></span>
+                            <span style={{ backgroundColor: "rgb(0, 173, 239,0.3)", color: "white", fontWeight: "bold", fontSize: 25, borderRadius: 10 }}><a style={{ color: "white" }} href="/Products">Proaktif Dış Ticaret yönetim </a></span>
                         </div>
                     </div>
                     <div className="img-fluid" className="each-slide">
                         <div style={{ 'backgroundImage': `url(${slideImages[2]})` }}>
-                            <span style={{ backgroundColor: "rgb(0, 173, 239,0.3)", color: "white", fontWeight: "bold", fontSize: 25, borderRadius: 10 }}><a style={{color:"white"}} href="/Projects">Proaktif Arge Projeleri</a></span>
+                            <span style={{ backgroundColor: "rgb(0, 173, 239,0.3)", color: "white", fontWeight: "bold", fontSize: 25, borderRadius: 10 }}><a style={{ color: "white" }} href="/Projects">Proaktif Arge Projeleri</a></span>
                         </div>
                     </div>
                     <div className="img-fluid" className="each-slide">
                         <div style={{ 'backgroundImage': `url(${slideImages[3]})` }}>
-                            <span style={{ backgroundColor: "rgb(0, 173, 239,0.3)", color: "white", fontWeight: "bold", fontSize: 25, borderRadius: 10 }}><a style={{color:"white"}} href="VolunterEdu">Proaktif Sosyal Sorumluluk Projeleri</a></span>
+                            <span style={{ backgroundColor: "rgb(0, 173, 239,0.3)", color: "white", fontWeight: "bold", fontSize: 25, borderRadius: 10 }}><a style={{ color: "white" }} href="VolunterEdu">Proaktif Sosyal Sorumluluk Projeleri</a></span>
                         </div>
                     </div>
                 </Slide>
@@ -371,17 +372,19 @@ export default function Index() {
                     <div className="info1 d-flex align-items-center justify-content-center">
                         <p style={{ fontWeight: "bold" }}>Olası <strong>sorunlara</strong> öncesinde çözümler üretiyoruz!</p>
                     </div>
-                    <div className="d-flex align-items-center justify-content-center text-center w-100 row mb-4" style={{ padding: 50 }}>
-                        <h5 style={{ margin: 60, fontWeight: "bold", color: "black" }}>Nitelikli yazılım, yönetim ve bilişim çözümlerimiz ile üretken, kârlı ve sürekli bir gelişim için proaktif vizyon.</h5>
-                        <div className="col-lg-4 col-md-12 col-sm-12 col-xs-4 mt-2"><h5 style={{ color: "#00ADEF" }}>Sosyal Sorumluluk Projeleri
-                   </h5>Var gücümüzle 'Eğitim' diyoruz.</div>
-                        <div className="col-lg-4 col-md-12 col-sm-12 col-xs-4 mt-2">
+                    <div className="d-flex align-items-center justify-content-center text-center w-100 row ">
+                      <h5 style={{ margin: 60, fontWeight: "bold", color: "black" }}>Nitelikli yazılım, yönetim ve bilişim çözümlerimiz ile üretken, kârlı ve sürekli bir gelişim için proaktif vizyon.</h5>
+                    </div>
+                    <div className="d-flex align-items-center justify-content-center text-center w-100 row " style={{ padding: 50 }}>
+                        <div className="col-lg-4 col-xl-4 col-md-12 col-sm-12 col-xs-4 mt-2"><h5 style={{ color: "#00ADEF" }}>Sosyal Sorumluluk Projeleri
+                        </h5>Var gücümüzle 'Eğitim' diyoruz.</div>
+                        <div className="col-lg-4 col-xl-4 col-md-12 col-sm-12 col-xs-4 mt-2">
                             <h5 style={{ color: "#00ADEF" }}>Dış Ticaret Yönetim Sistemi</h5>
-                   Yer ve zamandan bağımsız olarak ithalat, ihracat, antrepo, transit, özet beyan ve NCTS gibi tüm işlemlerinizi hızlıca gerçekleştirin!
-                </div>
-                        <div className="col-lg-4 col-md-12 col-sm-12 col-xs-4 mt-2"> <h5 style={{ color: "#00ADEF" }}>DontBeCloser (DahaYakınOlma) Projesi</h5>
-                DBC DontBeCloser (DahaYakınOlma) mobil uygulaması ve web yazılımı ile kendinizi güvene alın.
-                </div>
+                            Yer ve zamandan bağımsız olarak ithalat, ihracat, antrepo, transit, özet beyan ve NCTS gibi tüm işlemlerinizi hızlıca gerçekleştirin!
+                        </div>
+                        <div className="col-lg-4 col-xl-4 col-md-12 col-sm-12 col-xs-4 mt-2"> <h5 style={{ color: "#00ADEF" }}>DontBeCloser (DahaYakınOlma) Projesi</h5>
+                            DBC DontBeCloser (DahaYakınOlma) mobil uygulaması ve web yazılımı ile kendinizi güvene alın.
+                        </div>
                     </div>
                     <div className="statistics">
                         <div className="d-block jusify-content-center align-items-start" style={{ zIndex: 1, color: "white" }}>
@@ -389,23 +392,23 @@ export default function Index() {
                             <p style={{ fontSize: 18, fontWeight: "bold" }}>Birkaç İstatistik</p></div>
                         <div className="d-flex jusify-content-center align-items-center row w-100" style={{ zIndex: 1, color: "white" }}>
                             <div className="col-lg-3 col-xs-3"><CountUp start={0} end={17000000} duration={5} />+
-                            <div className="d-flex align-items-center justify-content-center">
+                                <div className="d-flex align-items-center justify-content-center">
                                     Yıllık Deneyim
-                            </div>
+                                </div>
                             </div>
                             <div className="col-lg-3 col-xs-3"><CountUp start={0} end={26} duration={5} />+
-                            <div className="d-flex align-items-center justify-content-center">
+                                <div className="d-flex align-items-center justify-content-center">
                                     Beyanname
-                            </div></div>
+                                </div></div>
                             <div className="col-lg-3 col-xs-3">
                                 <CountUp start={0} end={7800} duration={5} />+
-                            <div className="d-flex align-items-center justify-content-center">
+                                <div className="d-flex align-items-center justify-content-center">
                                     Kullanıcı
-                            </div></div>
+                                </div></div>
                             <div className="col-lg-3 col-xs-3"><CountUp start={0} end={16000} duration={5} />+
-                            <div className="d-flex align-items-center justify-content-center">
+                                <div className="d-flex align-items-center justify-content-center">
                                     Öğrenciye Hizmet
-                            </div>
+                                </div>
                             </div>
                         </div>
                     </div>
