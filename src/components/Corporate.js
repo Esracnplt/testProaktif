@@ -86,14 +86,11 @@ export default function Corporate() {
                         <p className="m-2"><h5 style={{ color: "#007bff" }}>Vergi Dairesi / No:</h5>Tepecik / 733 088 7853</p>
                         <p className="m-2"><h5 style={{ color: "#007bff" }}>Ticaret Sicil No:</h5>30331</p>
                         <p className="m-2"><h5 style={{ color: "#007bff" }}>Mersis No:</h5>proaktifdijital@hs05.kep.tr</p>
-                        <p className="m-2"><h5 style={{ color: "#007bff" }}>Yetkili:</h5>Barış CİNER (Sahip/Genel Müdür)</p>
-                        <p className="m-2"><h5 style={{ color: "#007bff" }}>KEP Adresi:</h5>Barış CİNER (Sahip/Genel Müdür)</p>
+                        <p className="m-2"><h5 style={{ color: "#007bff" }}>Yetkili:</h5>Tuba EMLEK (Sahip/Genel Müdür)</p>
+                        <p className="m-2"><h5 style={{ color: "#007bff" }}>KEP Adresi:</h5>Tuba EMLEK(Sahip/Genel Müdür)</p>
                         <p className="m-2"><h5 style={{ color: "#007bff" }}>Adres:</h5>Kocaeli Üniversitesi Teknoloji Geliştirme Bölgesi<br />
                         Vatan Cad., No: 83 / B-34 Yeniköy Merkez Mah.<br />
                         Başiskele 41725 Kocaeli/Turkey</p>
-                        <p className="m-2"><h5 style={{ color: "#007bff" }}>Banka Hesap Bilgileri:</h5>
-                        TL Hesabı İş Bankası TR390006400000112060542953<br />
-                        TL Hesabı Ziraat Bankası TR770001002580933477895001</p>
                     </div>
                 </div>
             </div>
