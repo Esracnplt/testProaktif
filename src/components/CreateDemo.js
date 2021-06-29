@@ -396,19 +396,19 @@ const CreateDemo = forwardRef((props, ref) => {
             {sunucuMesajTuru !== "" && <div className={`proaktif-alert ${sunucuMesajTuru}`}><ShowSunucuMesajTuru /></div>}
 
             <form>
-                <input type="text" name="firmaadi" onChange={handleChange} onBlur={handleOnBlurFirmaAdi} onFocus={handleOnFocusFirmaAdi} id="firmaadi" value={inputs.firmaadi} title={inputsProperties.firmaadi.title} className={`proaktif-input ${inputsErrorMessages.firmaadi.length > 0 && ' error'} `} className="react-tel-input form-control" placeholder="Firmanızın ünvanı" />
+                <input type="text" name="firmaadi" onChange={handleChange} onBlur={handleOnBlurFirmaAdi} onFocus={handleOnFocusFirmaAdi} id="firmaadi" value={inputs.firmaadi} title={inputsProperties.firmaadi.title} className={`react-tel-input form-control ${inputsErrorMessages.firmaadi.length > 0 && ' error'} `}  placeholder="Firmanızın ünvanı" />
                 {inputsErrorMessages.firmaadi.length > 0 && (<span className="error-message">{inputsErrorMessages.firmaadi}</span>)}
-                <input type="text" name="firmaweb" onChange={handleChange} id="firmaweb" value={inputs.firmaweb} title={inputsProperties.firmaweb.title} className={`proaktif-input ${inputsErrorMessages.firmaweb.length > 0 && ' error'} `} className="react-tel-input form-control" placeholder="Firmanızın web sitesi" />
+                <input type="text" name="firmaweb" onChange={handleChange} id="firmaweb" value={inputs.firmaweb} title={inputsProperties.firmaweb.title} className={`react-tel-input form-control ${inputsErrorMessages.firmaweb.length > 0 && ' error'} `}  placeholder="Firmanızın web sitesi" />
                 {inputsErrorMessages.firmaweb.length > 0 && (<span className="error-message">{inputsErrorMessages.firmaweb}</span>)}
-                <input type="text" name="ad" onBlur={handleOnBlur} onChange={handleChange} id="ad" value={inputs.ad} className={`proaktif-input ${inputsErrorMessages.ad.length > 0 && ' error'} `} className="react-tel-input form-control" placeholder="adınız " />
+                <input type="text" name="ad" onBlur={handleOnBlur} onChange={handleChange} id="ad" value={inputs.ad} className={`react-tel-input form-control ${inputsErrorMessages.ad.length > 0 && ' error'} `}  placeholder="Adınız " />
                 {inputsErrorMessages.ad.length > 0 && (<span className="error-message">{inputsErrorMessages.ad}</span>)}
-                <input type="text" name="tckimlik" onChange={handleChange} id="tckimlik" placeholder={inputsProperties.tckimlik.placeHolder} value={inputs.tckimlik} className={`proaktif-input ${inputsErrorMessages.tckimlik.length > 0 && ' error'} `} className="react-tel-input form-control" placeholder=" soyadınız" />
+                <input type="text" name="tckimlik" onChange={handleChange} id="tckimlik" value={inputs.tckimlik} className={`react-tel-input form-control ${inputsErrorMessages.tckimlik.length > 0 && ' error'} `}  placeholder=" Tc Kimlik" />
                 {inputsErrorMessages.tckimlik.length > 0 && (<span className="error-message">{inputsErrorMessages.tckimlik}</span>)}
-                <input type="text" name="dogtarihi" onChange={handleChange} id="dogtarihi" value={inputs.dogtarihi} title={inputsProperties.dogtarihi.title} className={`proaktif-input ${inputsErrorMessages.dogtarihi.length > 0 && ' error'} `} className="react-tel-input form-control" placeholder=" Tc kimlik no" />
+                <input type="date" name="dogtarihi" onChange={handleChange} id="dogtarihi" value={inputs.dogtarihi} title={inputsProperties.dogtarihi.title} className={`react-tel-input form-control ${inputsErrorMessages.dogtarihi.length > 0 && ' error'} `}  placeholder="Doğum tarihi" />
                 {inputsErrorMessages.dogtarihi.length > 0 && (<span className="error-message">{inputsErrorMessages.dogtarihi}</span>)}
-                <input type="text" name="telno" onChange={handleChange} id="telno" value={inputs.telno} title={inputsProperties.telno.title} className={`proaktif-input ${inputsErrorMessages.telno.length > 0 && ' error'} `} className="react-tel-input form-control" placeholder="Doğum tarihi" />
+                <input type="text" name="telno" onChange={handleChange} id="telno" value={inputs.telno} title={inputsProperties.telno.title} className={`react-tel-input form-control ${inputsErrorMessages.telno.length > 0 && ' error'} `}  placeholder="Tel No" />
                 {inputsErrorMessages.telno.length > 0 && (<span className="error-message">{inputsErrorMessages.telno}</span>)}
-                <input type="text" name="email" onChange={handleChange} id="emailkayit" value={inputs.email} className={`proaktif-input ${inputsErrorMessages.email.length > 0 && ' error'} `} className="react-tel-input form-control" placeholder="Email" />
+                <input type="text" name="email" onChange={handleChange} id="emailkayit" value={inputs.email} className={`react-tel-input form-control ${inputsErrorMessages.email.length > 0 && ' error'} `}  placeholder="Email" />
                 {inputsErrorMessages.email.length > 0 && (<span className="error-message">{inputsErrorMessages.email}</span>)}
             </form>
         </div>
