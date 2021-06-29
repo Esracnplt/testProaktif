@@ -11,7 +11,6 @@ function ContactForm(props) {
     const{intl}=props;
     const [selectedOption, setSelectedOption] = useState();
     const options = [
-        { value: '', label: 'Mesajınızın konusunu seçiniz...' },
         { value: 'Genel', label: 'Genel' },
         { value: 'BilgiTalebi', label: 'Bilgi Talebi' },
         { value: 'Demo', label: 'Demo' },
@@ -96,6 +95,7 @@ function ContactForm(props) {
                     className="mt-2"
                     styles={MenuStyle}
                     value={selectedOption}
+                     defaultValue={{ label: "mesajınızın konusunu seçiniz", value: 0 }}
                     onChange={handleChange}
                     options={options}
                 />
