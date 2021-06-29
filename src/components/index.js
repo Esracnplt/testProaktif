@@ -325,10 +325,10 @@ export default function Index() {
     }, [navClassName]);
 
     const slideImages = [
-        'assests/img/slider1.jpeg',
-        'assests/img/slider2.jpg',
-        'assests/img/slider3.jpg',
-        'assests/img/slider4.jpg',
+        'assests/img/shutterstock_748936441.jpg',
+        'assests/img/shutterstock.jpg',
+        'assests/img/transitbeyan.jpg',
+        'assests/img/original_349402913.jpg',
     ];
 
     return (
