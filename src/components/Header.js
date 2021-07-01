@@ -48,7 +48,7 @@ export default function Header(props) {
                     {windowSize === true ? (
                         <div className="d-flex align-items-center justify-content-center">
                             <img height='60px' width='60px' className="ml-2" style={{opacity:"none"}} src={'/assests/img/logo.png'} />
-                            <p style={{ color: "white", marginTop: 10, marginLeft: 5, fontSize: 15, fontWeight: "bold",fontStyle:"italic" }}>Proaktif</p>
+                            <p style={{ color: "white", marginTop: 10, marginLeft: 2, fontSize: 20, fontWeight: "bold",fontStyle:"italic" }}>Proaktif</p>
 
                         </div>) : (<div>
                             <a onClick={() => setOpenMenu(!openMenu)}>
