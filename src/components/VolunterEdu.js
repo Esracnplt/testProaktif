@@ -20,12 +20,12 @@ const VolunterEdu = () => {
                             </div>
                             <div className="col d-block align-items-center justify-content-center">
 
-                                <img src={'/assests/img/eğitimdenişe.jpg'} className="p-2 img-fluid" height="250px" max-width="450px" />
+                                <img src={'/assests/img/egitimdenise.jpg'} className="p-2 img-fluid" height="250px" max-width="450px" />
                             </div>
                         </div> <hr></hr>
                         <div className="text-left ml-4 mt-4 row">
                             <div className="col">
-                                <img src={'/assests/img/uçurtma.jpg'} className="p-2 img-fluid" className="p-2 mt-4 img-fluid" height="250px" max-width="450px" />
+                                <img src={'/assests/img/ucurtma.jpg'} className="p-2 img-fluid" className="p-2 mt-4 img-fluid" height="250px" max-width="450px" />
                             </div>
                             <div className="col">
                                 <h4 style={{ color: "#007bff" }}> Uçurtma Sosyal Sorumluluk Projesi</h4>
