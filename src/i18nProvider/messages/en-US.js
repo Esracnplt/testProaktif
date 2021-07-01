@@ -22,5 +22,8 @@ export default {
         "name-surname": "Name Surname",
         "phone":"Phone Number",
         "Messagge":"Message",
-        "Send":"Send"
+        "Send":"Send",
+        "whatsap":"Whatsapp Support",
+        "or":"Or"
+
     }}

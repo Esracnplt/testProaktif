@@ -21,7 +21,9 @@ export default {
     "name-surname": "Adınız Soyadınız",
     "phone": "Telefon Numarası",
     "Messagge": "Mesaj",
-    "Send": "Gönder"
+    "Send": "Gönder",
+    "whatsap":"Whatsapp Destek",
+    "or":"VEYA"
 
 
   }
